@@ -7,3 +7,14 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
+input {
+  outline: none;
+  border: none;
+
+}
+
+input:focus-visible {
+  outline: none;
+  border: none;
+}

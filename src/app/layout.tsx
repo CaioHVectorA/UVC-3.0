@@ -2,6 +2,7 @@
 import './globals.css'
 import { Inter, Montserrat } from 'next/font/google'
 import './App.css'
+import Header from '@/components/Header'
 const inter = Inter({ subsets: ['latin'] })
 const montserrat = Montserrat({ subsets: ['latin'] })
 export const metadata = {
@@ -31,10 +32,16 @@ export default function RootLayout({
         h4 {
           font-family: ${montserrat.style.fontFamily};
         }
+        .montserrat {
+          font-family: ${montserrat.style.fontFamily}
+        }
         `
         }
       </style>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+        </body>
     </html>
   )
 }

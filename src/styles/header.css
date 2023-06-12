@@ -1,0 +1,135 @@
+header {
+    position: fixed;
+}
+
+header *:not(input) {
+    color: white;
+    text-transform: uppercase;
+}
+header hr {
+   border: 0;
+   border-top: 0.02px solid var(--color-mainescuro);
+}
+
+header {
+    background: var(--color-main);
+    display: flex;
+    flex-direction: column;
+}
+.gridHeader {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+}
+.headerDivision {
+    width: 300px;
+    height: 2px;
+    background-color: #d9d9d9;
+    opacity: 30%;
+    border-radius: 25px;
+}
+
+.headerSide {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  header input {
+    border-radius: 25px 0px 0px 25px;
+    background-color: #e7e7e7;
+    padding: 9px 12px;
+    height: 40px;
+    color: #202020;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  header img:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+  filter: drop-shadow(3.2px 3.2px 0 white);
+}
+
+.searchButton {
+    background-color: #d9d9d9;
+    border-radius: 0px 25px 25px 0px;
+    padding: 6px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.searchButton svg {
+    position: relative;
+    top: 0px;
+}
+
+header img {
+    object-fit: contain;
+}
+
+nav {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20%;
+    padding-left: 20%;
+}
+
+nav a:hover {
+    cursor: pointer;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+@keyframes headerDownAnimationClose {
+ 0% {
+    max-height: 45px;
+    display: block;
+ } 
+
+ 100% {
+    max-height: 0px;
+    display: none;
+}
+}
+
+@keyframes headerDownAnimationOpen {
+ 0% {
+     max-height: 0px;
+     display: block;
+    } 
+    
+    100% {
+     max-height: 45px;
+}
+}
+
+
+.HeaderDownAnimationClose {
+    animation: headerDownAnimationClose 0.2s forwards;
+    overflow: hidden;
+}
+
+.HeaderDownAnimationOpen {
+    animation: headerDownAnimationOpen 0.2s forwards;
+    overflow: hidden;
+}
+
+.closedHeader {
+    height: 88px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 24px;
+}
+
+li {
+    font-size: 20px;
+}

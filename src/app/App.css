@@ -66,3 +66,9 @@ button:hover {
     background-color: var(--color-mainescuro);
     border: var(--color-mainescuro) 0.2px solid;
 }
+
+ /* _____________________ */
+
+.nontransition, .nontransition * {
+    transition: 0s;
+} 
