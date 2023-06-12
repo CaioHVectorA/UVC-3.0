@@ -75,7 +75,7 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
             <hr />
             <nav>
             <a>CONTOS</a>
-            <a>PERSONAGENS</a>
+            <a href="dadsadas">PERSONAGENS</a>
             <a>NOVIDADES</a>
             <a>FAVORITOS</a>
             <a>SAIBA MAIS</a>
@@ -96,8 +96,8 @@ export default function Header() {
       }, []);
     return (
         <header className=" w-full ">
-            {scroll < 60 ? <OpenHeaderTop /> : <ClosedHeader /> } 
-            <OpenHeaderDown scroll={scroll > 60}/>
+            {scroll < 140 ? <OpenHeaderTop /> : <ClosedHeader /> } 
+            <OpenHeaderDown scroll={scroll > 140}/>
         </header>
     )
 }
