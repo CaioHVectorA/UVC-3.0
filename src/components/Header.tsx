@@ -69,7 +69,6 @@ function OpenHeaderTop() {
 }
 
 function OpenHeaderDown({ scroll }: {scroll: boolean}) {
-    console.log(scroll)
     return (
         <div className={`${scroll ? 'HeaderDownAnimationClose' : 'HeaderDownAnimationOpen'}`}>
             <hr />

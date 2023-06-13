@@ -1,5 +1,6 @@
 header {
     position: fixed;
+    z-index: 8;
 }
 
 header *:not(input) {

@@ -1,5 +1,5 @@
 import { IMGS } from "@/utilities/envariables"
-import '../styles/components/ImageInitialSection.css'
+import '../../styles/components/ImageInitialSection.css'
 import { useWindowDimensions } from "@/utilities/functions/useWindowDimensions";
 
 function shuffleArray(arr: {src: string,class: string}[][]): {src: string,class: string}[][] {

@@ -1,6 +1,4 @@
-import '../styles/components/gradient.css'
-import { useWindowDimensions } from "@/utilities/functions/useWindowDimensions"
-
+import '../../styles/components/gradient.css'
 
 export default function GradientAndTexts() {
     return (

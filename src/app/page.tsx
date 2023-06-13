@@ -1,5 +1,6 @@
-import GradientAndTexts from "@/components/Gradient"
-import ImageInitialSection from "@/components/ImageInitialSection"
+import GradientAndTexts from "@/components/InitialPage/Gradient"
+import ImageInitialSection from "@/components/InitialPage/ImageInitialSection"
+import ContosPreview from "@/components/InitialPage/contosPreview"
 
 
 export default async function Home() {
@@ -9,8 +10,9 @@ export default async function Home() {
     <>
     <div className=" relative">
       <GradientAndTexts />
-    <ImageInitialSection />    
+    <ImageInitialSection />
     </div>
+    <ContosPreview />
     </>
   )
 }
