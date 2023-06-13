@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import UVC from '../../public/UVC.png'
-import '../styles/header.css'
+import '../styles/components/header.css'
 import { useEffect, useState } from "react"
 import { CiSearch } from 'react-icons/ci'
 import { GrClose } from 'react-icons/gr'
@@ -75,7 +75,7 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
             <hr />
             <nav>
             <a>CONTOS</a>
-            <a href="dadsadas">PERSONAGENS</a>
+            <a>PERSONAGENS</a>
             <a>NOVIDADES</a>
             <a>FAVORITOS</a>
             <a>SAIBA MAIS</a>

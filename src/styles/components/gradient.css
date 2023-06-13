@@ -1,0 +1,44 @@
+.container {
+    left: 0px;
+    position: absolute;
+    display: flex;
+    gap: 1vw;
+    flex-direction: column;
+    padding: 32px;
+    width: 100vw;
+    max-width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(90deg, #000000 0.94%, rgba(0, 0, 0, 0.8) 51.79%, rgba(0, 0, 0, 0.7) 100%);
+    font-size: 2.4vw;
+}
+.container h1 {font-size: 2em}
+.container button {font-size: 0.6em}
+.container p {
+    width: 28em;
+font-size: 0.53em;
+}
+@media (max-width: 475px) {
+    .container {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0.72) 51.04%, rgba(0, 0, 0, 1) 100%);
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+        /* padding-top: 24px; */
+        text-align: center;
+        gap: 4%;
+        font-size: 20px;
+    }
+    .container p {
+        font-size: 18px;
+        width: 80%;
+    }
+    .container button {
+        font-size: 24px;
+    }
+  }
+  
+  
+  
+  
+  

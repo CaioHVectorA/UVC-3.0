@@ -16,6 +16,7 @@ header {
     display: flex;
     flex-direction: column;
 }
+
 .gridHeader {
     display: grid;
     grid-template-columns: 40% 20% 40%;

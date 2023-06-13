@@ -1,17 +1,17 @@
-// import { Montserrat } from "next/font/google";
+export const IMGS = {
+  MR_1: "https://live.staticflickr.com/65535/52739881142_cc750f9fba_m.jpg",
+  MR_2: "https://live.staticflickr.com/65535/52849249375_625ee704a7_m.jpg",
+  RRH: "https://live.staticflickr.com/65535/52738957050_a77ae50199_w.jpg",
+  CIECON: "https://live.staticflickr.com/65535/52738589846_0158b4f28c_w.jpg",
+  GLACIAL: "https://live.staticflickr.com/65535/52748630855_758ce69294_n.jpg",
+  HADES: "https://live.staticflickr.com/65535/52739035768_37250eb886_n.jpg",
+  KERRY: "https://live.staticflickr.com/65535/52739030508_e60672c0fd_w.jpg",
+  PUNHO_MORTAL:
+    "https://live.staticflickr.com/65535/52848281377_e6a3d19661_n.jpg",
+  GUARDIOES: "https://live.staticflickr.com/65535/52739030543_751119292d_n.jpg",
+  CONGREGADORES:
+    "https://live.staticflickr.com/65535/52738545646_566b24c59d_w.jpg",
+  ARNER: "https://live.staticflickr.com/65535/52848841926_faac7572f2_w.jpg",
+};
 
-// const montserrat = Montserrat
-// export const GLOBALSTYLE = `
-//         h1 {
-//           font-family: ${montserrat.style.fontFamily};
-//         }
-//         h2 {
-//           font-family: ${montserrat.style.fontFamily};
-//         }
-//         h3 {
-//           font-family: ${montserrat.style.fontFamily};
-//         }
-//         h4 {
-//           font-family: ${montserrat.style.fontFamily};
-//         }
-//         `;
+// export const isMobile = window.innerWidth < 438;

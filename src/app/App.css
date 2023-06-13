@@ -53,6 +53,7 @@ body {
 }
 
 button {
+    width: fit-content;
     padding: 8px 18px;
     border-radius: 25px;
     background-color: var(--color-main);
@@ -73,3 +74,7 @@ button:hover {
     transition: 0s;
 } 
 
+
+.colorMain {
+    color: var(--color-main);
+}

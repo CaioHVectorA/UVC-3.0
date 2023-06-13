@@ -18,3 +18,7 @@ input:focus-visible {
   outline: none;
   border: none;
 }
+
+* + header {
+  margin-top: 140px;
+}

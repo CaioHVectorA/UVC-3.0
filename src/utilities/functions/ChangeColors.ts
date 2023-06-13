@@ -22,6 +22,7 @@ export function ChangeColor(identifier: string) {
   const ColorFound: IColors = Colors.find(
     (color) => color.identifier === identifier
   );
+  console.log(ColorFound);
   setCSSVar(keys.colorMain, ColorFound.colors[0]);
   setCSSVar(keys.colorMainescuro, ColorFound.colors[1]);
   setCSSVar(keys.colorMainclaro, ColorFound.colors[2]);

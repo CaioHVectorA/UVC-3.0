@@ -40,7 +40,9 @@ export default function RootLayout({
       </style>
       <body className={inter.className}>
         <Header />
+        <div style={{paddingTop: '133px'}}>
         {children}
+        </div>
         </body>
     </html>
   )
