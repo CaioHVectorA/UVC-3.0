@@ -27,7 +27,7 @@ export default function HeaderMobile() {
         </header>
         <nav className={`BGcolorEscuro ${open ? 'open' : 'closed'}`}> 
             {Itens.map(headerItem => (
-                <Link href={headerItem.linkTo}>
+                <Link key={headerItem.name} href={headerItem.linkTo}>
                 <h4>{headerItem.name}</h4>
                 <hr />
                 </Link>

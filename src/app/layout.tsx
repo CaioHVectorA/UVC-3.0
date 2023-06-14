@@ -1,10 +1,10 @@
-
 import { Metadata } from "next";
 import "./globals.css";
 import "./App.css";
 import Header from "@/components/Header";
 import { Inter, Montserrat } from "next/font/google";
 import GlobalStyle from "../components/globalStyle";
+import Footer from "@/components/Footer";
 const montserrat = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -23,6 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         <div className="rootContainer">{children}</div>
+        <Footer />
       </body>
     </html>
   );

@@ -5,6 +5,7 @@
     --color-mainclaro: #DF5FD3;
     --color-mainescuro: #8D3184;
     --color-secundario: #F8BC22;
+    --color-background: #e7e7e7;
     @media (prefers-color-scheme: light) {
         --color-textmain: #080808;
         --color-textsecundary: rgba(0,0,0,.6);
@@ -18,7 +19,7 @@
         --color-background: #202020;
     }
 }
-* {color: var(--color-textmain); transition: 0.2s;}
+*:not(div,section,header) {color: var(--color-textmain); transition: 0.2s;}
 h1,h2,h3 { text-transform: uppercase; color: var(--color-textmain);}
 
 h1 {
@@ -69,6 +70,31 @@ button:hover {
     background-color: var(--color-mainescuro);
     border: var(--color-mainescuro) 0.2px solid;
 }
+
+footer {
+    width: 100vw;
+    padding: 32px;
+    display: flex;
+    border: none;
+    background-color: #d9d9d9;
+    margin-top: 48px;
+    gap: 32px;
+}
+
+footer img {
+    object-fit: contain;
+    aspect-ratio: 9/3;
+    width: fit-content;
+    max-width: 200px;
+}
+
+footer * {color: black;}
+
+.footerItem:hover {
+    font-size: 24px;
+}
+
+
 
  /* _____________________ */
 

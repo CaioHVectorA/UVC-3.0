@@ -5,7 +5,6 @@ import '../styles/components/header.css'
 import { useEffect, useState } from "react"
 import { CiSearch } from 'react-icons/ci'
 import { GrClose } from 'react-icons/gr'
-import { useWindowDimensions } from "@/utilities/functions/useWindowDimensions"
 import HeaderMobile from "./HeaderMobile"
 function ClosedHeader() {
     const [search, setSearch] = useState(false)
@@ -89,17 +88,22 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
 
 export default function Header() {
     const [scroll, setScroll] = useState(0)
+    const [width, setWidth] = useState(0)
     useEffect(() => {
+        setWidth(window.innerWidth)
         window.addEventListener('scroll', () => setScroll(window.scrollY));
+        window.addEventListener('resize', () => setWidth(window.innerWidth));
         return () => {
-          window.removeEventListener('scroll', () => setScroll(window.scrollY));
+            window.removeEventListener('scroll', () => setScroll(window.scrollY));
+            window.removeEventListener('resize', () => setWidth(window.innerWidth));
         };
       }, []);
-      const { width, height } = useWindowDimensions()
       return (
         <>
+        {width === 0 && <div className="preview BGcolorMain"></div>}
+        {width && <>
         {
-            width > 768 ? 
+            width > 1024 ? 
             <header className=" w-full ">
             {scroll < 140 ? <OpenHeaderTop /> : <ClosedHeader /> } 
             <OpenHeaderDown scroll={scroll > 140}/>
@@ -107,6 +111,7 @@ export default function Header() {
         : 
         <HeaderMobile />
         }
+        </>}
         </>
     )
 }

@@ -37,8 +37,13 @@ font-size: 0.53em;
     .container button {
         font-size: 24px;
     }
-  }
-  
+}
+
+@media (max-width: 768px) and (min-width: 475px) { 
+    .container {padding: 12px;}
+    .container h1 {font-size: 30px;}
+    .container p {font-size: 12px;}
+}
   
   
   

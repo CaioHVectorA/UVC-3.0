@@ -1,3 +1,5 @@
+h1, p {color: white !important;}
+
 section {
     width: 100vw;
     display: flex;
@@ -7,6 +9,7 @@ section {
     margin-top: 20px;
     padding: 0 16%;
     padding-top: 24px;
+    padding-bottom: 24px;
     text-align: center;
 }
 .BGcolorSec {

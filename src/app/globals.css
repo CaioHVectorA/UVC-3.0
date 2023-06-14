@@ -29,7 +29,7 @@ input:focus-visible {
   padding-top: 133px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .rootContainer {
     padding-top: 80px;
   }
