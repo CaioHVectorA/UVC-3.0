@@ -22,7 +22,7 @@ export default function RootLayout({
       <GlobalStyle />
       <body className={inter.className}>
         <Header />
-        <div style={{ paddingTop: "133px" }}>{children}</div>
+        <div className="rootContainer">{children}</div>
       </body>
     </html>
   );

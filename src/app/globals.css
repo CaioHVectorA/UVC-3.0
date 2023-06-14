@@ -24,3 +24,13 @@ input:focus-visible {
 * + header {
   margin-top: 140px;
 }
+
+.rootContainer {
+  padding-top: 133px;
+}
+
+@media (max-width: 768px) {
+  .rootContainer {
+    padding-top: 80px;
+  }
+}

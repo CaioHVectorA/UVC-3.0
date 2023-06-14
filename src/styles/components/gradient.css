@@ -12,6 +12,7 @@
     background: linear-gradient(90deg, #000000 0.94%, rgba(0, 0, 0, 0.8) 51.79%, rgba(0, 0, 0, 0.7) 100%);
     font-size: 2.4vw;
 }
+.container *:not(span) {color: white !important;}
 .container h1 {font-size: 2em}
 .container button {font-size: 0.6em}
 .container p {

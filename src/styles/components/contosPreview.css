@@ -21,3 +21,8 @@ aspect-ratio: 1;
         width: auto;
     }
 }
+
+section {
+    display: grid;
+    justify-items: center;
+}

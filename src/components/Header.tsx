@@ -5,6 +5,8 @@ import '../styles/components/header.css'
 import { useEffect, useState } from "react"
 import { CiSearch } from 'react-icons/ci'
 import { GrClose } from 'react-icons/gr'
+import { useWindowDimensions } from "@/utilities/functions/useWindowDimensions"
+import HeaderMobile from "./HeaderMobile"
 function ClosedHeader() {
     const [search, setSearch] = useState(false)
     return (
@@ -93,10 +95,18 @@ export default function Header() {
           window.removeEventListener('scroll', () => setScroll(window.scrollY));
         };
       }, []);
-    return (
-        <header className=" w-full ">
+      const { width, height } = useWindowDimensions()
+      return (
+        <>
+        {
+            width > 768 ? 
+            <header className=" w-full ">
             {scroll < 140 ? <OpenHeaderTop /> : <ClosedHeader /> } 
             <OpenHeaderDown scroll={scroll > 140}/>
         </header>
+        : 
+        <HeaderMobile />
+        }
+        </>
     )
 }
