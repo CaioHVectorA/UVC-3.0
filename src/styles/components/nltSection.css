@@ -7,9 +7,7 @@ section {
     gap: 12px;
     align-items: center;
     margin-top: 20px;
-    padding: 0 16%;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding: 24px 16%;
     text-align: center;
 }
 .BGcolorSec {
@@ -19,8 +17,7 @@ section {
 
 @media (max-width: 768px) {
     section {
-        padding: 0 4%;
-        padding-top: 24px;
+        padding: 24px 4%;
     }
     h1 {
         font-size: 9vw;

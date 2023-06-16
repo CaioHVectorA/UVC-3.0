@@ -6,6 +6,10 @@ import { useEffect, useState } from "react"
 import { CiSearch } from 'react-icons/ci'
 import { GrClose } from 'react-icons/gr'
 import HeaderMobile from "./HeaderMobile"
+import Link from "next/link"
+import LoginModal from "./Login"
+
+
 function ClosedHeader() {
     const [search, setSearch] = useState(false)
     return (
@@ -43,13 +47,20 @@ function ClosedHeader() {
 }
 
 function OpenHeaderTop() {
+    const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
+    const updateBoolState = () => {
+        setModal(prevState => ({
+          ...prevState,
+          bool: false
+        }));
+      };
     return (
         <div className="gridHeader p-4">
             <div className="headerSide">
         <div className=" flex gap-2">
-            <h4 className=" text-base">REGISTRAR</h4>
+            <h4 onClick={() => setModal({bool: true,isLogin: false})} style={{cursor: 'pointer'}} className=" text-base">REGISTRAR</h4>
             <div style={{height: '20px',width: '1px',backgroundColor: 'rgba(255,255,255,.3)',borderRadius: '25px'}}></div>
-            <h4 className=" text-base">ENTRAR</h4>
+            <h4 onClick={() => setModal({bool: true,isLogin: true})} style={{cursor: 'pointer'}} className=" text-base">ENTRAR</h4>
         </div>
         <div className="headerDivision"></div>
             </div>
@@ -65,6 +76,7 @@ function OpenHeaderTop() {
         </div>
         </div>
         </div>
+        {modal.bool && <LoginModal isLogin={modal.isLogin} onClickKillThis={updateBoolState}/>}
     </div>
     )
 }
@@ -74,18 +86,16 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
         <div className={`${scroll ? 'HeaderDownAnimationClose' : 'HeaderDownAnimationOpen'}`}>
             <hr />
             <nav>
-            <a>CONTOS</a>
-            <a>PERSONAGENS</a>
-            <a>NOVIDADES</a>
-            <a>FAVORITOS</a>
-            <a>SAIBA MAIS</a>
-            <a>MAIS</a>
+            <Link href={'/'}>CONTOS</Link>
+            <Link href={'/'}>PERSONAGENS</Link>
+            <Link href={'/'}>NOVIDADES</Link>
+            <Link href={'/'}>FAVORITOS</Link>
+            <Link href={'/'}>SAIBA MAIS</Link>
+            <Link href={'/'}>MAIS</Link>
             </nav>
         </div>
     )
 }
-
-
 export default function Header() {
     const [scroll, setScroll] = useState(0)
     const [width, setWidth] = useState(0)
