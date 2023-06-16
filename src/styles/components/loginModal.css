@@ -1,0 +1,78 @@
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  margin: 0px;
+  left: 0px;
+  top: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.background * {
+  text-transform: none !important;
+}
+
+#loginModal {
+  background-color: #fcfcfc;
+  /* height: 300px; */
+  padding: 64px 92px;
+  position: relative;
+  border-radius: 8px;
+  width: 500px;
+}
+
+#loginModal * {
+  color: #202020;
+}
+
+.input {
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: none;
+  background-color: #fafafa;
+  border: 0.2px solid rgba(0, 0, 0, 0.4);
+}
+
+.input:focus-visible {
+  border: 0.2px solid rgba(0, 0, 0, 0.4);
+  background-color: #ffffff;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 24px !important;
+}
+
+h5 {
+  margin-bottom: 24px !important;
+  text-align: center;
+  color: #ff3333 !important;
+  font-size: 20px !important;
+}
+
+form {
+  display: flex;
+  /* gap: 8px; */
+  flex-direction: column;
+}
+
+#button {
+  align-self: center;
+  /* margin: 24px auto !important; */
+  border-radius: 8px !important;
+  width: 100% !important;
+  background-color: rgb(60, 155, 218);
+  color: white;
+  text-shadow: none;
+  border: none;
+  box-shadow: none;
+}
+
+u {
+  cursor: pointer;
+  margin-top: 20px;
+}

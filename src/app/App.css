@@ -1,117 +1,144 @@
 /* ESTILOS DE TEXTO */
 :root {
-    --color-main: #B140A6;
-    /* --color- */
-    --color-mainclaro: #DF5FD3;
-    --color-mainescuro: #8D3184;
-    --color-secundario: #F8BC22;
+  --color-main: #b140a6;
+  /* --color- */
+  --color-mainclaro: #df5fd3;
+  --color-mainescuro: #8d3184;
+  --color-secundario: #f8bc22;
+  --color-background: #e7e7e7;
+  @media (prefers-color-scheme: light) {
+    --color-textmain: #080808;
+    --color-textsecundary: rgba(0, 0, 0, 0.6);
+    --color-textterciary: rgba(0, 0, 0, 0.35);
     --color-background: #e7e7e7;
-    @media (prefers-color-scheme: light) {
-        --color-textmain: #080808;
-        --color-textsecundary: rgba(0,0,0,.6);
-        --color-textterciary: rgba(0,0,0,.35);
-        --color-background: #e7e7e7;
-    }
-    @media (prefers-color-scheme: dark) {
-        --color-textmain: #e7e7e7;
-        --color-textsecundary: rgba(255,255,255,.6);
-        --color-textterciary: rgba(255,255,255,.35);
-        --color-background: #202020;
-    }
+  }
+  @media (prefers-color-scheme: dark) {
+    --color-textmain: #e7e7e7;
+    --color-textsecundary: rgba(255, 255, 255, 0.6);
+    --color-textterciary: rgba(255, 255, 255, 0.35);
+    --color-background: #202020;
+  }
 }
-*:not(div,section,header) {color: var(--color-textmain); transition: 0.2s;}
-h1,h2,h3 { text-transform: uppercase; color: var(--color-textmain);}
+*:not(div, section, header) {
+  color: var(--color-textmain);
+  transition: 0.2s;
+}
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  color: var(--color-textmain);
+}
 
 h1 {
-    font-size: 60px;
-    font-weight: 800;
+  font-size: 60px;
+  font-weight: 800;
   /* font-family: MontSerrat */
 }
 
 h2 {
-    font-size: 48px;
-    font-weight: 700;
+  font-size: 48px;
+  font-weight: 700;
 }
 
 h3 {
-    font-size: 32px;
-    font-weight: 550;
+  font-size: 32px;
+  font-weight: 550;
 }
 
 h4 {
-    font-size: 24px;
-    font-weight: 500;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 /* ___________________________ BODY e Sections */
 
 body {
-    background-color: var(--color-background);
+  background-color: var(--color-background);
 }
 
-button {
-    width: fit-content;
-    padding: 8px 18px;
-    border-radius: 25px;
-    background-color: var(--color-main);
-    border: var(--color-mainescuro) 0.2px solid;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 18px;
-    border: 1px solid rgba(0,0,0,.1);
-    color: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+button,
+[type="submit"] {
+  width: fit-content;
+  padding: 8px 18px;
+  border-radius: 25px;
+  background-color: var(--color-main);
+  border: var(--color-mainescuro) 0.2px solid;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 button:hover {
-    background-color: var(--color-mainescuro);
-    border: var(--color-mainescuro) 0.2px solid;
+  background-color: var(--color-mainescuro);
+  border: var(--color-mainescuro) 0.2px solid;
 }
 
 footer {
-    width: 100vw;
-    padding: 32px;
+  width: 100vw;
+  padding: 32px;
+  display: flex;
+  border: none;
+  background-color: #d9d9d9;
+  margin-top: 48px;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+@media (max-width: 1024px) {
+  footer ul {
     display: flex;
-    border: none;
-    background-color: #d9d9d9;
-    margin-top: 48px;
-    gap: 32px;
+    flex-direction: column;
+    width: 100vw;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 footer img {
-    object-fit: contain;
-    aspect-ratio: 9/3;
-    width: fit-content;
-    max-width: 200px;
+  object-fit: contain;
+  aspect-ratio: 9/3;
+  width: fit-content;
+  max-width: 200px;
 }
 
-footer * {color: black;}
+footer * {
+  color: black;
+}
 
 .footerItem:hover {
-    font-size: 24px;
+  font-size: 24px;
 }
 
+/* _____________________ */
 
-
- /* _____________________ */
-
-.nontransition, .nontransition * {
-    transition: 0s;
-} 
-
+.nontransition,
+.nontransition * {
+  transition: 0s;
+}
 
 .colorMain {
-    color: var(--color-main);
+  color: var(--color-main);
 }
 .BGcolorMain {
-    background-color: var(--color-main);
+  background-color: var(--color-main);
 }
-.BGcolorSec {background-color: var(--color-secundario);}
+.BGcolorSec {
+  background-color: var(--color-secundario);
+}
 .BGcolorSec:hover {
-    border: 0.2 px transparent;
-    background-color: #ffd772;
+  border: 0.2 px transparent;
+  background-color: #ffd772;
 }
-.BGcolorEscuro {background-color: var(--color-mainescuro);}
+.BGcolorEscuro {
+  background-color: var(--color-mainescuro);
+}
+
+.BGcolorFundo {
+  background-color: var(--color-background);
+}
