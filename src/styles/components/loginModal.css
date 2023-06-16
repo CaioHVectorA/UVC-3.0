@@ -23,6 +23,9 @@
   position: relative;
   border-radius: 8px;
   width: 500px;
+  height: 540px;
+  display: flex;
+  align-items: center;
 }
 
 #loginModal * {
@@ -75,4 +78,5 @@ form {
 u {
   cursor: pointer;
   margin-top: 20px;
+  text-align: center;
 }

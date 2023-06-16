@@ -1,5 +1,5 @@
 export const IMGS = {
-  MR_1: "https://live.staticflickr.com/65535/52739881142_cc750f9fba_m.jpg",
+  MR_1: "https://live.staticflickr.com/65535/52739881142_ffe64f49b8_m.jpg",
   MR_2: "https://live.staticflickr.com/65535/52849249375_625ee704a7_m.jpg",
   RRH: "https://live.staticflickr.com/65535/52738957050_a77ae50199_w.jpg",
   CIECON: "https://live.staticflickr.com/65535/52738589846_0158b4f28c_w.jpg",
