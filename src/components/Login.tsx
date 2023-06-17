@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "../styles/components/loginModal.css";
 import axios from "axios";
 import { GrClose } from "react-icons/gr";
+import { URL } from "@/utilities/envariables";
 export default function LoginModal({
   isLogin,
   onClickKillThis,
@@ -18,21 +19,20 @@ export default function LoginModal({
   useEffect(() => {
     document.body.style.overflow = "hidden";
   });
-  function onSucess() {
+  function onSucess(res: object) {
     // quando deu login ou register
   }
   function HandleSubmit(event: any) {
     event.preventDefault();
     const route = isLoginS ? "login" : "user";
-    axios
-      .post("https://xqepue-3333.csb.app/" + route, {
+    axios.post(URL + route, {
         username,
         password,
       })
-      .then((Response) => console.log(Response.data))
+      .then((Response) => onSucess(Response))
       .catch((err) => setError(err.response.data.message));
   }
-  useEffect(() => setError(""), [password, username]);
+  useEffect(() => setError(""), [password, username,isLoginS]);
   return (
     <div className="background">
       <div id="loginModal">
@@ -47,7 +47,7 @@ export default function LoginModal({
           }}
         />
         <h3>{isLoginS ? "LOGIN" : "REGISTRAR"}</h3>
-        {error && <h5 style={{ textAlign: "center" }}>Erro: {error}</h5>}
+        <h5 style={{ textAlign: "center" }}>{error && 'Erro:'} ‎  {error}</h5>
         <form>
           <label htmlFor="username">Usuário:</label>
           <input

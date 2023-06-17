@@ -14,4 +14,5 @@ export const IMGS = {
   ARNER: "https://live.staticflickr.com/65535/52848841926_faac7572f2_w.jpg",
 };
 
+export const URL = "https://xqepue-3333.csb.app/";
 // export const isMobile = window.innerWidth < 438;
