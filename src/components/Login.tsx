@@ -1,15 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
 import "../styles/components/loginModal.css";
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { GrClose } from "react-icons/gr";
 import { URL } from "@/utilities/envariables";
+import crypto from 'crypto-js'
+import { encryptData } from "@/utilities/functions/CryptoFunctions";
 export default function LoginModal({
   isLogin,
   onClickKillThis,
+  localFunc,
 }: {
   isLogin: boolean;
   onClickKillThis: Function;
+  localFunc: Function
 }) {
   const [isLoginS, setLoginState] = useState(isLogin);
   const [username, setUsername] = useState("");
@@ -18,9 +22,14 @@ export default function LoginModal({
   const [error, setError] = useState<any>("");
   useEffect(() => {
     document.body.style.overflow = "hidden";
-  });
-  function onSucess(res: object) {
-    // quando deu login ou register
+  }, []);
+  function onSucess(res: AxiosResponse) {
+    if (!window) return
+    const encrypted = encryptData(res)
+    window.localStorage.setItem('UVC_3.0_DATA-LOGIN',encrypted)
+    localFunc(true)
+    document.body.style.overflow = "visible";
+    onClickKillThis()
   }
   function HandleSubmit(event: any) {
     event.preventDefault();
@@ -30,7 +39,13 @@ export default function LoginModal({
         password,
       })
       .then((Response) => onSucess(Response))
-      .catch((err) => setError(err.response.data.message));
+      .catch((err: AxiosError) => {
+        if (err.response) {
+          setError(err.response.data)
+        } else {
+          setError('Algo deu errado.')
+        }
+      });
   }
   useEffect(() => setError(""), [password, username,isLoginS]);
   return (
@@ -47,7 +62,7 @@ export default function LoginModal({
           }}
         />
         <h3>{isLoginS ? "LOGIN" : "REGISTRAR"}</h3>
-        <h5 style={{ textAlign: "center" }}>{error && 'Erro:'} ‎  {error}</h5>
+        <h5 style={{ textAlign: "center" }}>{error && 'Erro:'} {error}</h5>
         <form>
           <label htmlFor="username">Usuário:</label>
           <input

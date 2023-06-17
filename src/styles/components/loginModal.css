@@ -29,7 +29,10 @@
   flex-direction: column;
   align-items: center;
 }
-
+.profileContainer {
+  display: flex;
+  align-items: center;
+}
 #loginModal * {
   color: #202020;
 }

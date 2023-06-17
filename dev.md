@@ -7,5 +7,5 @@
 - [ ] Mudar Links dos contosPreviews
 
 ### Design
-- [ ] Tornar o header responsivo
-- [ ] Fazer ajustes no header
+- [X] Tornar o header responsivo
+- [X] Fazer ajustes no header

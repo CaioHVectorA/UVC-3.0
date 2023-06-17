@@ -5,13 +5,24 @@ import '../styles/components/header.css'
 import { useEffect, useState } from "react"
 import { CiSearch } from 'react-icons/ci'
 import { GrClose } from 'react-icons/gr'
+import { FaUserAlt } from 'react-icons/fa'
 import HeaderMobile from "./HeaderMobile"
 import Link from "next/link"
 import LoginModal from "./Login"
+import useLocalStorage from "@/utilities/functions/useLocalStorage"
+import { decryptData } from "@/utilities/functions/CryptoFunctions"
+import { LOGIN_LOCAL_STORAGE } from "@/utilities/envariables"
 
 
-function ClosedHeader() {
+function ClosedHeader() {   
+    const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
     const [search, setSearch] = useState(false)
+    const updateBoolState = () => {
+        setModal(prevState => ({
+          ...prevState,
+          bool: false
+        }));
+      }
     return (
         <nav className="closedHeader">
         <img src={UVC.src} alt="UVC" className=" h-14"/>
@@ -34,14 +45,24 @@ function ClosedHeader() {
         </div>
          </>
         :
+        <>
+                {   !window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? 
         <div className=" flex gap-2 items-center">
-        <h4 className=" text-base">REGISTRAR</h4>
+        <h4 className=" text-base cursor-pointer" onClick={() => setModal({bool: true,isLogin: false})}>REGISTRAR</h4>
         <div style={{height: '20px',width: '1px',backgroundColor: 'rgba(255,255,255,.3)',borderRadius: '25px'}}></div>
-        <h4 className=" text-base">ENTRAR</h4>
+        <h4 className=" text-base cursor-pointer" onClick={() => setModal({bool: true,isLogin: true})}>ENTRAR</h4>
         <CiSearch onClick={() => setSearch(!search)} fontSize={'28px'} cursor={'pointer'}/>
-    </div>
+         </div>
+        : 
+        <div className="profileContainer">
+        <FaUserAlt size={24} />
+        <h4>{decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
+        </div>
+        }
+        </>
         }
         </div>
+        {modal.bool && <LoginModal isLogin={modal.isLogin} localFunc={(e: any) => {return}} onClickKillThis={updateBoolState}/>}
         </nav>
     )
 }
@@ -53,15 +74,22 @@ function OpenHeaderTop() {
           ...prevState,
           bool: false
         }));
-      };
+      }
     return (
         <div className="gridHeader p-4">
             <div className="headerSide">
-        <div className=" flex gap-2">
+        {   !window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? 
+                    <div className=" flex gap-2">
             <h4 onClick={() => setModal({bool: true,isLogin: false})} style={{cursor: 'pointer'}} className=" text-base">REGISTRAR</h4>
             <div style={{height: '20px',width: '1px',backgroundColor: 'rgba(255,255,255,.3)',borderRadius: '25px'}}></div>
             <h4 onClick={() => setModal({bool: true,isLogin: true})} style={{cursor: 'pointer'}} className=" text-base">ENTRAR</h4>
         </div>
+        : 
+        <div className="profileContainer">
+        <FaUserAlt size={24} />
+        <h4>{decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
+        </div>
+        }
         <div className="headerDivision"></div>
             </div>
             <div style={{display: 'flex',justifyContent: "center"}}>
@@ -76,7 +104,7 @@ function OpenHeaderTop() {
         </div>
         </div>
         </div>
-        {modal.bool && <LoginModal isLogin={modal.isLogin} onClickKillThis={updateBoolState}/>}
+        {modal.bool && <LoginModal isLogin={modal.isLogin} localFunc={(e: any) => {return}} onClickKillThis={updateBoolState}/>}
     </div>
     )
 }
