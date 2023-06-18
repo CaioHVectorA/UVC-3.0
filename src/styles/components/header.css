@@ -33,6 +33,7 @@ header {
   background-color: #d9d9d9;
   opacity: 30%;
   border-radius: 25px;
+  flex: 1;
 }
 
 .headerSide {
@@ -49,6 +50,16 @@ header {
   flex: 1;
   justify-content: center;
   gap: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 0px;
+  border-radius: 4px;
+}
+.profileContainer h4 {
+  text-transform: none !important;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 header input {
@@ -166,7 +177,7 @@ li {
   nav {
     display: flex;
     position: fixed;
-    z-index: 8;
+    z-index: 4;
     top: 80px;
     right: 0px;
     transition: 0.4s;

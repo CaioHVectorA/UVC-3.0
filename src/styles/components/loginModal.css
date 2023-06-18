@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 .background * {
   text-transform: none !important;
@@ -29,10 +30,7 @@
   flex-direction: column;
   align-items: center;
 }
-.profileContainer {
-  display: flex;
-  align-items: center;
-}
+
 #loginModal * {
   color: #202020;
 }
@@ -80,8 +78,28 @@ form {
   box-shadow: none;
 }
 
+button:disabled {
+  opacity: 0.4;
+}
+
 u {
   cursor: pointer;
   margin-top: 20px;
   text-align: center;
+}
+
+@media (max-width: 1024px) {
+  #loginModal {
+    background-color: #fcfcfc;
+    /* height: 300px; */
+    /* padding: 64px 0px; */
+    position: relative;
+    border-radius: 8px;
+    width: 90%;
+    aspect-ratio: 1/1.35;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }

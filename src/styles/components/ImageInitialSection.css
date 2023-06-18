@@ -1,5 +1,5 @@
 .mainContainer {
-  display: flex;  
+  display: flex;
   width: 100vw;
   /* position: absolute; */
   top: 0px;
@@ -7,15 +7,15 @@
 
 .image {
   width: 100%;
-/* width: calc(100% / 6); */
-aspect-ratio: 1;
+  /* width: calc(100% / 6); */
+  aspect-ratio: 1;
 }
 
 .imgContainer:not([data-isArner="true"]) {
   display: flex;
-width: calc(100% / 6);
-aspect-ratio: 1;
-flex-direction: column;
+  width: calc(100% / 6);
+  aspect-ratio: 1;
+  flex-direction: column;
 }
 
 .image-large {
@@ -37,19 +37,20 @@ div[data-isarner="true"] {
   .mainContainer div {
     flex-direction: row !important;
     width: 100%;
-  } 
+  }
   .imgContainer:not([data-isArner="true"]) {
-  display: flex;
-width: calc(100% / 2);
-aspect-ratio: 1;
-flex-direction: row;
-}
-.image {
-  width: 100%;
-  aspect-ratio: 1;
-}
-.image-large {
-  width: 100%;
-  height: 100%;
-}
+    display: flex;
+    width: calc(100% / 2);
+    aspect-ratio: 2;
+    flex-direction: row;
+    filter: blur(2px);
+  }
+  .image {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  .image-large {
+    width: 100%;
+    height: 100%;
+  }
 }

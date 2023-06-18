@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ButtonHTMLAttributes, useEffect, useRef, useState } from "react";
 import "../styles/components/loginModal.css";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { GrClose } from "react-icons/gr";
@@ -9,29 +9,29 @@ import { encryptData } from "@/utilities/functions/CryptoFunctions";
 export default function LoginModal({
   isLogin,
   onClickKillThis,
-  localFunc,
 }: {
   isLogin: boolean;
   onClickKillThis: Function;
-  localFunc: Function
 }) {
   const [isLoginS, setLoginState] = useState(isLogin);
   const [username, setUsername] = useState("");
   const regex: RegExp = /^[a-zA-Z0-9]*$/;
   const [password, setPassword] = useState("");
   const [error, setError] = useState<any>("");
+  const buttonRef = useRef(null)
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
   }, []);
   function onSucess(res: AxiosResponse) {
     if (!window) return
     const encrypted = encryptData(res)
     window.localStorage.setItem('UVC_3.0_DATA-LOGIN',encrypted)
-    localFunc(true)
-    document.body.style.overflow = "visible";
+    document.body.style.overflowY = "visible";
     onClickKillThis()
   }
   function HandleSubmit(event: any) {
+    //@ts-ignore
+    buttonRef.current.disabled = true
     event.preventDefault();
     const route = isLoginS ? "login" : "user";
     axios.post(URL + route, {
@@ -40,6 +40,8 @@ export default function LoginModal({
       })
       .then((Response) => onSucess(Response))
       .catch((err: AxiosError) => {
+        //@ts-ignore
+        buttonRef.current.disabled = false
         if (err.response) {
           setError(err.response.data)
         } else {
@@ -88,7 +90,7 @@ export default function LoginModal({
             id="password"
             required
           />
-          <button id="button" onClick={(e) => HandleSubmit(e)} type="submit">
+          <button ref={buttonRef} id="button" onClick={(e) => HandleSubmit(e)} type="submit">
             Entrar
           </button>
           <u onClick={() => setLoginState(!isLoginS)}>

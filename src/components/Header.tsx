@@ -62,7 +62,7 @@ function ClosedHeader() {
         </>
         }
         </div>
-        {modal.bool && <LoginModal isLogin={modal.isLogin} localFunc={(e: any) => {return}} onClickKillThis={updateBoolState}/>}
+        {modal.bool && <LoginModal isLogin={modal.isLogin} onClickKillThis={updateBoolState}/>}
         </nav>
     )
 }
@@ -70,6 +70,7 @@ function ClosedHeader() {
 function OpenHeaderTop() {
     const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
     const updateBoolState = () => {
+        document.body.style.overflowY = 'visible'
         setModal(prevState => ({
           ...prevState,
           bool: false
@@ -104,7 +105,7 @@ function OpenHeaderTop() {
         </div>
         </div>
         </div>
-        {modal.bool && <LoginModal isLogin={modal.isLogin} localFunc={(e: any) => {return}} onClickKillThis={updateBoolState}/>}
+        {modal.bool && <LoginModal isLogin={modal.isLogin} onClickKillThis={updateBoolState}/>}
     </div>
     )
 }
