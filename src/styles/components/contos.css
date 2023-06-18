@@ -1,0 +1,77 @@
+main {
+  display: grid;
+  width: calc(100vw - 64px);
+  grid-template-columns: 30% 70%;
+  gap: 64px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail {
+  width: 16px;
+  height: 8px;
+  border-radius: 80px;
+}
+aside {
+  padding: 20px;
+}
+.title h4 {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.dropDownDataItem h4 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.dropDownDataItem {
+  padding-left: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+svg {
+  padding: 5px;
+}
+
+svg:hover {
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.DropDownClosed {
+  animation: closeDropDown 600ms forwards;
+  overflow: hidden;
+}
+.DropDownOpen {
+  animation: DropDownOpen 600ms forwards;
+  overflow: hidden;
+}
+
+@keyframes closeDropDown {
+  0% {
+    max-height: 500px;
+    display: block;
+  }
+
+  100% {
+    max-height: 0px;
+    display: none;
+  }
+}
+@keyframes DropDownOpen {
+  0% {
+    max-height: 0px;
+    display: block;
+  }
+
+  100% {
+    max-height: 500px;
+    display: none;
+  }
+}
