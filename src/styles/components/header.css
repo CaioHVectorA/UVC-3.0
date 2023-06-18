@@ -170,7 +170,7 @@ li {
     justify-content: space-between;
     flex-direction: row;
   }
-  svg {
+  .menuSvg {
     fill: black !important;
   }
 

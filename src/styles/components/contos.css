@@ -1,3 +1,10 @@
+.notmobile {
+  display: none;
+}
+.mobile {
+  display: block;
+}
+
 main {
   display: grid;
   width: calc(100vw - 64px);
@@ -14,7 +21,7 @@ main {
   height: 8px;
   border-radius: 80px;
 }
-aside {
+aside:not(.mobile) {
   padding: 20px;
 }
 .title h4 {
@@ -105,3 +112,75 @@ SISTEMA DE ORDENAR
   display: block;
   padding: ;
 } */
+
+.notmobile {
+  display: block;
+}
+.mobile {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .notmobile {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .opener {
+    border-radius: 0px 50% 50% 0px;
+    padding: 6px;
+    position: relative;
+    right: 8px;
+    background-color: #dddddd;
+  }
+  .closer {
+    border-radius: 0px 50% 50% 0px;
+    padding: 6px;
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    z-index: 60;
+    background-color: #dddddd;
+  }
+  .opener svg,
+  .closer svg {
+    fill: black !important;
+    padding: 0px;
+  }
+  .opacity-80 * {
+    opacity: 1;
+    color: white;
+  }
+  main {
+    width: 100vw;
+    grid-template-columns: 100%;
+    justify-items: center;
+  }
+
+  .gridCards {
+    width: 100vw;
+    justify-content: center;
+  }
+  .h-screencustom {
+    height: calc(100vh - 80px);
+  }
+  aside {
+    display: none;
+  }
+  .afterDetail::after {
+    width: 80vw;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: -6px;
+    height: 2px;
+    border-radius: 25px;
+    opacity: 0.2;
+  }
+  .afterDetail {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}

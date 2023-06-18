@@ -1,7 +1,7 @@
 export const MOCKUP_dropdownData = [
   {
     title: "Categorias",
-    defaultOpen: false,
+    defaultOpen: true,
     items: [
       {
         name: "Ação",

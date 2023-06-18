@@ -33,7 +33,7 @@ export default function HeaderMobile() {
         <header>
             {modal.bool && <LoginModal isLogin={modal.isLogin} onClickKillThis={updateBoolState} />}
             <img src={UVC.src} alt="UVC" className=" h-14"/>
-            <BiMenuAltRight onClick={() => setOpen(!open)} fontSize={48} color='black'/>
+            <BiMenuAltRight className='menuSvg' onClick={() => setOpen(!open)} fontSize={48} color='black'/>
         </header>
         <nav className={`BGcolorEscuro ${open ? 'open' : 'closed'}`}> 
         <div>

@@ -20,7 +20,7 @@ type dropDownData = {
     items: dropDownDataItem[]
 }
 
-export default function FilterItem({data,setFilter,filter}: {data: dropDownData, setFilter: Function,filter: any}) {
+export default function FilterItem({data,setFilter,filter,fatherIndex,setFatherIndex,fatherIndexSelected}: {data: dropDownData, setFilter: Function,filter: any,fatherIndex: number, setFatherIndex: Function,fatherIndexSelected: number}) {
     const [open, setOpen] = useState(data.defaultOpen)
     const [indexSelected, setIndex] = useState(13198310931)
     function HandleFilter(data: dropDownDataItem) {
@@ -37,7 +37,6 @@ export default function FilterItem({data,setFilter,filter}: {data: dropDownData,
                 return false;
             })
           });
-
     }
     function HandleRemoveFilter() {
         setFilter(() => {
@@ -61,10 +60,10 @@ export default function FilterItem({data,setFilter,filter}: {data: dropDownData,
         {data.items.map((dropDownDataItem, index) => (
             <div key={JSON.stringify(dropDownDataItem)} className="dropDownDataItem">
             <h4>{dropDownDataItem.name}</h4>
-            {indexSelected === index ?
-            <AiOutlineMinus onClick={() => {setIndex(31293712837198312) ; HandleRemoveFilter()}} size={29}/>            
+            {indexSelected === index && fatherIndex === fatherIndexSelected ?
+            <AiOutlineMinus onClick={() => {setFatherIndex(fatherIndex) ; setIndex(31293712837198312) ; HandleRemoveFilter()}} size={29}/>            
             :
-            <AiOutlinePlus onClick={() => {setIndex(index) ; HandleFilter(dropDownDataItem)}} size={29}/>
+            <AiOutlinePlus onClick={() => {setFatherIndex(fatherIndex) ; setIndex(index) ; HandleFilter(dropDownDataItem)}} size={29}/>
             }
                 </div>
         ))}

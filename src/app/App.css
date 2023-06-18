@@ -142,3 +142,7 @@ footer * {
 .BGcolorFundo {
   background-color: var(--color-background);
 }
+
+.afterDetail::after {
+  background-color: var(--color-textmain);
+}

@@ -11,9 +11,10 @@ export default function CardContos({data,Filter}: {data: (Serie_Type | Solo_Type
     //     return data.filter(Filter)
     // })
     const filteredData = data.filter(Filter)
+
     return (
-        <section>
-            <div className=" flex justify-between">
+        <section className=" w-screen flex flex-col">
+            <div className=" flex afterDetail relative">
                     <h4>{filteredData.length} Resultados</h4>
                     {/* sistema de ordenar aqui */}
             </div>
