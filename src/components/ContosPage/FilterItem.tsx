@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { BsChevronDown } from "react-icons/bs"
-import { AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 type dropDownDataItem = { 
     name: string, // Series
     effect: {
@@ -22,7 +22,7 @@ type dropDownData = {
 
 export default function FilterItem({data,setFilter,filter}: {data: dropDownData, setFilter: Function,filter: any}) {
     const [open, setOpen] = useState(data.defaultOpen)
-    const [added,setAdded] = useState(false)
+    const [indexSelected, setIndex] = useState(13198310931)
     function HandleFilter(data: dropDownDataItem) {
         setFilter(() => {
             return (
@@ -37,7 +37,16 @@ export default function FilterItem({data,setFilter,filter}: {data: dropDownData,
                 return false;
             })
           });
-          console.log(filter)
+
+    }
+    function HandleRemoveFilter() {
+        setFilter(() => {
+            return (
+                (Conto: any) => {
+                    return true
+                } 
+            )
+        })
     }
     return (
         <div>
@@ -49,10 +58,14 @@ export default function FilterItem({data,setFilter,filter}: {data: dropDownData,
         <BsChevronDown style={{transition: '250ms',transform: !open ? 'rotate(-90deg)' : ''}} onClick={() => setOpen(!open)} size={29}/>
         </div>
         <div className={`${open ? 'DropDownOpen' : 'DropDownClosed'}`}>
-        {data.items.map(dropDownDataItem => (
+        {data.items.map((dropDownDataItem, index) => (
             <div key={JSON.stringify(dropDownDataItem)} className="dropDownDataItem">
             <h4>{dropDownDataItem.name}</h4>
-            <AiOutlinePlus onClick={() => HandleFilter(dropDownDataItem)} size={29}/>
+            {indexSelected === index ?
+            <AiOutlineMinus onClick={() => {setIndex(31293712837198312) ; HandleRemoveFilter()}} size={29}/>            
+            :
+            <AiOutlinePlus onClick={() => {setIndex(index) ; HandleFilter(dropDownDataItem)}} size={29}/>
+            }
                 </div>
         ))}
         </div>

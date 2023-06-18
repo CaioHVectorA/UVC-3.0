@@ -38,7 +38,7 @@ svg {
   padding: 5px;
 }
 
-svg:hover {
+svg:not(.notHover):hover {
   border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -75,3 +75,33 @@ svg:hover {
     display: none;
   }
 }
+
+.gridCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 240px);
+  column-gap: 32px;
+}
+
+.gridCards h4 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 12px 0px;
+  line-height: 26px;
+  height: 52px; /* Two Lines */
+}
+
+section {
+  padding-top: 24px;
+}
+
+/* .Menu {
+  position: absolute;
+  display: none;
+  top: 32px;
+}
+SISTEMA DE ORDENAR
+.hoverMenu:hover .Menu {
+  display: block;
+  padding: ;
+} */
