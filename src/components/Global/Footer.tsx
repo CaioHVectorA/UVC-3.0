@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import UVC from '../../public/UVC.png'
+import UVC from '../../../public/UVC.png'
 export default function Footer() {
 
     return (

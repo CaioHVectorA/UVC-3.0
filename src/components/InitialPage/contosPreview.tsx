@@ -19,7 +19,9 @@ export default function ContosPreview() {
                 </li>
             ))}
         </ul>
+        <Link href={'/contos'}>
         <button>Mais Contos</button>
+        </Link>
             </section>
     )
 }

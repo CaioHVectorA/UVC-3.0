@@ -1,14 +1,14 @@
 "use client"
 import Image from "next/image"
-import UVC from '../../public/UVC.png'
-import '../styles/components/header.css'
+import UVC from '../../../public/UVC.png'
+import '../../styles/components/header.css'
 import { useEffect, useState } from "react"
 import { CiSearch } from 'react-icons/ci'
 import { GrClose } from 'react-icons/gr'
 import { FaUserAlt } from 'react-icons/fa'
 import HeaderMobile from "./HeaderMobile"
 import Link from "next/link"
-import LoginModal from "./Login"
+import LoginModal from "../Login"
 import useLocalStorage from "@/utilities/functions/useLocalStorage"
 import { decryptData } from "@/utilities/functions/CryptoFunctions"
 import { LOGIN_LOCAL_STORAGE } from "@/utilities/envariables"

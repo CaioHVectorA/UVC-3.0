@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import "./globals.css";
 import "./App.css";
-import Header from "@/components/Header";
+import Header from "@/components/Global/Header";
 import { Inter, Montserrat } from "next/font/google";
-import GlobalStyle from "../components/globalStyle";
-import Footer from "@/components/Footer";
+import GlobalStyle from "../components/Global/globalStyle";
+import Footer from "@/components/Global/Footer";
 const montserrat = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
