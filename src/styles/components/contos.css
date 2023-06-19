@@ -9,7 +9,7 @@ main {
   display: grid;
   width: calc(100vw - 64px);
   grid-template-columns: 30% 70%;
-  gap: 64px;
+  gap: 32px;
 }
 .title {
   display: flex;
@@ -86,7 +86,7 @@ svg:not(.notHover):hover {
 .gridCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 240px);
-  column-gap: 32px;
+  column-gap: 24px;
 }
 
 .gridCards h4 {
@@ -100,6 +100,7 @@ svg:not(.notHover):hover {
 
 section {
   padding-top: 24px;
+  /* align-items: start !; */
 }
 
 /* .Menu {

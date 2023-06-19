@@ -23,7 +23,7 @@ type dropDownData = {
 function DropDownSection({data,setFilter,filter}: {data: dropDownData[],setFilter: Function,filter: any}) {
     const [selectFatherIndex,setFatherIndexSelected] = useState(3321131232)
     return (
-        <section className=' flex gap-4 flex-col'>
+        <section className=' flex gap-4 flex-col w-full'>
             {data.map((dropDownsItem, index) => (
                 <FilterItem filter={filter} setFilter={setFilter} key={JSON.stringify(dropDownsItem)} fatherIndexSelected={selectFatherIndex} data={dropDownsItem} setFatherIndex={setFatherIndexSelected} fatherIndex={index}/>
             ))}
@@ -62,13 +62,13 @@ function DropDownSectionMobile({data,setFilter,filter}: {data: dropDownData[],se
 
 export default function FiltrosContos({setFilter,filter}: {setFilter: Function,filter: any}) {
     return (
-        <>
+        <div>
         <aside className='notmobile'>
             <DropDownSection filter={filter} setFilter={setFilter} data={MOCKUP_dropdownData}/>
         </aside>
         <aside className='mobile'>
         <DropDownSectionMobile filter={filter} setFilter={setFilter} data={MOCKUP_dropdownData}/> 
         </aside>
-        </>
+        </div>
     )
 }

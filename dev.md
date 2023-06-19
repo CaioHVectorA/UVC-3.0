@@ -5,13 +5,13 @@
 - [X] Login no Mobile
 - [ ] Implementar sistema de busca
 - [ ] Adicionar uma setinha no "Mais" no header
-- [ ] Mudar Links dos contosPreviews
+- [X] Mudar Links dos contosPreviews
 - [X] Mostrar perfil pelo Header
 ### Design
 - [X] Tornar o header responsivo
 - [X] Fazer ajustes no header
-- [ ] Fazer Login Responsivo
-- [ ] Fazer Footer Responsivo
+- [X] Fazer Login Responsivo
+- [X] Fazer Footer Responsivo
 - [ ] Fazer animação no sistema de filtros na pag. Contos
 - [ ] Melhorar Design do Header, com as divisórias com largura igual, e melhorar visual do input também.
 ### MELHORAS

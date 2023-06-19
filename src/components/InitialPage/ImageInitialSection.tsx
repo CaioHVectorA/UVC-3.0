@@ -47,7 +47,7 @@ const arrayGroups: { src: string,class: string }[][]  = shuffleArray(getArrayFou
             {arrayGroups.map((imgArr,index) => (
                 <>
                 {imgArr[0].src === IMGS.ARNER ? 
-                <div data-isarner='true'>
+                <div key={JSON.stringify(imgArr)} data-isarner='true'>
                     <img src={imgArr[0].src} className={imgArr[0].class} />
                 </div>
                 : 

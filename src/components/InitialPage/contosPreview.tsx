@@ -3,10 +3,10 @@ import Link from "next/link"
 import '../../styles/components/contosPreview.css'
 export default function ContosPreview() {
     const data: {imageSrc: string, link: string}[] = [
-        { imageSrc: IMGS.RRH, link: 'SE_RRH' },
-        { imageSrc: IMGS.GUARDIOES, link: 'SE_GUA' },
-        { imageSrc: IMGS.MR_1, link: 'SE_MR1' },
-        { imageSrc: IMGS.KERRY, link: 'S_KER' },
+        { imageSrc: IMGS.RRH, link: '/contos/SE_RRH' },
+        { imageSrc: IMGS.GUARDIOES, link: '/contos/SE_GUA' },
+        { imageSrc: IMGS.MR_1, link: '/contos/SE_MR1' },
+        { imageSrc: IMGS.KERRY, link: '/contos/S_KER' },
     ]
     return (
         <section>

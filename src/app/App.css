@@ -91,10 +91,14 @@ footer {
   gap: 32px;
 }
 @media (max-width: 1024px) {
+  footer {
+    align-items: center;
+  }
   footer ul {
     display: flex;
     flex-direction: column;
     width: 100vw;
+    align-items: center;
     justify-content: center;
     text-align: center;
   }
@@ -104,6 +108,7 @@ footer img {
   object-fit: contain;
   aspect-ratio: 9/3;
   width: fit-content;
+  margin: 0 auto;
   max-width: 200px;
 }
 
