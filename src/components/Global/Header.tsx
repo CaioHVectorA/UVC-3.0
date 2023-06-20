@@ -25,12 +25,14 @@ function ClosedHeader() {
       }
     return (
         <nav className="closedHeader">
+            <Link href={'/'}>
         <img src={UVC.src} alt="UVC" className=" h-14"/>
+            </Link>
         <ul>
-            <li className="montserrat">CONTOS</li>
-            <li className="montserrat">PERSONAGENS</li>
-            <li className="montserrat">NOVIDADES</li>
-            <li className="montserrat">MAIS</li>
+            <Link href={'/contos'}><li className="montserrat cursor-pointer">CONTOS</li></Link>
+            <Link href={'/'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
+            <Link href={'/'}><li className="montserrat cursor-pointer">NOVIDADES</li></Link>
+            <Link href={'/'}><li className="montserrat cursor-pointer">MAIS</li></Link>
         </ul>
         <div className="nontransition" style={{width: '220px',display: 'flex',justifyContent: 'end'}}>
         {search
@@ -94,7 +96,9 @@ function OpenHeaderTop() {
         <div className="headerDivision"></div>
             </div>
             <div style={{display: 'flex',justifyContent: "center"}}>
+            <Link href={'/'}>
         <img src={UVC.src} alt="UVC" className=" h-14"/>
+            </Link>
             </div>
         <div className="headerSide">
         <div className="headerDivision"></div>
@@ -115,7 +119,7 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
         <div className={`${scroll ? 'HeaderDownAnimationClose' : 'HeaderDownAnimationOpen'}`}>
             <hr />
             <nav>
-            <Link href={'/'}>CONTOS</Link>
+            <Link href={'/contos'}>CONTOS</Link>
             <Link href={'/'}>PERSONAGENS</Link>
             <Link href={'/'}>NOVIDADES</Link>
             <Link href={'/'}>FAVORITOS</Link>

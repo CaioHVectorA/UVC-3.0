@@ -102,13 +102,15 @@ footer {
     justify-content: center;
     text-align: center;
   }
+  footer img {
+    margin: 0 auto;
+  }
 }
 
 footer img {
   object-fit: contain;
   aspect-ratio: 9/3;
   width: fit-content;
-  margin: 0 auto;
   max-width: 200px;
 }
 

@@ -52,7 +52,7 @@ export default function FilterItem({data,setFilter,filter,fatherIndex,setFatherI
         <div className="title">
             <div className=" flex items-center gap-2">
         <div className="detail BGcolorMain"></div>
-        <h4>{data.title}</h4>
+        <h4 style={{fontSize: `${data.title.length > 10 ? 273 / data.title.length  : 24}px`}}>{data.title}</h4>
             </div>
         <BsChevronDown style={{transition: '250ms',transform: !open ? 'rotate(-90deg)' : ''}} onClick={() => setOpen(!open)} size={29}/>
         </div>

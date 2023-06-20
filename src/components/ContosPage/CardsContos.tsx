@@ -14,7 +14,7 @@ export default function CardContos({data,Filter}: {data: (Serie_Type | Solo_Type
     const filteredData = data.filter(Filter)
 
     return (
-        <section className=" w-full flex flex-col">
+        <section className=" w-full flex flex-col contos">
             <div className=" flex afterDetail relative">
                     <h4>{filteredData.length} Resultados</h4>
                     {/* sistema de ordenar aqui */}
