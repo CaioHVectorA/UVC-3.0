@@ -8,6 +8,7 @@
 - [X] Mudar Links dos contosPreviews
 - [X] Mostrar perfil pelo Header
 ### Design
+- [ ] Adicionar Metadata nas páginas
 - [X] Tornar o header responsivo
 - [X] Fazer ajustes no header
 - [X] Fazer Login Responsivo

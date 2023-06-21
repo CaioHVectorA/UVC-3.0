@@ -150,6 +150,12 @@ footer * {
   background-color: var(--color-background);
 }
 
+.BGcolorText {
+  background-color: #121212;
+  /* background-color: var(--color-textmain); */
+  color: #e7e7e7 !important;
+}
+
 .afterDetail::after {
   background-color: var(--color-textmain);
 }
