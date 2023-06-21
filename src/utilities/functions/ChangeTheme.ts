@@ -33,10 +33,12 @@ export function ChangeTheme() {
     setCSSVar(keys.textSecundary, colors.dark.textSecundary);
     setCSSVar(keys.textTerciary, colors.dark.textTerciary);
     setCSSVar(keys.background, colors.dark.background);
+    window.localStorage.setItem("UVC_USER_THEME", "DARK");
   } else {
     setCSSVar(keys.textMain, colors.light.textMain);
     setCSSVar(keys.textSecundary, colors.light.textSecundary);
     setCSSVar(keys.textTerciary, colors.light.textTerciary);
     setCSSVar(keys.background, colors.light.background);
+    window.localStorage.setItem("UVC_USER_THEME", "LIGHT");
   }
 }

@@ -2,11 +2,11 @@ import GradientAndTexts from "@/components/InitialPage/Gradient"
 import ImageInitialSection from "@/components/InitialPage/ImageInitialSection"
 import ContosPreview from "@/components/InitialPage/contosPreview"
 import NewsletterSection from "@/components/InitialPage/newsLetterSection"
+import { metadata } from "./layout"
 
+// metadata.title = 'UVC | Home'
 
-export default async function Home() {
-  const Data = await fetch('https://uynngk-7000.csb.app')
-  const jsonData = await Data.json() 
+export default function Home() {
   return (
     <>
     <div className=" relative">

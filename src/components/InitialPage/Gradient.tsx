@@ -1,7 +1,9 @@
-"use client";
+import {useEffect} from 'react'
 import "../../styles/components/gradient.css";
 import { ChangeTheme } from "../../utilities/functions/ChangeTheme";
+import Link from 'next/link';
 export default function GradientAndTexts() {
+
   return (
     <div className="container">
       <h1 className=" leading-none">
@@ -13,7 +15,9 @@ export default function GradientAndTexts() {
         onde diversos contos tomam forma e se entrelaçam num espaço-tempo
         compartilhado e incrível.
       </p>
-      <button onClick={ChangeTheme}>Conhecer Agora</button>
+      <Link href={'/contos'}>
+      <button>Conhecer Agora</button>
+      </Link>
     </div>
   );
 }

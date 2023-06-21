@@ -66,9 +66,37 @@ export function fakePromise() {
     "#FF9900",
     "#FFCC00",
   ];
+  const alphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
   return new Promise((resolve, reject) => {
     const arr: Character[] = [];
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 200; index++) {
       const character = new Character(
         "LARRY",
         "O Menino Resiliente",
@@ -85,7 +113,9 @@ export function fakePromise() {
         "Equipe do Personagem",
         "Local do Personagem"
       );
-      character.Color = colors[index];
+      character.Color = colors[Math.floor(Math.random() * colors.length)];
+      character.Nome =
+        alphabet[Math.floor(Math.random() * alphabet.length)] + "arry";
       arr.push(character);
     }
 
