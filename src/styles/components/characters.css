@@ -21,3 +21,16 @@
 .cardCharacterText {
   color: inherit !important;
 }
+@media (max-width: 1024px) {
+  .title {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .ml-8 {
+    margin-left: 0px;
+  }
+  .subtitle {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
