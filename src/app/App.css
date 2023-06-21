@@ -159,3 +159,21 @@ footer * {
 .afterDetail::after {
   background-color: var(--color-textmain);
 }
+
+.notmobile {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .notmobile {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}

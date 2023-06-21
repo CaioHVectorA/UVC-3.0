@@ -131,30 +131,23 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
 }
 export default function Header() {
     const [scroll, setScroll] = useState(0)
-    const [width, setWidth] = useState(0)
     useEffect(() => {
-        setWidth(window.innerWidth)
         window.addEventListener('scroll', () => setScroll(window.scrollY));
-        window.addEventListener('resize', () => setWidth(window.innerWidth));
         return () => {
             window.removeEventListener('scroll', () => setScroll(window.scrollY));
-            window.removeEventListener('resize', () => setWidth(window.innerWidth));
         };
       }, []);
       return (
-        <>
-        {width === 0 && <div className="preview BGcolorMain"></div>}
-        {width && <>
-        {
-            width > 1024 ? 
+        <div>
+            <div className="notmobile">
             <header className=" w-full ">
             {scroll < 140 ? <OpenHeaderTop /> : <ClosedHeader /> } 
             <OpenHeaderDown scroll={scroll > 140}/>
         </header>
-        : 
+            </div>
+            <div className="mobile">
         <HeaderMobile />
-        }
-        </>}
-        </>
+            </div>
+        </div>
     )
 }
