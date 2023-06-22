@@ -30,7 +30,7 @@ function ClosedHeader() {
             </Link>
         <ul>
             <Link href={'/contos'}><li className="montserrat cursor-pointer">CONTOS</li></Link>
-            <Link href={'/'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
+            <Link href={'/char'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
             <Link href={'/'}><li className="montserrat cursor-pointer">NOVIDADES</li></Link>
             <Link href={'/'}><li className="montserrat cursor-pointer">MAIS</li></Link>
         </ul>
@@ -70,6 +70,24 @@ function ClosedHeader() {
 }
 
 function OpenHeaderTop() {
+    function NotLogedUI() {
+        return (
+            <div className=" flex gap-2">
+            <h4 onClick={() => setModal({bool: true,isLogin: false})} style={{cursor: 'pointer'}} className=" text-base">REGISTRAR</h4>
+            <div style={{height: '20px',width: '1px',backgroundColor: 'rgba(255,255,255,.3)',borderRadius: '25px'}}></div>
+            <h4 onClick={() => setModal({bool: true,isLogin: true})} style={{cursor: 'pointer'}} className=" text-base">ENTRAR</h4>
+        </div>
+        )
+    }
+    function LogedUi() {
+        return (
+            <div className="profileContainer">
+        <FaUserAlt size={24} />
+        <h4>{decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
+        </div>
+            )
+    }
+    const [UI,setUI] = useState(NotLogedUI)
     const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
     const updateBoolState = () => {
         document.body.style.overflowY = 'visible'
@@ -78,21 +96,16 @@ function OpenHeaderTop() {
           bool: false
         }));
       }
+      useState(() => {
+        if (window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+            setUI(LogedUi)
+        }
+        // @ts-ignore
+      }, [])
     return (
         <div className="gridHeader p-4">
             <div className="headerSide">
-        {typeof window === 'undefined' || !window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? 
-                    <div className=" flex gap-2">
-            <h4 onClick={() => setModal({bool: true,isLogin: false})} style={{cursor: 'pointer'}} className=" text-base">REGISTRAR</h4>
-            <div style={{height: '20px',width: '1px',backgroundColor: 'rgba(255,255,255,.3)',borderRadius: '25px'}}></div>
-            <h4 onClick={() => setModal({bool: true,isLogin: true})} style={{cursor: 'pointer'}} className=" text-base">ENTRAR</h4>
-        </div>
-        : 
-        <div className="profileContainer">
-        <FaUserAlt size={24} />
-        <h4>{decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
-        </div>
-        }
+        {UI}
         <div className="headerDivision"></div>
             </div>
             <div style={{display: 'flex',justifyContent: "center"}}>
@@ -120,7 +133,7 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
             <hr />
             <nav>
             <Link href={'/contos'}>CONTOS</Link>
-            <Link href={'/'}>PERSONAGENS</Link>
+            <Link href={'/char'}>PERSONAGENS</Link>
             <Link href={'/'}>NOVIDADES</Link>
             <Link href={'/'}>FAVORITOS</Link>
             <Link href={'/'}>SAIBA MAIS</Link>
