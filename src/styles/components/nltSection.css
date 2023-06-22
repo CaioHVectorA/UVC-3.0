@@ -1,25 +1,28 @@
-h1, p {color: white !important;}
+.BGcolorSec h1,
+.BGcolorSec p {
+  color: white !important;
+}
 
 section {
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    margin-top: 20px;
-    padding: 24px 16%;
-    text-align: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 24px 16%;
+  text-align: center;
 }
 .BGcolorSec {
-    padding: 2px 8px;
-    color: black;
+  padding: 2px 8px;
+  color: black;
 }
 
 @media (max-width: 768px) {
-    section {
-        padding: 24px 4%;
-    }
-    h1 {
-        font-size: 9vw;
-    }
+  section {
+    padding: 24px 4%;
+  }
+  h1 {
+    font-size: 9vw;
+  }
 }

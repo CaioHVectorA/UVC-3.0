@@ -21,6 +21,8 @@ export type Serie_Type = {
   Status: string;
   Categorias: string[];
   Relacionados: object[];
+  ImgRef: string;
+  Tipo: string;
   Capitulos: Capitulo[];
 };
 
@@ -40,6 +42,7 @@ export type Character_Type = {
 
 export type Solo_Type = {
   Nome: string;
+  Tipo: string;
   Descricao: string;
   Escrito: string;
   Ref: string;
@@ -47,5 +50,6 @@ export type Solo_Type = {
   Status: string;
   Categorias: string[];
   Relacionados: object[];
+  ImgRef: string;
   isAlternative: boolean;
 };

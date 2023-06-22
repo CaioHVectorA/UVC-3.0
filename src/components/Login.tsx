@@ -64,7 +64,7 @@ export default function LoginModal({
           }}
         />
         <h3>{isLoginS ? "LOGIN" : "REGISTRAR"}</h3>
-        <h5 style={{ textAlign: "center" }}>{error && 'Erro:'} {error}</h5>
+        <h5 className="error" style={{ textAlign: "center" }}>{error && 'Erro:'} {error}</h5>
         <form>
           <label htmlFor="username">Usuário:</label>
           <input
