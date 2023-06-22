@@ -30,7 +30,7 @@ function ClosedHeader() {
             </Link>
         <ul>
             <Link href={'/contos'}><li className="montserrat cursor-pointer">CONTOS</li></Link>
-            <Link href={'/char'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
+            <Link href={'/'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
             <Link href={'/'}><li className="montserrat cursor-pointer">NOVIDADES</li></Link>
             <Link href={'/'}><li className="montserrat cursor-pointer">MAIS</li></Link>
         </ul>
@@ -81,7 +81,7 @@ function OpenHeaderTop() {
     return (
         <div className="gridHeader p-4">
             <div className="headerSide">
-        {   !window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? 
+        {typeof window === 'undefined' || !window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? 
                     <div className=" flex gap-2">
             <h4 onClick={() => setModal({bool: true,isLogin: false})} style={{cursor: 'pointer'}} className=" text-base">REGISTRAR</h4>
             <div style={{height: '20px',width: '1px',backgroundColor: 'rgba(255,255,255,.3)',borderRadius: '25px'}}></div>
@@ -120,7 +120,7 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
             <hr />
             <nav>
             <Link href={'/contos'}>CONTOS</Link>
-            <Link href={'/char'}>PERSONAGENS</Link>
+            <Link href={'/'}>PERSONAGENS</Link>
             <Link href={'/'}>NOVIDADES</Link>
             <Link href={'/'}>FAVORITOS</Link>
             <Link href={'/'}>SAIBA MAIS</Link>

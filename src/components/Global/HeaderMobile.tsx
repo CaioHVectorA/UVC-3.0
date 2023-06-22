@@ -37,7 +37,7 @@ export default function HeaderMobile() {
         </header>
         <nav className={`BGcolorEscuro ${open ? 'open' : 'closed'}`}> 
         <div>
-            {!!window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? <>
+            {typeof window !== 'undefined' && !!window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? <>
                 <h4>Perfil</h4>
                 <hr />
             </> 
