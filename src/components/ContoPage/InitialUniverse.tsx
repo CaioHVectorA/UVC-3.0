@@ -14,7 +14,7 @@ export default function Universe({ data }: {data: Serie_Type | Solo_Type}) {
             <h5 className='info' style={{color: data.Status === 'COMPLETO' ? '#2EEA10' : ''}}>{data.Status}</h5>
             <div className=' flex gap-2 mt-3'>
             {data.Categorias.map(categoria => (
-                <p className='tag BGcolorMain'>{categoria}</p>
+                <p key={categoria} className='tag BGcolorMain'>{categoria}</p>
                 ))}
                 </div>
         </div>

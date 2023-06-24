@@ -7,6 +7,7 @@
 - [ ] Adicionar uma setinha no "Mais" no header
 - [X] Mudar Links dos contosPreviews
 - [X] Mostrar perfil pelo Header
+- [X] Ter como deletar comentários ou editar
 ### Design
 - [ ] Adicionar Metadata nas páginas
 - [X] Tornar o header responsivo

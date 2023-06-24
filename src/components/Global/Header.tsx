@@ -97,7 +97,7 @@ function OpenHeaderTop() {
         }));
       }
       useState(() => {
-        if (window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+        if (window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
             setUI(LogedUi)
         }
         // @ts-ignore

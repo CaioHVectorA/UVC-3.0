@@ -3,8 +3,13 @@
 import { Serie_Type, Solo_Type } from "@/utilities/Types"
 import Universe from "./InitialUniverse"
 import Link from "next/link"
-import { AiOutlinePlus } from "react-icons/ai"
-import { useState } from "react"
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
+import { useRef, useState } from "react"
+import { HiUserCircle } from "react-icons/hi"
+import { LOGIN_LOCAL_STORAGE, URL } from "@/utilities/envariables"
+import axios from "axios"
+import { decryptData } from "@/utilities/functions/CryptoFunctions"
+import formatarData from "@/utilities/functions/FormatData"
 
 interface CapProps {
     Nome: string;
@@ -20,7 +25,7 @@ const Cap: React.FC<CapProps> = ({Nome,Disponivel,Episodios,Ref}) => {
         <div className='capContainer'>
         <div onClick={() => setActive(!active)} className='Capitulo'>
         <h4>{Nome}</h4>
-        <AiOutlinePlus size={40}/>    
+        {!active ? <AiOutlinePlus size={40}/> : <AiOutlineMinus size={40}/>  } 
         </div>
         <div className={`capContent w-full`} style={{height: active ? `${62 * Episodios.length}px` : '0px'}}>
             {Episodios.map((EP: any) => (
@@ -40,7 +45,7 @@ const Cap: React.FC<CapProps> = ({Nome,Disponivel,Episodios,Ref}) => {
 function ChaptersSession({data}: {data: Serie_Type}) {
     return <div className=" flex flex-col">
         {data.Capitulos.map(cap => (
-            <Cap Nome={cap.Nome} Disponivel={cap.Disponivel} Episodios={cap.Episodios} Ref={data.Ref}/>
+            <Cap key={JSON.stringify(cap.Episodios)} Nome={cap.Nome} Disponivel={cap.Disponivel} Episodios={cap.Episodios} Ref={data.Ref}/>
         ))}
     </div>
 }
@@ -60,6 +65,7 @@ function HistAcess({ data }: {data: Serie_Type | Solo_Type}) {
     </>)
 }
 
+
 function Relacionado({ rel }: {rel: any}) {
     const [active, setActive] = useState(false)
     return (
@@ -71,8 +77,70 @@ function Relacionado({ rel }: {rel: any}) {
         </Link>
     )
 }
+interface Comment {
+    content: string;
+    comment_by: string;
+    comment_in: string;
+    username_author: string;
+    created_at: string
+}
 
-export default function ContainerForConto({ data }: {data: Serie_Type | Solo_Type}) {
+function CommentSession( {dataComments}: {dataComments: Comment[]} ) {
+    return (
+        <div className=" flex flex-col-reverse gap-5 ml-6">
+            {dataComments.map(((comment, index) => (
+                <div key={JSON.stringify(comment.comment_by+comment.username_author+comment.content+index)} className=" px-5 flex bg-slate-50 w-4/6 py-5 rounded-2xl relative">
+                    <p className=" absolute right-6 text-zinc-500 top-2 text-xs">{formatarData(comment.created_at)}</p>
+                    <HiUserCircle style={{minWidth: '72px', height: '72px'}}/> 
+                    <div>
+                        <h4 className=" uppercase">{comment.username_author}</h4>
+                        <p>{comment.content}</p>
+                    </div>
+                </div>
+            )))}
+        </div>
+    )
+}
+function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref: string,comments: any}) {
+    const [text,setText] = useState('')
+    const [fetching,setFetching] = useState(false)
+    const TextArea = useRef(null)
+    function HandleSubmit() {
+        setFetching(true)
+        const userData = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
+        const data = {
+            content: text,
+            comment_by: userData.id,
+            comment_in: Ref,
+            username_author: userData.username
+        }
+        console.log(userData)
+        axios.post(URL+'comment', data).then(res =>{
+            console.log(res)
+            setDataComments([...comments, res.data])
+            setText('')
+            setFetching(false)
+        }).catch(err => {
+            setFetching(false)
+            console.log(err)
+        })
+    }
+ return (
+    <div className=" ml-8 mt-4">
+    {window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? (
+        <div className="flex flex-col gap-4 w-4/6">
+        <h4>Crie o seu comentário!</h4>
+        <textarea ref={TextArea} value={text} onChange={({target}) => setText(target.value)} className=" w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>
+        <button disabled={fetching} onClick={HandleSubmit} className=" self-end mb-5">Comentar</button>
+        </div>
+    ) : (
+        <></>
+    )}
+    </div>
+ )
+} 
+export default function ContainerForConto({ data, datacomments,Ref }: {data: Serie_Type | Solo_Type, datacomments: Comment[], Ref: string}) {
+    const [mutableComments,setComments] = useState(datacomments)
     return (
         <div>
         <Universe data={data}/>
@@ -82,9 +150,12 @@ export default function ContainerForConto({ data }: {data: Serie_Type | Solo_Typ
                     <h2 className=" ml-8">Relacionados</h2>
                 <div className=" flex gap-6 ml-8 mt-2">
                 {data.Relacionados.map((rel: any) => (
-                    <Relacionado rel={rel} />
-                ))}
+                    <Relacionado key={rel.Nome} rel={rel} />
+                    ))}
                 </div>
+                <hr className="contoPageDivision BGcolorText"/>
+                <CreateComment comments={mutableComments} Ref={Ref} setDataComments={setComments}/>
+                <CommentSession dataComments={mutableComments} />
         </div>
     )
 }
