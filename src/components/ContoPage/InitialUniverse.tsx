@@ -1,11 +1,15 @@
 import '../../styles/components/UniverseContainerForContos.css'
 import { Serie_Type, Solo_Type } from "@/utilities/Types";
+import LikeButton from './LikeButton';
 
-export default function Universe({ data }: {data: Serie_Type | Solo_Type}) {
+export default function Universe({ data,histID }: {data: Serie_Type | Solo_Type,histID: string}) {
     return (
         <div style={{backgroundImage: `url(https://live.staticflickr.com/65535/52992568323_bfa9108eb6_m.jpg)`}}>
         <div className="UniverseContainer py-10">
-        <img className=" rounded-lg w-80 aspect-square" src={data.ImgRef} />
+            <div className=' flex flex-col'>
+        <img className=" rounded-lg w-72 aspect-square" src={data.ImgRef} />
+        <LikeButton histID={histID} conto={data.Ref}/>
+            </div>
         <div>
             <h2>{data.Nome}</h2>
             <p className=' w-96'>{data.Descricao}</p>

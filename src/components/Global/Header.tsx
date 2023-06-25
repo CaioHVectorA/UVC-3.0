@@ -83,20 +83,22 @@ function OpenHeaderTop() {
         return (
             <div className="profileContainer">
         <FaUserAlt size={24} />
-        <h4>{decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
+        {/* change to typeoff in build */}
+        <h4>{window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE) && decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
         </div>
             )
-    }
-    const [UI,setUI] = useState(NotLogedUI)
-    const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
-    const updateBoolState = () => {
-        document.body.style.overflowY = 'visible'
-        setModal(prevState => ({
-          ...prevState,
-          bool: false
-        }));
-      }
-      useState(() => {
+        }
+        const [UI,setUI] = useState(NotLogedUI)
+        const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
+        const updateBoolState = () => {
+            document.body.style.overflowY = 'visible'
+            setModal(prevState => ({
+                ...prevState,
+                bool: false
+            }));
+        }
+        useState(() => {
+          {/* change to typeoff in build */}
         if (window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
             setUI(LogedUi)
         }

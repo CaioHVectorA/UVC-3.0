@@ -139,11 +139,11 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
     </div>
  )
 } 
-export default function ContainerForConto({ data, datacomments,Ref }: {data: Serie_Type | Solo_Type, datacomments: Comment[], Ref: string}) {
+export default function ContainerForConto({ data, datacomments,Ref,histID }: {data: Serie_Type | Solo_Type, datacomments: Comment[], Ref: string,histID: string}) {
     const [mutableComments,setComments] = useState(datacomments)
     return (
         <div>
-        <Universe data={data}/>
+        <Universe data={data} histID={histID}/>
         <hr className="contoPageDivision BGcolorText"/>
         <HistAcess data={data}/>
                 <hr className="contoPageDivision BGcolorText"/>
