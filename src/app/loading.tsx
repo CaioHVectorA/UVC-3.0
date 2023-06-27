@@ -1,7 +1,7 @@
 import './Loading.css'
 export default function Loading() {
     return (
-        <div className=' w-screen h-screen bg-black transition-none absolute top-0 z-20'>
+        <div className=' w-screen h-screen bg-black transition-none absolute top-0 z-20 overflow-hidden'>
         <div className="box-of-star1">
     <div className="star star-position1"></div>
     <div className="star star-position2"></div>

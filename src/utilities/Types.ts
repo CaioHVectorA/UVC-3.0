@@ -25,18 +25,35 @@ export type Serie_Type = {
   Tipo: string;
   Capitulos: Capitulo[];
 };
+type Aparicoes_Type = {
+  Ref: string;
+  Nome: string;
+  Img: string;
+};
 
+export type Citacao = {
+  Frase: string;
+  Autor?: string;
+};
+type Atributos = {
+  Forca: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  Agilidade: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  Resistencia: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  Inteligencia: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+};
 export type Character_Type = {
   Nome: string;
   Apelido: string;
   Imgs: string[];
-  Aparicoes: object[];
+  Citacoes: Citacao[];
+  Atributos: Atributos;
+  Aparicoes: Aparicoes_Type[];
   Biografia: string;
   Poderes: string;
-  Curiosidades?: string;
+  Curiosidades: string | undefined;
   Color: string;
   isHero: boolean;
-  Equipe?: string;
+  Equipe: string | undefined;
   Local: string;
 };
 

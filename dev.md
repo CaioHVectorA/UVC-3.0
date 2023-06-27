@@ -8,8 +8,10 @@
 - [X] Mudar Links dos contosPreviews
 - [X] Mostrar perfil pelo Header
 - [X] Ter como deletar comentários ou editar
+- [ ] Colocar atributos na pág de personagens.
 ### Design
 - [ ] Adicionar Metadata nas páginas
+- [ ] Animar Citações
 - [X] Tornar o header responsivo
 - [X] Fazer ajustes no header
 - [X] Fazer Login Responsivo

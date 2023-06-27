@@ -1,0 +1,39 @@
+.Slide {
+  display: flex;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.notSlideL {
+  animation: carouselL 1s ease-in-out forwards;
+}
+.notSlideR {
+  animation: carouselR 1s ease-in-out forwards;
+}
+
+@keyframes carouselR {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  50% {
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes carouselL {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  50% {
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+    display: none;
+  }
+}
