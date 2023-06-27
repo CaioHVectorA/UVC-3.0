@@ -11,6 +11,7 @@
 - [ ] Colocar atributos na pág de personagens.
 ### Design
 - [ ] Adicionar Metadata nas páginas
+- [ ] Ícones e títulos
 - [ ] Animar Citações
 - [X] Tornar o header responsivo
 - [X] Fazer ajustes no header
@@ -20,4 +21,4 @@
 - [ ] Melhorar Design do Header, com as divisórias com largura igual, e melhorar visual do input também.
 ### MELHORAS
 - [ ] melhor visualização do perfil no  Header
-- [ ] Login No mobile
+- [X] Login No mobile
