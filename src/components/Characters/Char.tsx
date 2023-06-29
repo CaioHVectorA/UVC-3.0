@@ -10,7 +10,7 @@ const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 function Card({ data }: {data: Character}) {
     return (
         <Link href={`/char/${data.Nome.toLowerCase()}`}>
-    <div className="CardCharacter BGcolorText" style={{borderTop: `6px solid ${data.Color}`}}>
+    <div className="CardCharacter bg-neutral-950" style={{borderTop: `6px solid ${data.Color}`}}>
         <h4 className="cardCharacterTitle">{data.Nome}</h4>
         <p className="cardCharacterText">"{data.Apelido}"</p>
     </div>

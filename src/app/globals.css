@@ -35,3 +35,18 @@ input:focus-visible {
   }
 }
 
+@keyframes scaleAnimation {
+  0% {
+    /* transform: scaleX(0); */
+    max-width: 0px;
+  }
+  
+  100% {
+    /* transform: scaleX(1); */
+    max-width: 360px;
+  }
+}
+
+.scaleAnimation {
+  animation: scaleAnimation 2s ease-in-out forwards;
+}

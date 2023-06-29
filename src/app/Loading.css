@@ -127,6 +127,7 @@
 .astronaut {
   width: 250px;
   height: 300px;
+  scale: 0.2;
   position: absolute;
   z-index: 11;
   top: calc(50% - 150px);

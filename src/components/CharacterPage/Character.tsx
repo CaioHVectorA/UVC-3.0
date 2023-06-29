@@ -2,6 +2,8 @@ import { Character_Type } from "@/utilities/Types";
 import { CSSProperties, StyleHTMLAttributes } from "react";
 import Citacoes from "./Citacao";
 import Link from "next/link";
+import { AiFillInfoCircle } from "react-icons/ai";
+import Atributos from "./Atributos";
 
 function SectionInitial({data}: {data: Character_Type}) {
     return (
@@ -50,7 +52,7 @@ export default function Character({data}: {data: Character_Type}) {
         <SectionInitial data={data}  />
         <Aparicoes data={data}/>
         <hr style={{height: '0.6px'}} className=" ml-4 my-4 w-80 "/>
-        {/* Atributos */}
+        <Atributos data={data}/>
         <Text data={data}/>
     </div>
 }

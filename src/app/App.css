@@ -155,8 +155,8 @@ footer * {
 }
 
 .BGcolorText {
-  background-color: #121212;
-  /* background-color: var(--color-textmain); */
+  /* background-color: #121212; */
+  background-color: var(--color-textmain);
   color: #e7e7e7 !important;
 }
 
