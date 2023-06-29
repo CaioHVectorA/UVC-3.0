@@ -36,8 +36,12 @@ function Text({data}: {data: Character_Type}) {
         <p className=" w-3/5">{data.Biografia}</p>
         <h4 className=" mt-4">PODERES</h4>
         <p className=" w-3/5">{data.Poderes}</p>
+        {data.Curiosidades && 
+        <>
         <h4 className=" mt-4">CURIOSIDADES</h4>
         <p className=" w-3/5">{data.Curiosidades}</p>
+        </>
+        }
     </div>
 }
 
