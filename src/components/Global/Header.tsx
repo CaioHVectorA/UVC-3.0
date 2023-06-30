@@ -99,7 +99,7 @@ function OpenHeaderTop() {
         }
         useState(() => {
           {/* change to typeoff in build */}
-        if (window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+        if (typeof window !== 'undefined' && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
             setUI(LogedUi)
         }
         // @ts-ignore

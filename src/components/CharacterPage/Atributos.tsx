@@ -9,7 +9,6 @@ export default function Atributos({data}: {data: Character_Type}) {
     const [animation,setAnimation] = useState(false)
     useEffect(() => {
         function handleScroll() {
-            console.log(window.scrollY, refDiv.current.offsetTop)
             // @ts-ignore
             if (window.scrollY > refDiv.current.offsetTop - 555) {
                 setAnimation(true)
