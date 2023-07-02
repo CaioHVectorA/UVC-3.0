@@ -11,6 +11,7 @@
 - [ ] Colocar atributos na pág de personagens.
 ### Design
 - [ ] Adicionar Metadata nas páginas
+- [ ] Mudar o sistema de filtros de contos - além de feio, não está muito bom para o usuário. Fazer algo mais simples, um dropdown tipo YT e pá.
 - [ ] Ícones e títulos
 - [ ] Animar Citações
 - [X] Tornar o header responsivo

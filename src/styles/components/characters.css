@@ -15,11 +15,11 @@
 .cardCharacterTitle {
   text-transform: uppercase;
   font-weight: bold;
-  color: inherit !important;
+  /* color: inherit !important; */
 }
 
 .cardCharacterText {
-  color: inherit !important;
+  /* color: inherit !important; */
 }
 @media (max-width: 1024px) {
   .title {
