@@ -174,7 +174,7 @@ footer * {
 
 @media (max-width: 1024px) {
   .notmobile {
-    display: none;
+    display: none !important;
   }
 
   .mobile {
