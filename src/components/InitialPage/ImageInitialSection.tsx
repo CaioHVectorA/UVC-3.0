@@ -1,3 +1,4 @@
+"use client"
 import { IMGS } from "@/utilities/envariables"
 import '../../styles/components/ImageInitialSection.css'
 import { useWindowDimensions } from '../../utilities/functions/useWindowDimensions'

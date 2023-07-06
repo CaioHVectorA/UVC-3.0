@@ -67,7 +67,7 @@ export default function FiltrosContos({setFilter,filter}: {setFilter: Function,f
             <DropDownSection filter={filter} setFilter={setFilter} data={MOCKUP_dropdownData}/>
         </aside>
         <aside className='mobile'>
-        <DropDownSectionMobile filter={filter} setFilter={setFilter} data={MOCKUP_dropdownData}/> 
+        {/* <DropDownSectionMobile filter={filter} setFilter={setFilter} data={MOCKUP_dropdownData}/>  */}
         </aside>
         </div>
     )

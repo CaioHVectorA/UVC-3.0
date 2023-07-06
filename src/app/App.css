@@ -201,3 +201,9 @@ textarea:focus-visible {
 .text-white * {
   color: white !important;
 }
+
+select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
