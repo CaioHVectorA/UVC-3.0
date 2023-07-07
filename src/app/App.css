@@ -168,17 +168,24 @@ footer * {
   display: block;
 }
 
-.mobile {
+.notmobileflex {
+  display: flex;
+}
+
+.mobile,.mobileflex {
   display: none;
 }
 
 @media (max-width: 1024px) {
-  .notmobile {
+  .notmobile,.notmobileflex {
     display: none !important;
   }
 
   .mobile {
     display: block;
+  }
+  .mobileflex {
+    display: flex !important;
   }
 }
 textarea {

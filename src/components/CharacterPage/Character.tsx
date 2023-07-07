@@ -64,7 +64,7 @@ function Aparicoes({data}: {data: Character_Type}) {
 function Text({data}: {data: Character_Type}) {
     return (
     <>
-        <div className="notmobile w-screen flex flex-col ml-4 pl-80">
+        <div className="notmobileflex w-screen flex-col ml-4 pl-80">
             <h4 className=" mt-4">BIOGRAFIA</h4>
             <p className=" w-3/5">{data.Biografia}</p>
             <h4 className=" mt-4">PODERES</h4>
@@ -77,7 +77,7 @@ function Text({data}: {data: Character_Type}) {
             }
         </div>
         {/* mobile */}
-        <div className="w-screen flex flex-col ml-6">
+        <div className="mobileflex w-screen flex-col ml-6">
             <h4 className=" mt-4">BIOGRAFIA</h4>
             <p className=" w-4/5">{data.Biografia}</p>
             <h4 className=" mt-4">PODERES</h4>

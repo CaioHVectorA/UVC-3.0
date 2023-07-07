@@ -23,7 +23,7 @@ export default function Atributos({data}: {data: Character_Type}) {
       }, []);
     return (
     <>
-    <div ref={refDiv} className="notmobile p-4 flex">
+    <div ref={refDiv} className="notmobileflex p-4">
         <div className=" h-52 BGcolorText w-2 rounded-lg ml-80"></div>
         <div className=" h-52 flex justify-around flex-col -z-10" style={{width: '360px'}}>
             <div className={`h-9 bg-red-800 rounded-lg relative ${animation ? 'scaleAnimation' : 'hidden'}`} style={{right: '6px',width: `${36 * data.Atributos.Forca}px`}}></div>
@@ -52,7 +52,7 @@ export default function Atributos({data}: {data: Character_Type}) {
         </div>
     </div>
     {/* mobile */}
-    <div ref={refDiv} className="p-4 flex">
+    <div ref={refDiv} className="p-4 mobileflex">
         <div className=" h-40 BGcolorText w-2 rounded-lg ml-4"></div>
         <div className=" h-40 flex justify-around flex-col -z-10" style={{width: '200px'}}>
             <div className={`h-7 bg-red-800 rounded-lg relative ${animation ? 'scaleAnimation' : 'hidden'}`} style={{right: '4px',width: `${20 * data.Atributos.Forca}px`}}></div>

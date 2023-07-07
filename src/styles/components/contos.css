@@ -91,6 +91,7 @@ svg:not(.notHover):hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, 240px);
   column-gap: 24px;
+  justify-content: center;
 }
 
 .gridCards h4 {
@@ -103,9 +104,10 @@ svg:not(.notHover):hover {
 }
 
 .contos {
-  align-items: start !important;
+  align-items: center;
+  /* align-items: start !important; */
   padding: 0px;
-  padding-right: 12px;
+  /* padding-right: 12px; */
   padding-top: 20px;
 }
 

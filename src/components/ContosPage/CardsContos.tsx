@@ -10,14 +10,14 @@ function Search({data}: {data: (Serie_Type | Solo_Type)[]}) {
     const [focus,setFocus] = useState(false)
     const [search,setSearch] = useState('')
     return (
-        <div className=" w-full flex flex-col items-center mb-2">
+        <div className=" w-full flex flex-col items-center mb-2 relative">
         <div className=" flex w-4/5 justify-center">
-            <input value={search} onChange={({target}) => setSearch(target.value)} onFocus={() => setFocus(true)} onBlur={() => setFocus(true)} className=" w-11/12 rounded-bl-md pl-1 pr-1 rounded-tl-md"/>
+            <input value={search} onChange={({target}) => setSearch(target.value)} onFocus={() => setFocus(true)} onBlur={() => {setTimeout(() => setFocus(false),100)}} className=" w-11/12 rounded-bl-md pl-1 pr-1 rounded-tl-md"/>
             <div className=" w-1/12 bg-slate-300 flex items-center justify-center rounded-br-md rounded-tr-md">
                 <AiOutlineSearch size={32}/>
             </div>
         </div>
-        {focus && <>
+        {focus && <div className=" w-full flex flex-col items-center absolute top-full z-50">
         {data.map((item => (
             <>
             {item.Nome.toUpperCase().startsWith(search.toUpperCase()) && <>
@@ -32,7 +32,7 @@ function Search({data}: {data: (Serie_Type | Solo_Type)[]}) {
             </>}
             </>
         )))}
-        </>}
+        </div>}
         </div>
     )
 }
@@ -52,10 +52,10 @@ export default function CardContos({data,Filter}: {data: (Serie_Type | Solo_Type
     return (
         <section className=" w-full flex flex-col contos">
             <Search data={data}/>
-            <div className=" flex afterDetail relative justify-between w-full pr-24 pb-2">
+            <div className=" flex afterDetail relative justify-between w-full pb-2">
                     <h4>{filteredData.length} Resultados</h4>
-                    <div className=" relative flex items-center notmobile">
-                      <BsFillCaretDownFill className=" absolute right-0" size={24} fill="white"/>
+                    <div className=" relative flex items-center notmobileflex">
+                      <BsFillCaretDownFill className=" absolute right-0 self-center" size={24} fill="white"/>
                     <select onChange={({target}) => setOrd(target.value)} className="pl-2 pr-8 py-1 BGcolorEscuro rounded text-slate-50 text-2xl outline-none">
                         <option className=" text-slate-50 text-2xl" value={0}>Nenhum</option>
                         <option className=" text-slate-50 text-2xl" value={1}>A-Z</option>
@@ -64,7 +64,8 @@ export default function CardContos({data,Filter}: {data: (Serie_Type | Solo_Type
                     </div>
                     {/* sistema de ordenar aqui */}
             </div>
-            <ul className="gridCards w-full p-0 items-start">
+            <hr className=" w-full bg-black rounded-full notmobile" />
+            <ul className="gridCards w-full p-0">
             {ordenedData.map(item => (
                 <li key={JSON.stringify(item)} className=" flex flex-col justify-center">
                     <Link href={`/contos/${item.Ref}`}>
