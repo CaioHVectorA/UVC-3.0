@@ -106,6 +106,7 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
     const [fetching,setFetching] = useState(false)
     const TextArea = useRef(null)
     function HandleSubmit() {
+        if (!!localStorage.getItem(LOGIN_LOCAL_STORAGE)) return
         setFetching(true)
         const userData = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
         const data = {
@@ -127,7 +128,7 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
     }
  return (
     <div className=" ml-8 mt-4">
-    {window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? (
+    {!!(typeof window !== 'undefined' && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) ? (
         <div className="flex flex-col gap-4 w-4/6">
         <h4>Crie o seu comentário!</h4>
         <textarea ref={TextArea} value={text} onChange={({target}) => setText(target.value)} className="text-black w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>

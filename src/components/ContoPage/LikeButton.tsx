@@ -18,8 +18,10 @@ export default function LikeButton({conto,histID}: {conto: string,histID: string
     }, [])
 
     useEffect(() => {
-        const {id} = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
-        axios.post(URL + 'likes/' + histID,{userId: id}).then(res => {setLikeId(res.data.id) ; setActive(true)}).catch(err => setLikeId('undefined'))
+        if (localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+            const {id} = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
+            axios.post(URL + 'likes/' + histID,{userId: id}).then(res => {setLikeId(res.data.id) ; setActive(true)}).catch(err => setLikeId('undefined'))
+        }
     }, [])
     function HandleSubmit() {
         if (!fetching) {
