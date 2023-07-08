@@ -12,7 +12,7 @@ function Card({ data }: {data: Character}) {
         <Link href={`/char/${data.Nome.toLowerCase()}`}>
     <div className="CardCharacter bg-neutral-950" style={{borderTop: `6px solid ${data.Color}`}}>
         <h4 className="cardCharacterTitle text-slate-50">{data.Nome}</h4>
-        <p className="cardCharacterText text-slate-50">"{data.Apelido}"</p>
+        {data.Apelido && <p className="cardCharacterText text-slate-50">"{data.Apelido}"</p>}
     </div>
         </Link>
     ) 

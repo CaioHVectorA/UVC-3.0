@@ -26,18 +26,18 @@ export default function FilterItem({data,setFilter,filter,fatherIndex,setFatherI
     function HandleFilter(data: dropDownDataItem) {
         setFilter(() => {
             return (
-            (Conto: any) => {
-                if (data.effect.agent && data.effect.finder) {
-                    if (data.effect.mode === 'includes') {
-                        return Conto[data.effect.agent].includes(data.effect.finder) || false;
-                    } else {
-                        return Conto[data.effect.agent] === data.effect.finder;
+                (Conto: any) => {
+                    if (data.effect.agent && data.effect.finder) {
+                        if (data.effect.mode === 'includes') {
+                            return Conto[data.effect.agent].includes(data.effect.finder) || false;
+                        } else {
+                            return Conto[data.effect.agent] === data.effect.finder;
+                        }
                     }
-                }
-                return false;
-            })
-          });
-    }
+                    return false;
+                })
+            });
+        }
     function HandleRemoveFilter() {
         setFilter(() => {
             return (

@@ -91,10 +91,10 @@ function CommentSession( {dataComments}: {dataComments: Comment[]} ) {
             {dataComments.map(((comment, index) => (
                 <div key={JSON.stringify(comment.comment_by+comment.username_author+comment.content+index)} className=" px-5 flex bg-slate-50 w-4/6 py-5 rounded-2xl relative">
                     <p className=" absolute right-6 text-zinc-500 top-2 text-xs">{formatarData(comment.created_at)}</p>
-                    <HiUserCircle style={{minWidth: '72px', height: '72px'}}/> 
+                    <HiUserCircle fill="black" style={{minWidth: '72px', height: '72px'}}/> 
                     <div>
-                        <h4 className=" uppercase">{comment.username_author}</h4>
-                        <p>{comment.content}</p>
+                        <h4 className="text-black uppercase">{comment.username_author}</h4>
+                        <p className="text-black">{comment.content}</p>
                     </div>
                 </div>
             )))}
@@ -130,7 +130,7 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
     {window && window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? (
         <div className="flex flex-col gap-4 w-4/6">
         <h4>Crie o seu comentário!</h4>
-        <textarea ref={TextArea} value={text} onChange={({target}) => setText(target.value)} className=" w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>
+        <textarea ref={TextArea} value={text} onChange={({target}) => setText(target.value)} className="text-black w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>
         <button disabled={fetching} onClick={HandleSubmit} className=" self-end mb-5">Comentar</button>
         </div>
     ) : (

@@ -31,7 +31,7 @@ function ClosedHeader() {
         <ul>
             <Link href={'/contos'}><li className="montserrat cursor-pointer">CONTOS</li></Link>
             <Link href={'/char'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
-            <Link href={'/'}><li className="montserrat cursor-pointer">NOVIDADES</li></Link>
+            <Link href={'/novidades'}><li className="montserrat cursor-pointer">NOVIDADES</li></Link>
             <Link href={'/'}><li className="montserrat cursor-pointer">MAIS</li></Link>
         </ul>
         <div className="nontransition" style={{width: '220px',display: 'flex',justifyContent: 'end'}}>
@@ -136,7 +136,7 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
             <nav>
             <Link href={'/contos'}>CONTOS</Link>
             <Link href={'/char'}>PERSONAGENS</Link>
-            <Link href={'/'}>NOVIDADES</Link>
+            <Link href={'/novidades'}>NOVIDADES</Link>
             <Link href={'/'}>FAVORITOS</Link>
             <Link href={'/'}>SAIBA MAIS</Link>
             <Link href={'/'}>MAIS</Link>
