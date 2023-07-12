@@ -11,6 +11,7 @@
 - [X] Colocar atributos na pág de personagens.
 ### Design
 - [ ] Adicionar Metadata nas páginas
+- [ ] Fazer Body das nóticias
 - [ ] Ícones e títulos
 - [ ] Animar Citações
 - [ ] Fazer animação no sistema de filtros na pag. Contos
@@ -22,4 +23,5 @@
 - [X] Fazer Footer Responsivo
 ### MELHORAS
 - [ ] melhor visualização do perfil no  Header
+- [ ] Refatorar Header
 - [X] Login No mobile

@@ -12,6 +12,7 @@ import LoginModal from "../Login"
 import useLocalStorage from "@/utilities/functions/useLocalStorage"
 import { decryptData } from "@/utilities/functions/CryptoFunctions"
 import { LOGIN_LOCAL_STORAGE } from "@/utilities/envariables"
+import hasWindow from "@/utilities/functions/hasWindow"
 
 
 function ClosedHeader() {   
@@ -84,7 +85,7 @@ function OpenHeaderTop() {
             <div className="profileContainer">
         <FaUserAlt size={24} />
         {/* change to typeoff in build */}
-        <h4>{!!(typeof window !== 'undefined' && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) && decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
+        <h4>{!!(hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) && decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>
         </div>
             )
         }
@@ -99,7 +100,7 @@ function OpenHeaderTop() {
         }
         useState(() => {
           {/* change to typeoff in build */}
-        if (typeof window !== 'undefined' && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+        if (hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
             setUI(LogedUi)
         }
         // @ts-ignore

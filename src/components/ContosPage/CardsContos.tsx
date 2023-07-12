@@ -18,10 +18,10 @@ function Search({data}: {data: (Serie_Type | Solo_Type)[]}) {
             </div>
         </div>
         {focus && <div className=" w-full flex flex-col items-center absolute top-full z-50">
-        {data.map((item => (
+        {data.map(((item, index) => (
             <>
             {item.Nome.toUpperCase().includes(search.toUpperCase()) && <>
-            <Link className=" w-4/5 flex justify-center" href={`/contos/${item.Ref}`}>
+            <Link key={index} className=" w-4/5 flex justify-center" href={`/contos/${item.Ref}`}>
             {/* <div className=" w-4/5 flex justify-center"> */}
             <div key={item.Nome} className=" flex justify-between w-full bg-white pr-2 border-b border-stone-400 hover:bg-slate-200">
                 <img src={item.ImgRef} className=" w-6"/>

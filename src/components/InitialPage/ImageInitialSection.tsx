@@ -1,7 +1,5 @@
-"use client"
 import { IMGS } from "@/utilities/envariables"
 import '../../styles/components/ImageInitialSection.css'
-import { useWindowDimensions } from '../../utilities/functions/useWindowDimensions'
 
 function shuffleArray(arr: {src: string,class: string}[][]): {src: string,class: string}[][] {
 for (let i = arr.length - 1; i > 0; i--) {
