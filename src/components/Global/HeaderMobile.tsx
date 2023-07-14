@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { LOGIN_LOCAL_STORAGE } from '@/utilities/envariables'
 import LoginModal from '../Login'
+import hasWindow from '@/utilities/functions/hasWindow'
 
 export default function HeaderMobile() {
     const [open,setOpen] = useState(false)
@@ -37,7 +38,7 @@ export default function HeaderMobile() {
         </header>
         <nav className={`BGcolorEscuro ${open ? 'open' : 'closed'}`}> 
         <div>
-            {typeof window !== 'undefined' && !!window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? <>
+            {hasWindow() && !!window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? <>
                 <h4>Perfil</h4>
                 <hr />
             </> 

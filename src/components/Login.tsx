@@ -39,10 +39,11 @@ export default function LoginModal({
         password,
       })
       .then((Response) => onSucess(Response))
-      .catch((err: AxiosError) => {
+      .catch((err) => {
         //@ts-ignore
         buttonRef.current.disabled = false
         if (err.response) {
+          if (err.response.data.message) return setError(err.response.data.message)
           setError(err.response.data)
         } else {
           setError('Algo deu errado.')

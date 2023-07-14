@@ -7,8 +7,5 @@ export default async function Conto({params}: {params: {conto: string}}) {
     const res = (await axios.get(URL_READONLY+params.conto)).data
     const comments = (await axios.get(URL+'comment/'+params.conto)).data
     const like = await (await fetch(URL + 'hist/' + params.conto, {cache: 'no-store', next: {revalidate: 0}})).json()
-    // const like = await (await axios.get(URL+'hist/'+params.conto')).data
-    console.log(like)
-    console.log(comments)
     return <ContainerForConto histID={like.id} Ref={params.conto} data={res} datacomments={comments}/>
 }

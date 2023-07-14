@@ -12,7 +12,7 @@ function Search({data}: {data: (Serie_Type | Solo_Type)[]}) {
     return (
         <div className=" w-full flex flex-col items-center mb-2 relative text-black">
         <div className=" flex w-4/5 justify-center">
-            <input value={search} onChange={({target}) => setSearch(target.value)} onFocus={() => setFocus(true)} onBlur={() => {setTimeout(() => setFocus(false),100)}} className=" text-black w-11/12 rounded-bl-md pl-1 pr-1 rounded-tl-md"/>
+            <input value={search} onChange={({target}) => setSearch(target.value)} onFocus={() => setFocus(true)} onBlur={() => {setTimeout(() => setFocus(false),135)}} className=" text-black w-11/12 rounded-bl-md pl-1 pr-1 rounded-tl-md"/>
             <div className=" w-1/12 bg-slate-300 flex items-center justify-center rounded-br-md rounded-tr-md">
                 <AiOutlineSearch fill="black" size={32}/>
             </div>
@@ -42,7 +42,6 @@ export default function CardContos({data,Filter}: {data: (Serie_Type | Solo_Type
     // const filteredData: (Serie_Type | Solo_Type)[] = data.filter(Filter)
     const [ordenedData, setOrData] = useState(data.filter(Filter))
     useEffect(() => {
-        console.log(data.filter(Filter))
         setOrData(ord == 0
       ? data.filter(Filter)
       : ord == 1

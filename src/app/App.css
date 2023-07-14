@@ -214,3 +214,6 @@ select {
   appearance: none;
   -webkit-appearance: none;
 }
+.border-main {
+  border-color: var(--color-main);
+}

@@ -7,8 +7,7 @@ export default function formatarData(dataString: string) {
     minute: "2-digit",
   });
   const dataatual = new Date();
-  console.log(dataatual.getHours() === data.getHours());
-  if (dataatual.getHours() === data.getHours()) {
+  if (dataatual.getHours() === data.getHours() && dataatual.getDate() === dia) {
     const min = dataatual.getMinutes() - data.getMinutes();
     if (min === 0) {
       return `${dataatual.getSeconds() - data.getSeconds()} Segundos`;

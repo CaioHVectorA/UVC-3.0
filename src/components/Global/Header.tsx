@@ -98,7 +98,7 @@ function OpenHeaderTop() {
                 bool: false
             }));
         }
-        useState(() => {
+        useEffect(() => {
           {/* change to typeoff in build */}
         if (hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
             setUI(LogedUi)

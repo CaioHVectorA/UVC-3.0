@@ -14,9 +14,10 @@ export const IMGS = {
   ARNER: "https://live.staticflickr.com/65535/52848841926_faac7572f2_w.jpg",
 };
 
-export const URL = "https://htlt62-3333.csb.app/";
+export const URL = "https://3gpkg3-3333.csb.app/";
 // export const URL = "http://localhost:3333/";
 export const URL_READONLY = "https://4yngw5-3009.csb.app/";
 // export const URL_READONLY = "http://localhost:3009/";
+export const URL_TXT = 'https://8rfi6p-9999.csb.app/'
 export const LOGIN_LOCAL_STORAGE = "UVC_3.0_DATA-LOGIN";
 export const URL_CHARACTERS = "";
