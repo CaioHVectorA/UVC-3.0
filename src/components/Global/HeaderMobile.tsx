@@ -11,6 +11,7 @@ import hasWindow from '@/utilities/functions/hasWindow'
 export default function HeaderMobile() {
     const [open,setOpen] = useState(false)
     const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
+    const [hasProfile,setProfile] = useState(false)
     const updateBoolState = () => {
         setModal(prevState => ({
           ...prevState,
@@ -29,6 +30,11 @@ export default function HeaderMobile() {
         if (open) document.body.style.overflowY = 'hidden' 
         if (!open) document.body.style.overflowY = 'visible' 
     }, [open])
+    useEffect(() => {
+        if (hasWindow() && !window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+            setProfile(true)
+        }
+    }, [])
     return (
         <>
         <header>
@@ -38,7 +44,7 @@ export default function HeaderMobile() {
         </header>
         <nav className={`BGcolorEscuro ${open ? 'open' : 'closed'}`}> 
         <div>
-            {hasWindow() && !!window.localStorage.getItem(LOGIN_LOCAL_STORAGE) ? <>
+            {hasProfile ? <>
                 <h4>Perfil</h4>
                 <hr />
             </> 

@@ -216,4 +216,39 @@ select {
 }
 .border-main {
   border-color: var(--color-main);
+  /* background-color: var(--color-main); */
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .scroll-custom {
+    scrollbar-width: thin;
+  }
+  
+  /* Chrome, Edge, and Safari */
+  .scroll-custom::-webkit-scrollbar {
+    width: 12px;
+  }
+  .scroll-custom.light::-webkit-scrollbar-track {
+    transition: 1s;
+  }
+  .scroll-custom::-webkit-scrollbar-thumb {
+    background-color: var(--color-main);
+    border-radius: 14px;
+    border: 2px none #ffffff;
+  }
+
+  .scroll-custom.light {
+    scrollbar-color: var(--color-main) #000000;
+  }
+
+  .scroll-custom.dark {
+    scrollbar-color: var(--color-main) #d9d9d9;
+  }
+
+  .scroll-custom.light::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  .scroll-custom.dark::-webkit-scrollbar-track {
+    background: #000000;
+  }
