@@ -138,7 +138,6 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
             <Link href={'/contos'}>CONTOS</Link>
             <Link href={'/char'}>PERSONAGENS</Link>
             <Link href={'/novidades'}>NOVIDADES</Link>
-            <Link href={'/'}>FAVORITOS</Link>
             <Link href={'/'}>SAIBA MAIS</Link>
             <Link href={'/'}>MAIS</Link>
             </nav>

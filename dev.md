@@ -3,7 +3,7 @@
 ### Sistemáticos
 - [ ] Implementar sistema de busca
 - [ ] Adicionar uma setinha no "Mais" no header
-- [ ] Modo Foco na tela de leitura
+- [X] Modo Foco na tela de leitura
 - [X] Aplicar API e fazer a sistematização de login e registro no header
 - [X] Login no Mobile
 - [X] Mudar Links dos contosPreviews
