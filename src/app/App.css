@@ -149,6 +149,9 @@ footer * {
 .BGcolorEscuro {
   background-color: var(--color-mainescuro);
 }
+.BGcolorClaro,.HoverBGcolorClaro:hover {
+  background-color: var(--color-mainclaro);
+}
 
 .BGcolorFundo {
   background-color: var(--color-background);
@@ -159,6 +162,8 @@ footer * {
   background-color: var(--color-textmain);
   color: #e7e7e7 !important;
 }
+
+/* ___________________________- */
 
 .afterDetail::after {
   background-color: var(--color-textmain);

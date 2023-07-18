@@ -23,8 +23,8 @@ export default function HeaderMobile() {
         { name: 'Contos', linkTo: '/Contos' },
         { name: 'Novidades', linkTo: '/novidades' },
         { name: 'Buscar', linkTo: '/Buscar' },
-        { name: 'Favoritos', linkTo: '/Favoritos' },
         { name: 'Saiba Mais', linkTo: '/Saiba Mais' },
+        { name: 'Personalizar', linkTo: '/personalizar'  }
     ]
     useEffect(() => {
         if (open) document.body.style.overflowY = 'hidden' 

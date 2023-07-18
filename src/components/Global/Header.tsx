@@ -13,7 +13,27 @@ import useLocalStorage from "@/utilities/functions/useLocalStorage"
 import { decryptData } from "@/utilities/functions/CryptoFunctions"
 import { LOGIN_LOCAL_STORAGE } from "@/utilities/envariables"
 import hasWindow from "@/utilities/functions/hasWindow"
+import { BsCaretDownFill } from "react-icons/bs"
+import { closedHeaderMoreLinks, openHeaderMoreLinks } from "@/utilities/moreMenuData"
 
+function More({ mode }: { mode: "CLOSED" | "OPEN" }) {
+    const actualMode = mode === 'CLOSED' ? closedHeaderMoreLinks : openHeaderMoreLinks
+    return (
+        <div className=" flex items-center gap-0.5 relative group/menuhover cursor-pointer">
+        <Link href={'/'} className=" montserrat cursor-pointer" style={{fontSize: `${actualMode.font}px`}}>MAIS</Link>
+        <BsCaretDownFill cursor={'pointer'} size={24}/>
+        <div className=" hidden group-hover/menuhover:block absolute top-0 pt-8 z-30">
+            <div className=" flex flex-col">
+            {actualMode.links.map((item, index) => (
+                <Link key={index} href={item.href} className="  w-40 border-b border-b-black border-opacity-20 BGcolorEscuro px-2 text-center transition-all HoverBGcolorClaro">
+                    {item.name}
+                </Link>
+            ))}
+            </div>
+        </div>
+    </div>
+    )
+}
 
 function ClosedHeader() {   
     const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
@@ -33,7 +53,7 @@ function ClosedHeader() {
             <Link href={'/contos'}><li className="montserrat cursor-pointer">CONTOS</li></Link>
             <Link href={'/char'}><li className="montserrat cursor-pointer">PERSONAGENS</li></Link>
             <Link href={'/novidades'}><li className="montserrat cursor-pointer">NOVIDADES</li></Link>
-            <Link href={'/'}><li className="montserrat cursor-pointer">MAIS</li></Link>
+             <More mode="CLOSED"/>
         </ul>
         <div className="nontransition" style={{width: '220px',display: 'flex',justifyContent: 'end'}}>
         {search
@@ -135,11 +155,11 @@ function OpenHeaderDown({ scroll }: {scroll: boolean}) {
         <div className={`${scroll ? 'HeaderDownAnimationClose' : 'HeaderDownAnimationOpen'}`}>
             <hr />
             <nav>
-            <Link href={'/contos'}>CONTOS</Link>
-            <Link href={'/char'}>PERSONAGENS</Link>
-            <Link href={'/novidades'}>NOVIDADES</Link>
-            <Link href={'/'}>SAIBA MAIS</Link>
-            <Link href={'/'}>MAIS</Link>
+                <Link href={'/contos'}>CONTOS</Link>
+                <Link href={'/char'}>PERSONAGENS</Link>
+                <Link href={'/novidades'}>NOVIDADES</Link>
+                <Link href={'/'}>SAIBA MAIS</Link>
+                <More mode="OPEN"/>
             </nav>
         </div>
     )
@@ -161,7 +181,7 @@ export default function Header() {
         </header>
             </div>
             <div className="mobile">
-        <HeaderMobile />
+                <HeaderMobile />
             </div>
         </div>
     )
