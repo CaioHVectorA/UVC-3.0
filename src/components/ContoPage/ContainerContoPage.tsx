@@ -26,7 +26,7 @@ const Cap: React.FC<CapProps> = ({Nome,Disponivel,Episodios,Ref}) => {
     if (!Disponivel) {return null;}
     return (
         <div className='capContainer'>
-        <div onClick={() => setActive(!active)} className='Capitulo'>
+        <div onClick={() => setActive(!active)} className='Capitulo BGcolorMain hoverColorEscuro'>
         <h4>{Nome}</h4>
         {!active ? <AiOutlinePlus size={40}/> : <AiOutlineMinus size={40}/>  } 
         </div>
@@ -71,11 +71,10 @@ function HistAcess({ data }: {data: Serie_Type | Solo_Type}) {
 }
 
 
-function Relacionado({ rel }: {rel: any}) {
-    const [active, setActive] = useState(false)
+export function Relacionado({ rel }: {rel: any}) {
     return (
-        <Link className=" relative hoverRelacionado" href={'/contos/'+rel.Ref}>
-        <img className=" aspect-square w-72" src={rel.Img}/>
+        <Link className="block relative hoverRelacionado h-72 w-72" href={'/contos/'+rel.Ref}>
+        <img className=" w-full" src={rel.Img}/>
          <div className=" absolute top-0 bgroundopacity w-full h-full justify-center items-center">
             <h2 style={{color: 'white',fontSize: `${300 / rel.Nome.length}px`}} className=" text-center">{rel.Nome}</h2>
             </div>
@@ -190,7 +189,7 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
     
  return (
     <div className=" ml-8 mt-4">
-    {!!(typeof window !== 'undefined' && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) ? (
+    {!!(hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) ? (
         <div className="flex flex-col gap-4 w-4/6">
         <h4>Crie o seu comentário!</h4>
         <textarea ref={TextArea} value={text} onChange={({target}) => setText(target.value)} className="text-black w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>

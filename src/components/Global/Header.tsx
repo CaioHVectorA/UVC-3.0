@@ -34,10 +34,15 @@ function More({ mode }: { mode: "CLOSED" | "OPEN" }) {
     </div>
     )
 }
-
+function HandleSearch(search: string, key: any) {
+    if (key === "Enter" && !!search) {
+        window.location.href = `/buscar/${search}`;
+    }
+}
 function ClosedHeader() {   
     const [modal,setModal] = useState<{bool: boolean,isLogin: boolean}>({bool: false, isLogin: false})
-    const [search, setSearch] = useState(false)
+    const [search, setSearch] = useState<boolean>(false)
+    const [searchInput,setSearchInput] = useState<string>("")
     const updateBoolState = () => {
         setModal(prevState => ({
           ...prevState,
@@ -60,11 +65,11 @@ function ClosedHeader() {
          ? 
          <>
         <div className=" flex items-center h-10" style={{maxWidth: '290px'}}>
-        <input />
+        <input value={searchInput} onChange={({target}) => setSearchInput(target.value)} onKeyDown={({key}) => {HandleSearch(searchInput,key)}}/>
         <div style={{backgroundColor: '#e7e7e7',height: '100%',display: 'flex',alignItems: 'center',paddingRight: '4px'}}><GrClose onClick={() => setSearch(false)} fontSize={'16px'} cursor={'pointer'}/></div>
-        <div className="searchButton">
+        <Link href={`/buscar/${searchInput}`} className="searchButton">
         <CiSearch fill="black" fontSize={'28px'} cursor={'pointer'}/>
-        </div>
+        </Link>
         </div>
          </>
         :
@@ -82,6 +87,7 @@ function ClosedHeader() {
         {!!window.localStorage.getItem(LOGIN_LOCAL_STORAGE) && <h4>{decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.username}</h4>}
         </div>
         }
+        <CiSearch className=" self-center" onClick={() => setSearch(!search)} fontSize={'40px'} cursor={'pointer'}/>
         </>
         }
         </div>
@@ -91,6 +97,7 @@ function ClosedHeader() {
 }
 
 function OpenHeaderTop() {
+    const [searchInput,setSearchInput] = useState<string>("")
     function NotLogedUI() {
         return (
             <div className=" flex gap-2">
@@ -139,10 +146,10 @@ function OpenHeaderTop() {
         <div className="headerSide">
         <div className="headerDivision"></div>
         <div className=" flex">
-        <input />
-        <div className="searchButton">
+        <input value={searchInput} onChange={({target}) => setSearchInput(target.value)} onKeyDown={({key}) => {HandleSearch(searchInput,key)}}/>
+        <Link href={`/buscar/${searchInput}`} className="searchButton">
         <CiSearch fill="black" fontSize={'28px'}/>
-        </div>
+        </Link>
         </div>
         </div>
         {modal.bool && <LoginModal isLogin={modal.isLogin} onClickKillThis={updateBoolState}/>}

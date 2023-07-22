@@ -1,4 +1,6 @@
 "use client";
+import { LOCAL_STORAGE_COLOR } from "@/utilities/envariables";
+import { ChangeColor } from "@/utilities/functions/ChangeColors";
 import { ChangeTheme } from "@/utilities/functions/ChangeTheme";
 import { Inter, Montserrat } from "next/font/google";
 import { useEffect } from "react";
@@ -13,6 +15,10 @@ export default function GlobalStyle() {
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
         ChangeTheme()
     }
+    }
+    if (window && localStorage.getItem(LOCAL_STORAGE_COLOR)) {
+     //@ts-ignore
+      ChangeColor(localStorage.getItem(LOCAL_STORAGE_COLOR))
     }
   }, [])
   return (

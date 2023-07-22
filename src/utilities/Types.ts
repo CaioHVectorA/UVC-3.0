@@ -24,6 +24,7 @@ export type Serie_Type = {
   ImgRef: string;
   Tipo: string;
   Capitulos: Capitulo[];
+  Keywords: String[];
 };
 type Aparicoes_Type = {
   Ref: string;
@@ -55,6 +56,7 @@ export type Character_Type = {
   isHero: boolean;
   Equipe: string | undefined;
   Local: string;
+  Keywords: String[];
 };
 
 export type Solo_Type = {
@@ -69,4 +71,5 @@ export type Solo_Type = {
   Relacionados: object[];
   ImgRef: string;
   isAlternative: boolean;
+  Keywords: String[];
 };

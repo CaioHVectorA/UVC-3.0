@@ -19,7 +19,7 @@ export default function HeaderMobile() {
         }));
       }
     const Itens: {name: string, linkTo: string}[] = [
-        { name: 'Personagens', linkTo: '/Personagens' },
+        { name: 'Personagens', linkTo: '/char' },
         { name: 'Contos', linkTo: '/Contos' },
         { name: 'Novidades', linkTo: '/novidades' },
         { name: 'Buscar', linkTo: '/Buscar' },

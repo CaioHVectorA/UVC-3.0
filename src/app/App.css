@@ -146,6 +146,7 @@ footer * {
   border: 0.2 px transparent;
   background-color: #ffd772;
 }
+.hoverColorEscuro:hover {background-color: var(--color-mainescuro);}
 .BGcolorEscuro {
   background-color: var(--color-mainescuro);
 }

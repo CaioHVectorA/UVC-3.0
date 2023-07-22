@@ -6,14 +6,15 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import Atributos from "./Atributos";
 
 function SectionInitial({data}: {data: Character_Type}) {
+    console.log(data.Citacoes.length)
     return (
         <>
     {/* longscreen */}
     <div className="notmobile w-screen" style={{backgroundImage: `url(${data.Imgs[Math.floor(Math.random() * data.Imgs.length)]})`}}>
         <div className=" text-white bg-opacity-50 backdrop-blur-sm bg-black w-screen py-5 n flex flex-col items-center">
         <h1>{data.Nome}</h1>
-        <h3 className=" opacity-80 italic capitalize">"{data.Apelido}"</h3>
-        <Citacoes citacoes={data.Citacoes}/>
+        <h3 className=" opacity-80 italic capitalize">{data.Apelido && `"${data.Apelido}"`}</h3>
+        {data.Citacoes.length > 0 && <Citacoes citacoes={data.Citacoes}/>}
         </div>
     </div>
     {/* mobile  */}
@@ -21,7 +22,7 @@ function SectionInitial({data}: {data: Character_Type}) {
         <div className=" text-white bg-opacity-50 backdrop-blur-sm bg-black w-screen py-5 n flex flex-col items-center">
         <h3>{data.Nome}</h3>
         <h4 className=" opacity-80 italic capitalize">"{data.Apelido}"</h4>
-        <Citacoes citacoes={data.Citacoes}/>
+        {data.Citacoes.length > 0 && <Citacoes citacoes={data.Citacoes}/>}
         </div>
     </div>
         </>

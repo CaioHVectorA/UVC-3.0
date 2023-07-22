@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE_COLOR } from "../envariables";
 import { setCSSVar } from "./setCSSVar";
 export type IColors = {
   identifier: string;
@@ -22,6 +23,7 @@ export function ChangeColor(identifier: string) {
   const ColorFound: IColors = Colors.find(
     (color) => color.identifier === identifier
   );
+  localStorage.setItem(LOCAL_STORAGE_COLOR, identifier)
   console.log(ColorFound);
   setCSSVar(keys.colorMain, ColorFound.colors[0]);
   setCSSVar(keys.colorMainescuro, ColorFound.colors[1]);
@@ -32,6 +34,6 @@ export function findColor(identifier: string) {
   const colorFound = Colors.find(
     (color) => color.identifier === identifier
   )
-  if (!colorFound) throw new Error('DEU MERDA NA COR')
+  if (!colorFound) throw new Error('Color not found')
   return colorFound.colors
 }

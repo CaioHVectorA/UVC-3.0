@@ -36,7 +36,7 @@
   padding: 16px;
   display: flex;
   border-bottom: 0.4px solid rgba(0, 0, 0, 0.3);
-  background-color: #b140a6;
+  /* background-color: #b140a6; */
   justify-content: space-between;
   align-items: center;
 }
@@ -57,7 +57,7 @@
 }
 
 .Capitulo:hover {
-  background-color: #7a2672;
+  /* background-color: #7a2672; */
   cursor: pointer;
 }
 .capContainer * {

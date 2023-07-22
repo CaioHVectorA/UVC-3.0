@@ -16,8 +16,8 @@ export const IMGS = {
 
 export const URL = "https://3gpkg3-3333.csb.app/";
 // export const URL = "http://localhost:3333/";
-export const URL_READONLY = "https://4yngw5-3009.csb.app/";
+export const URL_READONLY = "https://ryfvl2-3009.csb.app/";
 // export const URL_READONLY = "http://localhost:3009/";
 export const URL_TXT = 'https://8rfi6p-9999.csb.app/'
 export const LOGIN_LOCAL_STORAGE = "UVC_3.0_DATA-LOGIN";
-export const URL_CHARACTERS = "";
+export const LOCAL_STORAGE_COLOR = "UVC_3.0_COLOR_CUSTOM"

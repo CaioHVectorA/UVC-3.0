@@ -7,7 +7,7 @@ import {URLSearchParams} from 'url'
 import axios from "axios"
 import { URL_READONLY } from "@/utilities/envariables"
 const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-function Card({ data }: {data: Character}) {
+export function CharCaracter({ data }: {data: Character}) {
     return (
         <Link href={`/char/${data.Nome.toLowerCase()}`}>
     <div className="CardCharacter bg-neutral-950" style={{borderTop: `6px solid ${data.Color}`}}>
@@ -30,7 +30,7 @@ export default async function Characters() {
             <div className="gridCardCharacters">
             {Characters.map((char: Character, index: number) => (
                 <>
-                {char.Nome.toLowerCase().startsWith(letter) && <Card data={char}/>}
+                {char.Nome.toLowerCase().startsWith(letter) && <CharCaracter data={char}/>}
                 </>
             ))}
             </div>
