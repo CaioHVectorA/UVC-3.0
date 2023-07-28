@@ -1,8 +1,10 @@
 ## TO-DO
 
-### Sistemáticos
-- [ ] Implementar sistema de busca
-- [ ] Adicionar uma setinha no "Mais" no header
+### SISTEMÁTICO
+- [ ] Fazer ADMIN mode
+- [ ] Fazer tela pra criar notícias
+- [X] Implementar sistema de busca
+- [X] Adicionar uma setinha no "Mais" no header
 - [X] Modo Foco na tela de leitura
 - [X] Aplicar API e fazer a sistematização de login e registro no header
 - [X] Login no Mobile
@@ -10,7 +12,7 @@
 - [X] Mostrar perfil pelo Header
 - [X] Ter como deletar comentários ou editar
 - [X] Colocar atributos na pág de personagens.
-### Design
+### DESIGN
 - [ ] Adicionar Metadata nas páginas
 - [ ] Fazer Body das nóticias
 - [ ] Ícones e títulos
@@ -26,3 +28,6 @@
 - [ ] melhor visualização do perfil no  Header
 - [ ] Refatorar Header
 - [X] Login No mobile
+### CONTROLE DE QUALIDADE
+- [ ] Testar eficiência da tela de body das novidades
+- [ ] Testar eficiência de login(mobile)
