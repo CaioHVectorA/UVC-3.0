@@ -53,6 +53,7 @@ export function CharCaracter({ data }: { data: Character }) {
 export default async function Characters() {
   const Characters: any[] = (await fetchData(URL_READONLY + "char")).data;
   console.log(Characters);
+  Characters.forEach((c) => console.log(URL_READONLY + "char"))
   return (
     <div className="px-8">
       {alphabet.map((letter) => (

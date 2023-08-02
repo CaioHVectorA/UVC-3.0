@@ -13,7 +13,7 @@ export default function Citacoes({citacoes}: {citacoes: Citacao[]}) {
     }, [indexS])
     return (
         <>
-            <div className='notmobile overflow-hidden flex flex-nowrap w-screen'>
+            <div className='notmobile overflow-hidden flex flex-nowrap w-screen items-center'>
                     <div style={{padding: '0px 26vw'}} className='flex justify-between flex-shrink-0 w-full gap-6'>
                         {citacoes.length > 1 && <AiFillLeftCircle cursor={'pointer'} onClick={() => {
                             if (indexS === 0) {
