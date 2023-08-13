@@ -1,6 +1,7 @@
 ## TO-DO
 
 ### SISTEMÁTICO
+- [ ] Tela de profile - Com aquele sistema de selecionar imagens
 - [ ] Fazer ADMIN mode
 - [ ] Fazer tela pra criar notícias
 - [X] Implementar sistema de busca

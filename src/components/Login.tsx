@@ -9,9 +9,11 @@ import { encryptData } from "@/utilities/functions/CryptoFunctions";
 export default function LoginModal({
   isLogin,
   onClickKillThis,
+  setUI,
 }: {
   isLogin: boolean;
   onClickKillThis: Function;
+  setUI: Function,
 }) {
   const [isLoginS, setLoginState] = useState(isLogin);
   const [username, setUsername] = useState("");
@@ -27,6 +29,7 @@ export default function LoginModal({
     const encrypted = encryptData(res)
     window.localStorage.setItem('UVC_3.0_DATA-LOGIN',encrypted)
     document.body.style.overflowY = "visible";
+    setUI()
     onClickKillThis()
   }
   function HandleSubmit(event: any) {

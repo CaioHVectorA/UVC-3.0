@@ -39,6 +39,7 @@
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+  min-width: 100%;
   background-color: #fafafa;
   border: 0.2px solid rgba(0, 0, 0, 0.4);
 }

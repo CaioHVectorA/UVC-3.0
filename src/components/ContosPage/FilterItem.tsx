@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BsChevronDown } from "react-icons/bs"
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 type dropDownDataItem = { 
@@ -23,6 +23,7 @@ type dropDownData = {
 export default function FilterItem({data,setFilter,filter,fatherIndex,setFatherIndex,fatherIndexSelected}: {data: dropDownData, setFilter: Function,filter: any,fatherIndex: number, setFatherIndex: Function,fatherIndexSelected: number}) {
     const [open, setOpen] = useState(data.defaultOpen)
     const [indexSelected, setIndex] = useState(13198310931)
+    useEffect(() => console.log(open), [open])
     function HandleFilter(data: dropDownDataItem) {
         setFilter(() => {
             return (
@@ -54,7 +55,7 @@ export default function FilterItem({data,setFilter,filter,fatherIndex,setFatherI
         <div className="detail BGcolorMain"></div>
         <h4 style={{fontSize: `${data.title.length > 10 ? 273 / data.title.length  : 24}px`}}>{data.title}</h4>
             </div>
-        <BsChevronDown style={{transition: '250ms',transform: !open ? 'rotate(-90deg)' : ''}} onClick={() => setOpen(!open)} size={29}/>
+        <BsChevronDown style={{transition: '250ms',transform: !open ? 'rotate(-90deg)' : ''}} onClick={() => {  setOpen(!open)}} size={29}/>
         </div>
         <div className={`${open ? 'DropDownOpen' : 'DropDownClosed'}`}>
         {data.items.map((dropDownDataItem, index) => (

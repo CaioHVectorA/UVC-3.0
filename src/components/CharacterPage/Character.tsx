@@ -6,7 +6,6 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import Atributos from "./Atributos";
 
 function SectionInitial({data}: {data: Character_Type}) {
-    console.log(data.Citacoes.length)
     return (
         <>
     {/* longscreen */}

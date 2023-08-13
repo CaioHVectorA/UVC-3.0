@@ -1,11 +1,11 @@
 "use client"
-import '../../styles/components/header.css'
-import UVC from '../../../public/UVC.png'
+import '../../../styles/components/header.css'
+import UVC from '../../../../public/UVC.png'
 import { BiMenuAltRight } from 'react-icons/bi'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { LOGIN_LOCAL_STORAGE } from '@/utilities/envariables'
-import LoginModal from '../Login'
+import LoginModal from '../../Login'
 import hasWindow from '@/utilities/functions/hasWindow'
 
 export default function HeaderMobile() {
