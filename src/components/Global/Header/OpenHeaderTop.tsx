@@ -18,10 +18,10 @@ function Profile({n,setUI}: {n: unknown, setUI: any}) {
         <div className=" relative flex justify-center">
             <div className=" flex w-1/2 items-center justify-center">
                 <div className=" flex justify-center">
-                    <FaUserAlt onClick={() => setIsOpen(!isOpen)} className=" bg-black bg-opacity-50 rounded-full notHover cursor-pointer" size={48} />
+                    <img src="http://localhost:3333/assets/user_images/sample.png" onClick={() => setIsOpen(!isOpen)} className=" bg-black bg-opacity-50 rounded-full notHover cursor-pointer max-h-16" />
                 </div>
             </div>
-            {isOpen && (
+            {/* {isOpen && (
                 <div className="flex flex-col items-center absolute w-56 BGcolorEscuro rounded-md gap-2 top-12 pb-4">
                     <p className={` text-2xl ${border}`}>{user.username}</p>
                     <Link href={`/profile`} className=" py-1 px-3 border-black border rounded-md BGcolorMain">Seu perfil</Link>
@@ -30,7 +30,7 @@ function Profile({n,setUI}: {n: unknown, setUI: any}) {
                         localStorage.removeItem(LOGIN_LOCAL_STORAGE)
                     }}>Sair da conta</p>
                 </div>
-            )}
+            )} */}
         </div>
             )
 }
@@ -80,7 +80,7 @@ export default function OpenHeaderTop() {
             </div>
             <div style={{display: 'flex',justifyContent: "center"}}>
             <Link href={'/'}>
-        <img src={UVC.src} alt="UVC" className=" h-14"/>
+        <img src={UVC.src} alt="UVC" id="UVC" className=" h-14"/>
             </Link>
             </div>
         <div className="headerSide">

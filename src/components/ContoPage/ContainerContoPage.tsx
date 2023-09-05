@@ -141,7 +141,7 @@ function CommentSession( {dataComments,setComments}: {dataComments: Comment[], s
     return (
         <div className=" flex flex-col-reverse gap-5 ml-6"> 
             {dataComments.map(((comment, index) => (
-                <div key={index} className=" group/comment px-5 flex bg-slate-50 w-4/6 py-5 rounded-2xl relative">
+                <div key={index} className=" group/comment px-5 flex bg-slate-50 w-4/6 py-5 rounded-2xl relative max-lg:w-11/12">
                     <p className=" absolute right-6 text-zinc-500 top-2 text-xs">{formatarData(comment.created_at)}</p>
                     <HiUserCircle fill="black" style={{minWidth: '72px', height: '72px'}}/> 
                     <div>
@@ -190,7 +190,7 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
  return (
     <div className=" ml-8 mt-4">
     {!!(hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) ? (
-        <div className="flex flex-col gap-4 w-4/6">
+        <div className="flex flex-col gap-4 w-4/6 max-lg:w-11/12">
         <h4>Crie o seu comentário!</h4>
         <textarea ref={TextArea} value={text} onChange={({target}) => setText(target.value)} className="text-black w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>
         <button disabled={fetching} onClick={HandleSubmit} className=" self-end mb-5">Comentar</button>

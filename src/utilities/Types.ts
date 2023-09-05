@@ -73,3 +73,12 @@ export type Solo_Type = {
   isAlternative: boolean;
   Keywords: String[];
 };
+
+export type User_Type = {
+  id: string;
+  username: string;
+  password: string;
+  created_at: Date;
+  updated_at: Date;
+  image_path: string;
+}

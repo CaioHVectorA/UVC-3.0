@@ -28,7 +28,7 @@ export default async function Page() {
         {res.map(item => (
             <Link href={item.external_link ? item.external_link : `/novidades/${item.id}`} className=" cursor-pointer flex gap-3 px-11 max-lg:w-screen max-lg:px-2">
             <img className=" w-80 aspect-video object-cover max-lg:w-6/12" src={item.image}/>
-            <h4 className=" w-full max-w-2xl max-lg:text-lg text-ellipsis whitespace-normal overflow-hidden max-lg:w-6/12">{item.title}</h4>
+            <h4 className=" w-full max-w-2xl max-lg:text-lg text-ellipsis whitespace-normal overflow-hidden max-lg:w-6/12 hover:underline">{item.title}</h4>
             </Link>
         ))}
         </div>

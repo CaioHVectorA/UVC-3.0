@@ -23,7 +23,7 @@ export default function ClosedHeader() {
     return (
         <nav className="closedHeader">
             <Link href={'/'}>
-        <img src={UVC.src} alt="UVC" className=" h-14"/>
+        <img src={UVC.src} id="UVC" alt="UVC" className=" h-14"/>
             </Link>
         <ul>
             <Link href={'/contos'}><li className="montserrat cursor-pointer">CONTOS</li></Link>

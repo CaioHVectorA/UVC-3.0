@@ -50,8 +50,8 @@ function Aparicoes({data}: {data: Character_Type}) {
         <div className=" flex flex-wrap gap-2 ml-4">
             {data.Aparicoes.map(apa => (
                 <>
-                <Link href={`/contos/${apa.Ref}`}>
-                <img src={apa.Img} style={{width: '32%', aspectRatio: '1'}}/>
+                <Link style={{width: '32%', aspectRatio: '1'}} href={`/contos/${apa.Ref}`}>
+                <img src={apa.Img} />
                 </Link>
                 </>
             ))}
