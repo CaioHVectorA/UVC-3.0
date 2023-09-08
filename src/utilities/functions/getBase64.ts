@@ -1,11 +1,15 @@
-export function getBase64(file: any) {
+export async function getBase64(file: any): Promise<any> {
+  return new Promise((resolve, reject) => {
     var reader = new FileReader();
-    reader.readAsDataURL(file);
+    
     reader.onload = function () {
-      return reader.result;
+      resolve(reader.result);
     };
+
     reader.onerror = function (error) {
-      return error
+      reject(error);
     };
- }
- 
+
+    reader.readAsDataURL(file);
+  });
+}

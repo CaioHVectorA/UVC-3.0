@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+  z-index: 5000;
 }
 .background * {
   text-transform: none !important;
@@ -40,6 +40,8 @@
   margin-bottom: 20px;
   box-shadow: none;
   min-width: 100%;
+  padding-inline: 2px;
+  padding-block: 6px;
   background-color: #fafafa;
   border: 0.2px solid rgba(0, 0, 0, 0.4);
 }

@@ -26,6 +26,7 @@ export default function LoginModal({
   }, []);
   function onSucess(res: AxiosResponse) {
     if (!window) return
+    console.log(res)
     const encrypted = encryptData(res)
     window.localStorage.setItem('UVC_3.0_DATA-LOGIN',encrypted)
     document.body.style.overflowY = "visible";

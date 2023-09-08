@@ -13,6 +13,7 @@ import formatarData from "@/utilities/functions/FormatData"
 import hasWindow from "@/utilities/functions/hasWindow"
 import SameUser from "@/utilities/functions/sameUser"
 import { GrClose } from "react-icons/gr"
+import getUserData from "@/utilities/functions/getUserData"
 
 interface CapProps {
     Nome: string;
@@ -88,6 +89,7 @@ type Comment = {
     username_author: string;
     created_at: string
     id: string,
+    author_img: string
 }
 
 type modalProps = {
@@ -143,7 +145,9 @@ function CommentSession( {dataComments,setComments}: {dataComments: Comment[], s
             {dataComments.map(((comment, index) => (
                 <div key={index} className=" group/comment px-5 flex bg-slate-50 w-4/6 py-5 rounded-2xl relative max-lg:w-11/12">
                     <p className=" absolute right-6 text-zinc-500 top-2 text-xs">{formatarData(comment.created_at)}</p>
-                    <HiUserCircle fill="black" style={{minWidth: '72px', height: '72px'}}/> 
+                    <div className=" w-20 h-20 bg-black bg-opacity-70 flex items-center justify-center rounded-full">
+                    <img src={URL+comment.author_img} className=" w-10/12 h-10/12 object-contain" /> 
+                    </div>
                     <div>
                         <h4 className="text-black uppercase">{comment.username_author}</h4>
                         <p className="text-black">{comment.content}</p>
@@ -167,12 +171,14 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
         console.log('teste')
         if (!!!localStorage.getItem(LOGIN_LOCAL_STORAGE)) return
         setFetching(true)
-        const userData = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
+        const userData = getUserData()
+        if (!userData) return
         const data = {
             content: text,
             comment_by: userData.id,
             comment_in: Ref,
-            username_author: userData.username
+            username_author: userData.username,
+            img_author: userData.image_path
         }
         console.log(userData)
         axios.post(URL+'comment', data).then(res =>{

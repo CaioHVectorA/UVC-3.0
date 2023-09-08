@@ -1,5 +1,5 @@
 import LoginModal from "@/components/Login"
-import { LOGIN_LOCAL_STORAGE } from "@/utilities/envariables"
+import { LOGIN_LOCAL_STORAGE, URL } from "@/utilities/envariables"
 import { decryptData, encryptData } from "@/utilities/functions/CryptoFunctions"
 import hasWindow from "@/utilities/functions/hasWindow"
 import Link from "next/link"
@@ -9,28 +9,19 @@ import { FaUserAlt } from "react-icons/fa"
 import HandleSearch from "./HandleSearch"
 import UVC from '../../../../public/UVC.png'
 import getUserData from "@/utilities/functions/getUserData"
+import useLocalStorage from "@/utilities/functions/useLocalStorage"
 const border = 'mb-1 mt-1 border-b w-10/12 text-center border-black border-opacity-70'
 function Profile({n,setUI}: {n: unknown, setUI: any}) {
-    const [isOpen,setIsOpen] = useState(false)
     const user = getUserData()
+    console.log(user)
     if (!user) return
     return (
         <div className=" relative flex justify-center">
             <div className=" flex w-1/2 items-center justify-center">
-                <div className=" flex justify-center">
-                    <img src="http://localhost:3333/assets/user_images/sample.png" onClick={() => setIsOpen(!isOpen)} className=" bg-black bg-opacity-50 rounded-full notHover cursor-pointer max-h-16" />
-                </div>
+                <Link href={"/profile"} className=" flex justify-center items-center bg-black bg-opacity-70 rounded-full w-16 h-16 p-0 ">
+                    <img src={URL+user.image_path} className=" object-contain w-15 h-15 max-h-15" />
+                </Link>
             </div>
-            {/* {isOpen && (
-                <div className="flex flex-col items-center absolute w-56 BGcolorEscuro rounded-md gap-2 top-12 pb-4">
-                    <p className={` text-2xl ${border}`}>{user.username}</p>
-                    <Link href={`/profile`} className=" py-1 px-3 border-black border rounded-md BGcolorMain">Seu perfil</Link>
-                    <p className=" underline opacity-80 normal-case text-xs mt-5 cursor-pointer" onClick={() => {
-                        setUI(n)    
-                        localStorage.removeItem(LOGIN_LOCAL_STORAGE)
-                    }}>Sair da conta</p>
-                </div>
-            )} */}
         </div>
             )
 }
@@ -68,7 +59,7 @@ export default function OpenHeaderTop() {
         if (hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
             setUI(LogedUi)
         }
-      }, [])
+      }, [localStorage.getItem(LOGIN_LOCAL_STORAGE)])
       function setLogedUI() {
         setUI(LogedUi)
       }
