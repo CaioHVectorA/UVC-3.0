@@ -78,12 +78,12 @@ svg:not(.notHover):hover {
 @keyframes DropDownOpen {
   0% {
     max-height: 0px;
-    display: block;
+    display: none;
   }
-
+  
   100% {
     max-height: 500px;
-    display: none;
+    display: block;
   }
 }
 
