@@ -20,8 +20,8 @@ async function updateUser({ id,image_path,password,username }: { id:string, user
 export default function UserDataView({userData}: {userData: User_Type}) {
     const [initialURL, setURL] = useState(`${URL}${userData.image_path}`)
     return (
-        <main className=" flex  mt-8 px-4 w-10/12 mx-auto rounded-2xl py-2 bg-white text-black">
-            <div className=" flex flex-col items-center">
+        <main className=" flex max-md:flex-col max-md:items-center mt-8 px-4 w-10/12 mx-auto rounded-2xl py-2 bg-white text-black">
+            <div className=" flex flex-col items-center w-2/12">
                 <div className=" relative">
                     <div className=" absolute bottom-0 right-0 bg-blue-600 rounded-full p-2">
                     <input onChange={async (e) => {
@@ -40,10 +40,18 @@ export default function UserDataView({userData}: {userData: User_Type}) {
                     </label>
                     </div>
                     <div className=" w-32 aspect-square flex items-center justify-center border border-black rounded-full px-4">
-                <img className=" w-full aspect-square object-contain" src={initialURL}/>
+                        <img className=" w-full aspect-square object-contain" src={initialURL}/>
                     </div>
                 </div>
                 <p className=" text-black text-2xl">{userData.username}</p>
+            </div>
+            <div className=" py-2 w-10/12 max-md:w-full h-[340px] flex flex-col items-center justify-center">
+                <div className="_animation">
+                    <div className="one spin-one"></div>
+                    <div className="two spin-two"></div>
+                    <div className="three spin-one"></div>
+                </div>
+                <h3 className=" text-black">Aba de Perfil em construção</h3>
             </div>
         </main>
     )

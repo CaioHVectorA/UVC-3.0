@@ -27,7 +27,7 @@ h1,
 h2,
 h3 {
   text-transform: uppercase;
-  color: var(--color-textmain);
+  color: var(--color-textmain, inherit);
 }
 
 h1 {

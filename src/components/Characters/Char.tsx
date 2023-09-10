@@ -39,7 +39,7 @@ export function CharCaracter({ data }: { data: Character }) {
   return (
     <Link href={`/char/${data.Nome.toLowerCase()}`}>
       <div
-        className="CardCharacter bg-neutral-950"
+        className="CardCharacter bg-neutral-950 transition-all hover:scale-105"
         style={{ borderTop: `6px solid ${data.Color}` }}
       >
         <h4 className="cardCharacterTitle text-slate-50">{data.Nome}</h4>
@@ -52,8 +52,6 @@ export function CharCaracter({ data }: { data: Character }) {
 }
 export default async function Characters() {
   const Characters: any[] = (await fetchData(URL_READONLY + "char")).data;
-  console.log(Characters);
-  Characters.forEach((c) => console.log(URL_READONLY + "char"))
   return (
     <div className="px-8">
       {alphabet.map((letter) => (

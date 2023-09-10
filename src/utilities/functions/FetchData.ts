@@ -5,7 +5,7 @@ type res = {
 };
 
 export default function fetchData(URL: string): Promise<res> {
-  return fetch(URL, { next: { revalidate: 10 } })
+  return fetch(URL, { next: { revalidate: 10 }, cache: 'default' })
     .then((res) => res.json())
     .then((data) => {
       return {

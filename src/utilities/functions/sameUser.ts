@@ -6,6 +6,6 @@ export default function SameUser(id: string): boolean {
     const res = !!(hasWindow() &&
         localStorage.getItem(LOGIN_LOCAL_STORAGE) &&
         decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)) &&
-        decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data.id === id)
+        decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).id === id)
     return res
 }

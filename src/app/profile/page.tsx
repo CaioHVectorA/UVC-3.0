@@ -19,6 +19,7 @@ export default function Page() {
     useEffect(() => {
         if (data) {
             setUser(true)
+            console.log(data)
             axios.get(URL+`user/${data.id}`).then(res => {
                 console.log(res.data)
                 setUserData(res.data)

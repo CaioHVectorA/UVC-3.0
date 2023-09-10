@@ -12,6 +12,8 @@ export default function getUserData(): User | false {
     if (hasWindow()) {
         const user: any = decryptData(window.localStorage.getItem(LOGIN_LOCAL_STORAGE))
         console.log(user)
+        if (typeof user === 'string') return JSON.parse(user)
+        if (typeof user.data === 'string') return JSON.parse(user.data)
         return user.data || user || false
     }
 }

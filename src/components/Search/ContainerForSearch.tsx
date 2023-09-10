@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 import { Character_Type, Serie_Type, Solo_Type } from "@/utilities/Types";
 import { Character } from "@/utilities/functions/MockupCharacter";
 import { CharCaracter } from "../Characters/Char";
@@ -7,28 +7,27 @@ type arr = (Character_Type | Solo_Type | Serie_Type)[];
 
 function getKeywordsFilter(data: arr, search: string): arr {
     const filteredData = data.filter(item => {
-        return item.Keywords.some(keyWord => keyWord.toUpperCase() === search.toLocaleUpperCase() || keyWord.toUpperCase().startsWith(search.toUpperCase()) || keyWord.toUpperCase().includes(search.toUpperCase()))
+        return item.Keywords.some(keyWord => keyWord.toUpperCase() === search.toUpperCase() || keyWord.toUpperCase().startsWith(search.toUpperCase()) || keyWord.toUpperCase().includes(search.toUpperCase()))
     })
     const uniqueItems = new Set(getFilterData(data,search))
     return filteredData.filter(item => !uniqueItems.has(item))
 }
 
 function getFilterData(data: arr,search: string): arr {
+    console.log(data, search)
     const filteredData = data.filter(item => {  
         let isCharacter = false;
         if (item.Apelido) { isCharacter = true }
         if (isCharacter) {
-            console.log(item.Nome)
             return item.Apelido.toUpperCase().startsWith(search.toUpperCase()) || item.Nome.toUpperCase().startsWith(search.toUpperCase()) 
         } else {
-           return item.Nome.toUpperCase().startsWith(search.toUpperCase()) || item.SubNome && item.SubNome.toUpperCase().startsWith(search.toUpperCase())   
+           return item.Nome.toUpperCase().startsWith(search.toUpperCase()) || item.SubNome && item.SubNome.toUpperCase().startsWith(search.toUpperCase()) || item.Nome.toUpperCase().includes(search.toUpperCase()) || item.SubNome && item.SubNome.toUpperCase().includes(search.toUpperCase()) 
         }
     })
     return filteredData
 }
 
 export default function ContainerForSearch({data, search}: {data: arr,search: string}) {
-
     return (
         <div className=" pt-8">
             <h4 className=" ml-6">Você buscou por: "{search}"</h4>

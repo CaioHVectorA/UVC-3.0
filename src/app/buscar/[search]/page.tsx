@@ -1,9 +1,9 @@
 import ContainerForSearch from "@/components/Search/ContainerForSearch"
 import { URL_READONLY } from "@/utilities/envariables"
-import axios from "axios"
+import fetchData from "@/utilities/functions/FetchData"
 
 export default async function Search({params}: {params: {search: string}}) {
-    const data = await (await axios.get(URL_READONLY+"search")).data
+    const data = (await fetchData(URL_READONLY+"searchdata")).data
     return (
         <ContainerForSearch data={data} search={params.search}/>
     )

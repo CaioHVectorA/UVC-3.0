@@ -1,26 +1,27 @@
 "use client"
 import { Character_Type } from "@/utilities/Types";
-import { useEffect, useRef, useState } from "react";
+import { MutableRefObject, Ref, RefObject, useEffect, useRef, useState } from "react";
 import { AiFillInfoCircle } from "react-icons/ai";
 
 export default function Atributos({data}: {data: Character_Type}) {
-    // console.log(window.s)
-    const refDiv = useRef(null)
+    const refDiv = useRef<HTMLDivElement | null>(null)
     const [animation,setAnimation] = useState(false)
     useEffect(() => {
         function handleScroll() {
+            const div = document.querySelector('.notmobileflex')
+            if (!div) return
             const breakpoint = window.innerWidth > 724 ? 555 : 855
-            // @ts-ignore
-            if (window.scrollY > refDiv.current.offsetTop - breakpoint) {
+            //@ts-ignore
+            if (window.scrollY > div.offsetTop - breakpoint) {
                 setAnimation(true)
             }
         }
         window.addEventListener('scroll', handleScroll);
-    
+        
         return () => {
-          window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
-      }, []);
+      }, [refDiv]);
     return (
     <>
     <div ref={refDiv} className="notmobileflex p-4">
