@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { LOGIN_LOCAL_STORAGE } from '@/utilities/envariables'
 import LoginModal from '../../Login'
 import hasWindow from '@/utilities/functions/hasWindow'
+import getUserData from '@/utilities/functions/getUserData'
 
 export default function HeaderMobile() {
     const [open,setOpen] = useState(false)
@@ -31,7 +32,7 @@ export default function HeaderMobile() {
         if (!open) document.body.style.overflowY = 'visible' 
     }, [open])
     useEffect(() => {
-        if (hasWindow() && !window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+        if (hasWindow() && getUserData()) {
             setProfile(true)
         }
     }, [])
@@ -39,15 +40,15 @@ export default function HeaderMobile() {
         <>
         <header>
             {modal.bool && <LoginModal setUI={() => null} isLogin={modal.isLogin} onClickKillThis={updateBoolState} />}
-            <Link href={'/'}><img src={UVC.src} id='UVC' alt="UVC" className=" h-14"/></Link>
+            <Link onClick={() => setOpen(false)} href={'/'}><img src={UVC.src} id='UVC' alt="UVC" className=" h-14"/></Link>
             <BiMenuAltRight className='menuSvg' onClick={() => setOpen(!open)} fontSize={48} color='black'/>
         </header>
         <nav className={`BGcolorEscuro ${open ? 'open' : 'closed'}`}> 
         <div>
-            {hasProfile ? <>
+            {hasProfile ? <Link onClick={() => setOpen(false)} href={'/profile'}>
                 <h4>Perfil</h4>
                 <hr />
-            </> 
+            </Link> 
             : 
             <>
             <h4 onClick={() => setModal({bool: true, isLogin: true})}>Logar no UVC</h4>
@@ -55,7 +56,7 @@ export default function HeaderMobile() {
             </>}
         </div>
             {Itens.map(headerItem => (
-                <Link key={headerItem.name} href={headerItem.linkTo}>
+                <Link onClick={() => setOpen(false)} key={headerItem.name} href={headerItem.linkTo}>
                 <h4>{headerItem.name}</h4>
                 <hr />
                 </Link>

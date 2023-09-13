@@ -1,9 +1,7 @@
 ## TO-DO
 
 ### SISTEMÁTICO
-- [ ] Tela de profile - Com aquele sistema de selecionar imagens
-- [ ] Fazer ADMIN mode
-- [ ] Fazer tela pra criar notícias
+- [X] Tela de profile
 - [X] Implementar sistema de busca
 - [X] Adicionar uma setinha no "Mais" no header
 - [X] Modo Foco na tela de leitura
@@ -15,20 +13,20 @@
 - [X] Colocar atributos na pág de personagens.
 ### DESIGN
 - [ ] Adicionar Metadata nas páginas
-- [ ] Fazer Body das nóticias
-- [ ] Ícones e títulos
-- [ ] Animar Citações
-- [ ] Fazer animação no sistema de filtros na pag. Contos
-- [ ] Melhorar Design do Header, com as divisórias com largura igual, e melhorar visual do input também.
+- [X] Fazer Body das nóticias
+- [X] Melhorar Design do Header, com as divisórias com largura igual, e melhorar visual do input também.
 - [X] Mudar o sistema de filtros de contos - além de feio, não está muito bom para o usuário. Fazer algo mais simples, um dropdown tipo YT e pá.
 - [X] Tornar o header responsivo
 - [X] Fazer ajustes no header
 - [X] Fazer Login Responsivo
 - [X] Fazer Footer Responsivo
 ### MELHORAS
-- [ ] melhor visualização do perfil no  Header
-- [ ] Refatorar Header
+- [X] melhor visualização do perfil no  Header
+- [X] Refatorar Header
 - [X] Login No mobile
 ### CONTROLE DE QUALIDADE
 - [ ] Testar eficiência da tela de body das novidades
 - [ ] Testar eficiência de login(mobile)
+### FEATURES ADICIONAIS
+- [ ] Fazer animação no sistema de filtros na pag. Contos
+- [ ] Ao entrar no App - Ações que 

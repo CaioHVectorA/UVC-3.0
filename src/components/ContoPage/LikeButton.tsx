@@ -6,6 +6,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
 import '../../styles/components/contosPreview.css'
 import { decryptData } from "@/utilities/functions/CryptoFunctions"
 import axios from "axios"
+import getUserData from "@/utilities/functions/getUserData"
 export default function LikeButton({conto,histID}: {conto: string,histID: string}) {
     const [data, setData] = useState({})
     const [active, setActive] = useState(false)
@@ -18,15 +19,17 @@ export default function LikeButton({conto,histID}: {conto: string,histID: string
     }, [])
 
     useEffect(() => {
-        if (localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
-            const {id} = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
+        if (getUserData()) {
+            //@ts-ignore
+            const { id } = getUserData()
             axios.post(URL + 'likes/' + histID,{userId: id}).then(res => {setLikeId(res.data.id) ; setActive(true)}).catch(err => setLikeId('undefined'))
         }
     }, [])
     function HandleSubmit() {
         if (!fetching) {
-        setActive(!active)
-        const {id} = decryptData(localStorage.getItem(LOGIN_LOCAL_STORAGE)).data
+            setActive(!active)
+            //@ts-ignore
+        const { id } = getUserData()
             setFetching(true)
             axios.post(URL+'like/'+histID,{
                 isLiked: active,
