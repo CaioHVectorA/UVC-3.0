@@ -23,7 +23,7 @@ export default function HistPage({ text }: { text: string }) {
                         }}>Inverso</button>
                     </div>
                     <div  className={`border-2 border-main border-t-0 ${scroll && `scroll-custom ${!focus ? 'max-h-96' : ' max-h-screen'} overflow-auto rounded-b-none`} ${darkMode ? 'dark' : 'light'}`}>
-                        <div className={`transition-all page_hist py-3 px-4 w-full`} style={{background: '#080808',transition: '0.4s',filter: darkMode ? 'invert(1)' : ''}} dangerouslySetInnerHTML={{__html: text}}></div>
+                        <div className={`transition-all page_hist py-3 px-4 w-full`} style={{background: '#fff',color: 'black',transition: '0.4s',filter: darkMode ? 'invert(1)' : ''}} dangerouslySetInnerHTML={{__html: text}}></div>
                 </div>
             </div>
         </div>

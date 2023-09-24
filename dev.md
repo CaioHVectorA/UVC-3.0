@@ -12,7 +12,6 @@
 - [X] Ter como deletar comentários ou editar
 - [X] Colocar atributos na pág de personagens.
 ### DESIGN
-- [ ] Adicionar Metadata nas páginas
 - [X] Fazer Body das nóticias
 - [X] Melhorar Design do Header, com as divisórias com largura igual, e melhorar visual do input também.
 - [X] Mudar o sistema de filtros de contos - além de feio, não está muito bom para o usuário. Fazer algo mais simples, um dropdown tipo YT e pá.
@@ -29,4 +28,4 @@
 - [ ] Testar eficiência de login(mobile)
 ### FEATURES ADICIONAIS
 - [ ] Fazer animação no sistema de filtros na pag. Contos
-- [ ] Ao entrar no App - Ações que 
+- [ ] Ao entrar no App - Ações que são possíveis de fazer - popup promocional

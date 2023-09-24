@@ -21,10 +21,9 @@ export default function HeaderMobile() {
       }
     const Itens: {name: string, linkTo: string}[] = [
         { name: 'Personagens', linkTo: '/char' },
-        { name: 'Contos', linkTo: '/Contos' },
+        { name: 'Contos', linkTo: '/contos' },
         { name: 'Novidades', linkTo: '/novidades' },
-        { name: 'Buscar', linkTo: '/Buscar' },
-        { name: 'Saiba Mais', linkTo: '/Saiba Mais' },
+        // { name: 'Saiba Mais', linkTo: '/Saiba Mais' },
         { name: 'Personalizar', linkTo: '/personalizar'  }
     ]
     useEffect(() => {
@@ -39,7 +38,7 @@ export default function HeaderMobile() {
     return (
         <>
         <header>
-            {modal.bool && <LoginModal setUI={() => null} isLogin={modal.isLogin} onClickKillThis={updateBoolState} />}
+            {modal.bool && <LoginModal setUI={() => window.location.reload()} isLogin={modal.isLogin} onClickKillThis={updateBoolState} />}
             <Link onClick={() => setOpen(false)} href={'/'}><img src={UVC.src} id='UVC' alt="UVC" className=" h-14"/></Link>
             <BiMenuAltRight className='menuSvg' onClick={() => setOpen(!open)} fontSize={48} color='black'/>
         </header>

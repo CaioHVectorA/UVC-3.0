@@ -298,3 +298,7 @@ textarea:focus-visible {
 		transform: rotate(359deg);
 	}
 } */
+
+.page_hist * {
+  color: black !important;
+}
