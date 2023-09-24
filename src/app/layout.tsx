@@ -5,6 +5,7 @@ import Header from "@/components/Global/Header";
 import { Inter, Montserrat } from "next/font/google";
 import GlobalStyle from "../components/Global/globalStyle";
 import Footer from "@/components/Global/Footer";
+import AppContextProvider from "@/components/Context/AppContext";
 const montserrat = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -21,9 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <GlobalStyle />
       <body className={inter.className}>
+        <AppContextProvider>
         <Header />
-        <div className="rootContainer">{children}</div>
+          <div className="rootContainer">{children}</div>
         <Footer />
+        </AppContextProvider>
       </body>
     </html>
   );

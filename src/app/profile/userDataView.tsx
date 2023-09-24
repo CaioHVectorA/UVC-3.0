@@ -1,11 +1,13 @@
 "use client"
+import { AppContext } from "@/components/Context/AppContext";
 import { User_Type } from "@/utilities/Types";
 import { LOGIN_LOCAL_STORAGE, URL } from "@/utilities/envariables";
 import { encryptData } from "@/utilities/functions/CryptoFunctions";
 import { getBase64 } from "@/utilities/functions/getBase64";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiFillEdit } from 'react-icons/ai'
+import { BsFillCloudUploadFill } from "react-icons/bs";
 async function updateUser({ id,image_path,password,username }: { id:string, username?: string, image_path?: string, password?: string }) {
     console.log({id,image_path,password,username})
     const data = await axios.put(URL+'user/'+id,{
@@ -19,6 +21,7 @@ async function updateUser({ id,image_path,password,username }: { id:string, user
 
 export default function UserDataView({userData}: {userData: User_Type}) {
     const [initialURL, setURL] = useState(`${URL}${userData.image_path}`)
+    const { img,setImg } = useContext(AppContext)
     return (
         <main className=" flex max-md:flex-col max-md:items-center mt-8 px-4 w-10/12 mx-auto rounded-2xl py-2 bg-white text-black">
             <div className=" flex flex-col items-center w-2/12">
@@ -33,13 +36,14 @@ export default function UserDataView({userData}: {userData: User_Type}) {
                         updateUser({ id: userData.id, image_path: img }).then(res => {
                             //@ts-ignore
                             setURL(img)
+                            setImg(img)
                         })
                     }} id="file" type="file" accept=".png" className=" hidden"/>
                     <label htmlFor="file" className="cursor-pointer">
-                        <AiFillEdit size={24} fill="white"/>
+                        <BsFillCloudUploadFill size={24} fill="white"/>
                     </label>
                     </div>
-                    <div className=" w-32 aspect-square flex items-center justify-center border border-black rounded-full px-4">
+                    <div className=" w-32 aspect-square flex items-center justify-center overflow-hidden border border-black rounded-full px-4">
                         <img className=" w-full aspect-square object-contain" src={initialURL}/>
                     </div>
                 </div>

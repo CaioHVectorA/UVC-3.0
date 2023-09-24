@@ -15,10 +15,11 @@ export const IMGS = {
 };
 
 // export const URL = "http://localhost:3333/";
-export const URL = "https://skf4mm-3333.csb.app/";
-export const URL_READONLY = "https://mrx5rw-3009.csb.app/";
+//INTELIGENT BENZ
+export const URL = "https://5wyv7w-3333.csb.app/";
+export const URL_READONLY = "https://7nsw3w-3009.csb.app/";
 // export const URL_READONLY = "http://localhost:3009/";
-// export const URL_TXT = 'http://localhost:6220/'
 export const URL_TXT = 'https://9myxzv-6220.csb.app/'
+// export const URL_TXT = 'http://localhost:6220/'
 export const LOGIN_LOCAL_STORAGE = "UVC_3.0_DATA-LOGIN";
 export const LOCAL_STORAGE_COLOR = "UVC_3.0_COLOR_CUSTOM"
