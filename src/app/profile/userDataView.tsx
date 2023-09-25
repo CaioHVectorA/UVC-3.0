@@ -8,6 +8,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { AiFillEdit } from 'react-icons/ai'
 import { BsFillCloudUploadFill } from "react-icons/bs";
+import { info } from "veclog";
 async function updateUser({ id,image_path,password,username }: { id:string, username?: string, image_path?: string, password?: string }) {
     console.log({id,image_path,password,username})
     const data = await axios.put(URL+'user/'+id,{
@@ -37,13 +38,13 @@ export default function UserDataView({userData}: {userData: User_Type}) {
                             //@ts-ignore
                             setURL(img)
                             setImg(img)
-                        })
+                        }).catch(err => {alert('Ocorreu um erro ao mudar sua imagem.') ; console.log(err)})
                     }} id="file" type="file" accept=".png" className=" hidden"/>
                     <label htmlFor="file" className="cursor-pointer">
                         <BsFillCloudUploadFill size={24} fill="white"/>
                     </label>
                     </div>
-                    <div className=" w-32 aspect-square flex items-center justify-center overflow-hidden border border-black rounded-full px-4">
+                    <div className=" w-32 aspect-square flex items-center justify-center overflow-hidden border border-black rounded-full">
                         <img className=" w-full aspect-square object-contain" src={initialURL}/>
                     </div>
                 </div>

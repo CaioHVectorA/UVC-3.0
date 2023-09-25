@@ -9,7 +9,7 @@ export default function ContosPreview() {
         { imageSrc: IMGS.KERRY, link: '/contos/S_KER' },
     ]
     return (
-        <section>
+        <section className=" p-0">
         <ul className="_mainContainer">
             {data.map(img => (
                 <li key={img.link}>

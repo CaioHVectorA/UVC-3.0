@@ -145,8 +145,8 @@ function CommentSession( {dataComments,setComments}: {dataComments: Comment[], s
             {dataComments.map(((comment, index) => (
                 <div key={index} className=" group/comment px-5 flex bg-slate-50 w-4/6 py-5 rounded-2xl relative max-lg:w-11/12">
                     <p className=" absolute right-6 text-zinc-500 top-2 text-xs">{formatarData(comment.created_at)}</p>
-                    <div className=" w-20 h-20 bg-black bg-opacity-70 flex items-center justify-center rounded-full">
-                    <img src={URL+comment.author_img} className=" w-10/12 h-10/12 object-contain" /> 
+                    <div className=" w-20 h-20 bg-black bg-opacity-70 flex overflow-hidden items-center justify-center rounded-full">
+                        <img src={URL+comment.author_img} className=" w-12/12 h-12/12 scale-105 object-contain" /> 
                     </div>
                     <div>
                         <h4 className="text-black uppercase">{comment.username_author}</h4>

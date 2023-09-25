@@ -10,6 +10,7 @@ import HandleSearch from "./HandleSearch";
 import More from "./More";
 import UVC from '../../../../public/UVC.png'
 import getUserData from "@/utilities/functions/getUserData";
+import ProfileImage from "@/components/ProfileImage";
 type ModalProps = {bool: boolean,isLogin: boolean}
 function StaticMenu() {
     return (
@@ -31,11 +32,11 @@ function SearchMenu({ searchInput, setSearchInput, setSearch }: { searchInput: s
     return (
         <>
         <div className=" flex items-center h-10" style={{maxWidth: '290px'}}>
-        <input value={searchInput} onChange={({target}) => setSearchInput(target.value)} onKeyDown={({key}) => {HandleSearch(searchInput,key)}}/>
-        <div style={{backgroundColor: '#e7e7e7',height: '100%',display: 'flex',alignItems: 'center',paddingRight: '4px'}}><GrClose onClick={() => setSearch(false)} fontSize={'16px'} cursor={'pointer'}/></div>
-        <Link href={`/buscar/${searchInput}`} className="searchButton">
-        <CiSearch fill="black" fontSize={'28px'} cursor={'pointer'}/>
-        </Link>
+            <input value={searchInput} onChange={({target}) => setSearchInput(target.value)} onKeyDown={({key}) => {HandleSearch(searchInput,key)}}/>
+            <div style={{backgroundColor: '#e7e7e7',height: '100%',display: 'flex',alignItems: 'center',paddingRight: '4px'}}><GrClose onClick={() => setSearch(false)} fontSize={'16px'} cursor={'pointer'}/></div>
+            <Link href={`/buscar/${searchInput}`} className="searchButton">
+                <CiSearch fill="black" fontSize={'28px'} cursor={'pointer'}/>
+            </Link>
         </div>
         </>
     )
@@ -52,12 +53,10 @@ function LogedMenu({setModal,setSearch}: {setSearch: React.Dispatch<React.SetSta
         <CiSearch onClick={() => setSearch(prevState => !prevState)} fontSize={'28px'} cursor={'pointer'}/>
         </div>
         : 
-        <Link href={'/profile'}>
-            <div className=" w-16 h-16 bg-black bg-opacity-80 flex items-center justify-center rounded-full p-2 cursor-pointer">
-                    {/* @ts-ignore */}
-                    {!!getUserData() && <img className=" object-contain" src={URL+getUserData().image_path}/>}
-            </div>
-        </Link>
+        <>
+        {/* @ts-ignore */}
+       {!!getUserData() && <ProfileImage imageLink={URL+getUserData().image_path} />}
+        </>
         }
         <CiSearch className=" self-center" onClick={() => setSearch(prevState => !prevState)} fontSize={'40px'} cursor={'pointer'}/>
         </>

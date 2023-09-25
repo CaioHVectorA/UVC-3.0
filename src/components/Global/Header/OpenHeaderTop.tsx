@@ -8,6 +8,7 @@ import HandleSearch from "./HandleSearch"
 import UVC from '../../../../public/UVC.png'
 import getUserData from "@/utilities/functions/getUserData"
 import { AppContext } from "@/components/Context/AppContext"
+import ProfileImage from "@/components/ProfileImage"
 const border = 'mb-1 mt-1 border-b w-10/12 text-center border-black border-opacity-70'
 function Profile({n,setUI}: {n: unknown, setUI: any}) {
     const user = getUserData()
@@ -18,9 +19,7 @@ function Profile({n,setUI}: {n: unknown, setUI: any}) {
     return (
         <div className=" relative flex justify-center">
             <div className=" flex w-1/2 items-center justify-center">
-                <Link href={"/profile"} className=" flex justify-center items-center bg-black bg-opacity-70 rounded-full w-16 h-16 p-0 ">
-                    <img src={path} className=" object-contain w-12 h-12 max-h-12" />
-                </Link>
+                <ProfileImage imageLink={path} />
             </div>
         </div>
             )
