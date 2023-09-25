@@ -8,7 +8,6 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { AiFillEdit } from 'react-icons/ai'
 import { BsFillCloudUploadFill } from "react-icons/bs";
-import { info } from "veclog";
 async function updateUser({ id,image_path,password,username }: { id:string, username?: string, image_path?: string, password?: string }) {
     console.log({id,image_path,password,username})
     const data = await axios.put(URL+'user/'+id,{
