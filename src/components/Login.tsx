@@ -17,7 +17,7 @@ export default function LoginModal({
 }) {
   const [isLoginS, setLoginState] = useState(isLogin);
   const [username, setUsername] = useState("");
-  const regex: RegExp = /^[a-zA-Z0-9]*$/;
+  const regex: RegExp = /^[a-zA-Z4-9]*$/;
   const [password, setPassword] = useState("");
   const [error, setError] = useState<any>("");
   const buttonRef = useRef(null)
@@ -74,9 +74,14 @@ export default function LoginModal({
           <label htmlFor="username">Usuário:</label>
           <input
             onBlur={({ target }) => {
-              const valid = regex.test(target.value);
-              if (!valid) {
-                setError("Utilize apenas letras e números no usuário");
+              const regex = /^(?=.*[a-zA-Z0-9])[a-zA-Z0-9]{3,}$/;
+              if (!regex.test(target.value)) {
+                if (target.value.length <= 3) {
+                  console.log('kdsakldajdk')
+                  setError("O usuário deve ter pelo menos 3 caracteres");
+                } else {
+                  setError("Utilize apenas letras e números no usuário");
+                }
               }
             }}
             className="input"
@@ -90,12 +95,13 @@ export default function LoginModal({
           <input
             className="input"
             value={password}
+            onBlur={({target}) => { if (target.value.length < 3) {setError('A senha deve ter pelo menos 3 caracteres')} }}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             id="password"
             required
           />
-          <button ref={buttonRef} id="button" onClick={(e) => HandleSubmit(e)} type="submit">
+          <button disabled={!(error === '')} ref={buttonRef} id="button" onClick={(e) => HandleSubmit(e)} type="submit">
             Entrar
           </button>
           <u onClick={() => setLoginState(!isLoginS)}>
