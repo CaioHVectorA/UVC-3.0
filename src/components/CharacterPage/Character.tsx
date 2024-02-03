@@ -1,4 +1,4 @@
-import { Character_Type } from "@/utilities/Types";
+import { Character_Type } from "@/utilities/types";
 import { CSSProperties, StyleHTMLAttributes } from "react";
 import Citacoes from "./Citacao";
 import Link from "next/link";

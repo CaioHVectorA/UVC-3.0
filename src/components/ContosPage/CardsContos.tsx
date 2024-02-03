@@ -1,6 +1,6 @@
 "use client"
 import { URL_READONLY } from "@/utilities/envariables"
-import { Capitulo,Serie_Type,Character_Type,Solo_Type } from "@/utilities/Types"
+import { Capitulo,Serie_Type,Character_Type,Solo_Type } from "@/utilities/types"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { AiFillCaretDown, AiOutlineDown, AiOutlineSearch } from "react-icons/ai"

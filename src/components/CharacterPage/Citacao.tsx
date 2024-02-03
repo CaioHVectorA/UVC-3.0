@@ -1,6 +1,6 @@
 "use client"
 import { useState,useEffect } from 'react'
-import { Citacao } from '@/utilities/Types'
+import { Citacao } from '@/utilities/types'
 import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai'
 export default function Citacoes({citacoes}: {citacoes: Citacao[]}) {
     const [indexS, setIndex] = useState(0)

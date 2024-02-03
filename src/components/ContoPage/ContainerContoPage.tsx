@@ -1,6 +1,6 @@
 "use client"
 
-import { Serie_Type, Solo_Type } from "@/utilities/Types"
+import { Serie_Type, Solo_Type } from "@/utilities/types"
 import Universe from "./InitialUniverse"
 import Link from "next/link"
 import { AiFillDelete, AiFillEdit, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
@@ -22,7 +22,7 @@ interface CapProps {
     Episodios: object[];
 }
 
-const Cap: React.FC<CapProps> = ({Nome,Disponivel,Episodios,Ref}) => {
+const Cap: React.FC<CapProps> = ({ Nome,Disponivel,Episodios,Ref }) => {
     const [active, setActive] = useState(false)
     if (!Disponivel) {return null;}
     return (

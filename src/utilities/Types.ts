@@ -1,3 +1,4 @@
+import { ServerError } from '@/server/ServerError' 
 type Episodios = {
   Nome: string;
   Ref: string;

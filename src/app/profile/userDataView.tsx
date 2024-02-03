@@ -1,6 +1,6 @@
 "use client"
 import { AppContext } from "@/components/Context/AppContext";
-import { User_Type } from "@/utilities/Types";
+import { User_Type } from "@/utilities/types";
 import { LOGIN_LOCAL_STORAGE, URL } from "@/utilities/envariables";
 import { encryptData } from "@/utilities/functions/CryptoFunctions";
 import { getBase64 } from "@/utilities/functions/getBase64";

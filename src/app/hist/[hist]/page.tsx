@@ -1,7 +1,7 @@
 import { URL_READONLY, URL_TXT } from "@/utilities/envariables"
 import axios from "axios"
 import HistPage from "../histpage"
-import { Serie_Type, Solo_Type } from "@/utilities/Types"
+import { Serie_Type, Solo_Type } from "@/utilities/types"
 import fetchData from "@/utilities/functions/FetchData"
 
 export default async function Hist({ params }: {params: {hist: string}}) {

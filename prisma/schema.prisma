@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Application -------------------------------------------
+model User {
+  id         String    @id @default(uuid())
+  username   String    @unique
+  password   String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  comments   Comment[] @relation("userComments")
+  image_path String    @default("assets/user_images/sample.png")
+
+  @@map("users")
+}
+
+model Comment {
+  id              String   @id @default(uuid())
+  content         String
+  comment_by      String
+  comment_in      String
+  username_author String
+  author_img      String
+  created_at      DateTime @default(now())
+  comments        User     @relation("userComments", fields: [comment_by], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  Hist            Hist?    @relation(fields: [histId], references: [id])
+  histId          String?
+
+  @@map("comments")
+}
+
+model Hist {
+  ref        String    @unique
+  id         String    @id @default(uuid())
+  created_at DateTime  @default(now())
+  last_view  DateTime
+  views      Int       @default(0)
+  likesNum   Int       @default(0)
+  comments   Comment[]
+  likes      Like[]    @relation("userLikes")
+}
+
+model Like {
+  id     Int    @id @default(autoincrement())
+  histId String
+  hist   Hist   @relation("userLikes", fields: [histId], references: [id], onDelete: Cascade)
+  userId String
+}
+
+model News {
+  id            Int      @id @default(autoincrement())
+  title         String   @unique
+  body          String?
+  external_link String?
+  image         String
+  create_at     DateTime @default(now())
+  views         Int      @default(0)
+}
+
+// Internal Data -------------------------------------------

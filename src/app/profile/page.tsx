@@ -4,7 +4,7 @@ import getUserData from "@/utilities/functions/getUserData"
 import axios from "axios"
 import UserDataView from "./userDataView"
 import { useEffect, useState } from "react"
-import { User_Type } from "@/utilities/Types"
+import { User_Type } from "@/utilities/types"
 import LoginModal from "@/components/Login"
 
 export default function Page() {

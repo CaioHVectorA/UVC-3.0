@@ -16,7 +16,7 @@ export const IMGS = {
 
 // export const URL = "http://localhost:3333/";
 //INTELIGENT BENZ
-export const URL = "https://5wyv7w-3333.csb.app/";
+export const URL = "http://localhost:3000/";
 export const URL_READONLY = "https://7nsw3w-3009.csb.app/";
 // export const URL_READONLY = "http://localhost:3009/";
 export const URL_TXT = 'https://9myxzv-6220.csb.app/'

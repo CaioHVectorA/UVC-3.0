@@ -77,7 +77,6 @@ export default function LoginModal({
               const regex = /^(?=.*[a-zA-Z0-9])[a-zA-Z0-9]{3,}$/;
               if (!regex.test(target.value)) {
                 if (target.value.length <= 3) {
-                  console.log('kdsakldajdk')
                   setError("O usuário deve ter pelo menos 3 caracteres");
                 } else {
                   setError("Utilize apenas letras e números no usuário");

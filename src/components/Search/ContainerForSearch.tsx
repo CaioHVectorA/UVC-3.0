@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Character_Type, Serie_Type, Solo_Type } from "@/utilities/Types";
+import { Character_Type, Serie_Type, Solo_Type } from "@/utilities/types";
 import { Character } from "@/utilities/functions/MockupCharacter";
 import { CharCaracter } from "../Characters/Char";
 import { Relacionado } from "../ContoPage/ContainerContoPage";

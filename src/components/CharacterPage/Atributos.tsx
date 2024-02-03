@@ -1,5 +1,5 @@
 "use client"
-import { Character_Type } from "@/utilities/Types";
+import { Character_Type } from "@/utilities/types";
 import { MutableRefObject, Ref, RefObject, useEffect, useRef, useState } from "react";
 import { AiFillInfoCircle } from "react-icons/ai";
 

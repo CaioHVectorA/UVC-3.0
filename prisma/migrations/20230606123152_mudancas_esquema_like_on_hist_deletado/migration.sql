@@ -1,0 +1,20 @@
+-- CreateTable
+CREATE TABLE "Hist" (
+    "ref" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "last_view" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "views" INTEGER NOT NULL,
+    "likesNum" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Like" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "HistId" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    CONSTRAINT "Like_HistId_fkey" FOREIGN KEY ("HistId") REFERENCES "Hist" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Hist_ref_key" ON "Hist"("ref");
