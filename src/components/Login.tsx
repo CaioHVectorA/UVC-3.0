@@ -27,8 +27,8 @@ export default function LoginModal({
   function onSucess(res: AxiosResponse) {
     if (!window) return
     console.log(res)
-    const encrypted = encryptData(res)
-    window.localStorage.setItem('UVC_3.0_DATA-LOGIN',encrypted)
+    const encrypted = encryptData(JSON.stringify(res.data))
+    window.localStorage.setItem('UVC_3.0_DATA-LOGIN', encrypted)
     document.body.style.overflowY = "visible";
     setUI()
     onClickKillThis()
@@ -37,7 +37,7 @@ export default function LoginModal({
     //@ts-ignore
     buttonRef.current.disabled = true
     event.preventDefault();
-    const route = isLoginS ? "login" : "user";
+    const route = isLoginS ? "api/login" : "api/user";
     axios.post(URL + route, {
         username,
         password,

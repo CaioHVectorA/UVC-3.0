@@ -3,11 +3,12 @@ import { createCommentDTO } from "./dtos/comment";
 import { EditCommentDTO } from "./dtos/editcomment";
 
 export class CommentRepository extends Repository {
-    async create({ author_img, comment_by, comment_in, content, username_author }: createCommentDTO) {
+    async create({ img_author, comment_by, comment_in, content, username_author }: createCommentDTO) {
         if (!content || !comment_by || !comment_in || !username_author ) return new this.ServerError('Sem todas as credenciais')
         const comment = await this.prisma.comment.create({
-          data: { content, comment_by, comment_in, username_author, author_img },
+          data: { content, comment_by, comment_in, username_author, author_img: img_author },
         });
+        console.log(comment)
         if (!comment) return new this.ServerError("Ocorreu um erro.")
         return comment;
     }

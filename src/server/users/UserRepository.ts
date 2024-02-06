@@ -45,7 +45,7 @@ export class UserRepository extends Repository {
         if (imagePath) {
             const path = `assets/user_images/${id}.png`
             image_path = path
-            await saveImage(imagePath, process.cwd()+'public/'+path)
+            await saveImage(imagePath, process.cwd()+'/public/'+path)
         }
         const newUser = {
             username: username || user.username,
@@ -55,8 +55,8 @@ export class UserRepository extends Repository {
         const updatedUser = await this.prisma.user.update({ where: { id }, data: newUser })
         return {
             id,
-            username: updatedUser.username,
-            image_path: updatedUser.image_path
+            username: newUser.username,
+            image_path: newUser.image_path
         }
     }
 }

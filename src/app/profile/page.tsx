@@ -9,29 +9,19 @@ import LoginModal from "@/components/Login"
 
 export default function Page() {
     const [loginModal, setModal] = useState(false)
-    const [canReload, setCanReload] = useState(false)
-    let data = false as any
-    try {
-        data = getUserData()
-    } catch(err) {console.log(err)}
     const [userData, setUserData] = useState<User_Type | false>(false)
     const [isUser, setUser] = useState(false)
     useEffect(() => {
-        if (data) {
+        const data = getUserData()
+        console.log({ data })
+        if (data && data.id) {
             setUser(true)
             console.log(data)
-            axios.get(URL+`user/${data.id}`).then(res => {
-                console.log(res.data)
+            axios.get(URL+`api/user/${data.id}`).then(res => {
                 setUserData(res.data)
             })
         }
     }, [])
-    // useEffect(() => {
-    //     if (!!!localStorage.getItem(LOGIN_LOCAL_STORAGE) && canReload && loginModal === false) {
-    //         window.location.reload()
-    //     }
-    //     setCanReload(true)
-    // }, [loginModal])
     return (
         <>
         {loginModal && <LoginModal isLogin={false} onClickKillThis={() => {

@@ -12,7 +12,7 @@ type News = {
   }
 
 export default async function Page() {
-    const res: News[] = await (await axios(URL+'news')).data
+    const res: News[] = await (await axios(URL+'api/news')).data
     console.log(res.length)
     return (
         <div className=" flex flex-col items-center w-screen">

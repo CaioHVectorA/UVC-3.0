@@ -15,14 +15,14 @@ export default function LikeButton({conto,histID}: {conto: string,histID: string
     
     
     useEffect(() => {
-    fetch(URL + 'hist/' + conto).then(res => res.json()).then(data => setData(data))    
+    fetch(URL + 'api/hist/' + conto).then(res => res.json()).then(data => setData(data))    
     }, [])
 
     useEffect(() => {
         if (getUserData()) {
             //@ts-ignore
             const { id } = getUserData()
-            axios.post(URL + 'likes/' + histID,{userId: id}).then(res => {setLikeId(res.data.id) ; setActive(true)}).catch(err => setLikeId('undefined'))
+        axios.post(`${URL}api/like/ref/${histID}`, {userId: id}).then(res => {console.log(res) ; setLikeId(res.data.id) ; setActive(true)}).catch(err => setLikeId('undefined'))
         }
     }, [])
     function HandleSubmit() {
@@ -31,10 +31,11 @@ export default function LikeButton({conto,histID}: {conto: string,histID: string
             //@ts-ignore
         const { id } = getUserData()
             setFetching(true)
-            axios.post(URL+'like/'+histID,{
+            axios.post(URL+'api/like/',{
                 isLiked: active,
                 userId: id,
-                id: likeID
+                id: likeID,
+                histId: histID
             }).then((res: any) => {
                 setFetching(false)
                 setLikeId(res.data.id)

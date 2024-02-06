@@ -8,20 +8,23 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { AiFillEdit } from 'react-icons/ai'
 import { BsFillCloudUploadFill } from "react-icons/bs";
-async function updateUser({ id,image_path,password,username }: { id:string, username?: string, image_path?: string, password?: string }) {
-    console.log({id,image_path,password,username})
-    const data = await axios.put(URL+'user/'+id,{
+import { saveImage } from "@/server/saveImage";
+async function updateUser({ id,imagePath,password,username }: { id:string, username?: string, imagePath?: string, password?: string }) {
+    console.log(id)
+    const data = await axios.put(URL+'api/user/',{
+        id,
         username,
         password,
-        image_path,
+        imagePath,
     })
-    localStorage.setItem(LOGIN_LOCAL_STORAGE, encryptData(JSON.stringify(data.data)))
+    localStorage.setItem(LOGIN_LOCAL_STORAGE, JSON.stringify({ id, image_path: data.data.image_path, username: data.data.username }))
     return data.data
 }
 
 export default function UserDataView({userData}: {userData: User_Type}) {
     const [initialURL, setURL] = useState(`${URL}${userData.image_path}`)
     const { img,setImg } = useContext(AppContext)
+    console.log({userData})
     return (
         <main className=" flex max-md:flex-col max-md:items-center mt-8 px-4 w-10/12 mx-auto rounded-2xl py-2 bg-white text-black">
             <div className=" flex flex-col items-center w-2/12">
@@ -31,9 +34,8 @@ export default function UserDataView({userData}: {userData: User_Type}) {
                         if (!!!e.target.files) return
                         if (e.target.files) console.log(e.target.files[0])
                         const img = await getBase64(e.target.files[0])
-                        console.log(img)
-                        //@ts-ignore
-                        updateUser({ id: userData.id, image_path: img }).then(res => {
+                        updateUser({ id: userData.id, imagePath: img }).then(res => {
+                            console.log(res)
                             //@ts-ignore
                             setURL(img)
                             setImg(img)

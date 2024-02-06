@@ -9,6 +9,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
     const ref = req.url.split('/').pop()
-    const { isLiked, userId, id } = await req.json()
-    
+    const { userId } = await req.json()
+    const response = await prisma.$queryRaw`SELECT * FROM Like WHERE histId = ${ref} AND userId = ${userId}`
+    console.log(response)
+    return NextResponse.json(response)
 }

@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
     const body = await req.json()
-    const response = userRepository.updateUser(body)
+    const response = await userRepository.updateUser(body)
     //@ts-ignore
     return NextResponse.json(response, { status: response.status || 200 })
 }

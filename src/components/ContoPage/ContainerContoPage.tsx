@@ -122,18 +122,19 @@ function CommentSession( {dataComments,setComments}: {dataComments: Comment[], s
                 setModal(false)
             })
         }
-
-        return (<div className="w-screen h-screen fixed top-0 left-0 z-40 bg-black bg-opacity-70 flex items-center justify-center">
+        return (
+        <div className="w-screen h-screen fixed top-0 left-0 z-40 bg-black bg-opacity-70 flex items-center justify-center">
             <div className=" bg-slate-100 rounded-2xl px-5 py-3 h-2/5 w-8/12 flex flex-col items-center gap-3 relative">
                 <GrClose cursor={'pointer'} onClick={() => setModal(false)} className=" absolute right-5 top-3" size={24} fill="#a8362d" />
                 <h4 className=" text-black">Editar comentário</h4>
                 <textarea value={content} onChange={({target}) => setContent(target.value)} className=" w-full h-3/5 text-black px-1"></textarea>
                 <button disabled={fetching} onClick={() => HandlePut(id,index)}>Enviar</button>
             </div>
-        </div>)
+        </div>
+        )
     }
     function HandleDelete(id: string,index: number) {
-        axios.delete(URL+'comment/'+id).then(res => {
+        axios.delete(URL+'api/comment/'+id).then(res => {
         const tempArr = [...dataComments]
         tempArr.splice(index,1) 
         setComments(tempArr)
@@ -169,7 +170,6 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
     const TextArea = useRef(null)
     // -------------------------------
     function HandleSubmit() {
-        console.log('teste')
         if (!!!localStorage.getItem(LOGIN_LOCAL_STORAGE)) return
         setFetching(true)
         const userData = getUserData()
@@ -181,9 +181,9 @@ function CreateComment({setDataComments,Ref,comments}: {setDataComments: any,Ref
             username_author: userData.username,
             img_author: userData.image_path
         }
-        console.log(userData)
-        axios.post(URL+'comment', data).then(res =>{
-            console.log(res)
+        console.log({data})
+        axios.post(URL+'api/comment', data).then(res =>{
+            console.log({res})
             setDataComments([...comments, res.data])
             setText('')
             setFetching(false)

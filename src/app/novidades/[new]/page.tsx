@@ -4,9 +4,7 @@ import Link from "next/link"
 
 
 export default async function Page({params}: {params: { new: string }}) {
-    const res = await (await axios.get(URL+'news/one',{data: {
-        id: parseInt(params.new)
-    }})).data
+    const res = await (await axios.get(`${URL}api/news/${params.new}`)).data
 
     return (
         <div className=" flex flex-col pt-4 px-3 gap-2 items-center">
