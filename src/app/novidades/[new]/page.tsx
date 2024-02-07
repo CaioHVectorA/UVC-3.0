@@ -1,10 +1,12 @@
+import { New } from "@/server/News/DTOs/New"
+import { NewsRepository } from "@/server/News/NewsRepository"
 import { URL } from "@/utilities/envariables"
 import axios from "axios"
 import Link from "next/link"
 
-
+const newsRepository = new NewsRepository()
 export default async function Page({params}: {params: { new: string }}) {
-    const res = await (await axios.get(`${URL}api/news/${params.new}`)).data
+    const res = (await newsRepository.prisma.$queryRaw`SELECT * FROM News WHERE id = ${params.new}` as New[])[0]
 
     return (
         <div className=" flex flex-col pt-4 px-3 gap-2 items-center">

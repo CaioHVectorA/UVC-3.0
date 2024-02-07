@@ -24,7 +24,6 @@ async function updateUser({ id,imagePath,password,username }: { id:string, usern
 export default function UserDataView({userData}: {userData: User_Type}) {
     const [initialURL, setURL] = useState(`${URL}${userData.image_path}`)
     const { img,setImg } = useContext(AppContext)
-    console.log({userData})
     return (
         <main className=" flex max-md:flex-col max-md:items-center mt-8 px-4 w-10/12 mx-auto rounded-2xl py-2 bg-white text-black">
             <div className=" flex flex-col items-center w-2/12">
@@ -46,7 +45,7 @@ export default function UserDataView({userData}: {userData: User_Type}) {
                     </label>
                     </div>
                     <div className=" w-32 aspect-square flex items-center justify-center overflow-hidden border border-black rounded-full">
-                        <img className=" w-full aspect-square object-contain" src={initialURL}/>
+                        <img className=" w-full aspect-square object-cover" src={initialURL}/>
                     </div>
                 </div>
                 <p className=" text-black text-2xl">{userData.username}</p>

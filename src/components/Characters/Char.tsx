@@ -1,4 +1,3 @@
-import { fakePromise } from "@/utilities/functions/MockupCharacter";
 import { Character } from "@/utilities/functions/MockupCharacter";
 import "../../styles/components/characters.css";
 import Link from "next/link";

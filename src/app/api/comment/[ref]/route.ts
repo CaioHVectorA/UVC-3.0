@@ -13,6 +13,6 @@ export async function DELETE(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
     const data = await req.json()
-    const response = await repo.edit({ id: req.url.split('/').pop() || '', newContent: data })
+    const response = await repo.edit({ id: req.url.split('/').pop() || '', newContent: data.newContent })
     return NextResponse.json(response)
 }

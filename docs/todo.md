@@ -19,7 +19,7 @@
 - [ ] Better security
 
 ### User Experience
-
+- [ ] Switch some useStates do URL state
 - [ ] Story/character client for creating
 - [ ] Make search better (enter press support, other UX things...)
 - [ ] Think better about filters

@@ -37,8 +37,11 @@ function Aparicoes({data}: {data: Character_Type}) {
         <div className=" flex gap-2 ml-4">
             {data.Aparicoes.map(apa => (
                 <>
-                <Link href={`/contos/${apa.Ref}`}>
-                <img src={apa.Img} style={{width: '250px', aspectRatio: '1'}}/>
+                <Link className=" w-3/12 aspect-square relative group" href={`/contos/${apa.Ref}`}>
+                    <img src={apa.Img} className=" w-full h-full"/>
+                    <div className=" absolute top-0 hidden bg-black group-hover:flex bg-opacity-70 w-full h-full justify-center items-center">
+                        <h2 style={{color: 'white',fontSize: `${300 / apa.Nome.length}px`}} className=" text-center">{apa.Nome}</h2>
+                    </div>
                 </Link>
                 </>
             ))}
@@ -51,9 +54,13 @@ function Aparicoes({data}: {data: Character_Type}) {
             {data.Aparicoes.map(apa => (
                 <>
                 <Link style={{width: '32%', aspectRatio: '1'}} href={`/contos/${apa.Ref}`}>
-                <img src={apa.Img} />
+                    <img src={apa.Img} />
+                    <div className=" absolute top-0 bgroundopacity w-full h-full justify-center items-center">
+                        <h2 style={{color: 'white',fontSize: `${300 / apa.Nome.length}px`}} className=" text-center">{apa.Nome}</h2>
+                    </div>
                 </Link>
                 </>
+                
             ))}
         </div>
     </div>

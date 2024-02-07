@@ -8,7 +8,7 @@ export class HistRepository extends Repository {
         const hist = await this.prisma.hist.create({ data: { ref, views: 0, last_view: new Date().toISOString(), likesNum: 0 } })
         return hist
     }
-    async acess({ ref, prevHist }: { ref: string, prevHist: Hist }): Promise<ServerResponse<Hist>> {
+    async acess({ ref, prevHist }: { ref: string, prevHist: Hist }): Promise<Hist> {
     const HistUpdate = await this.prisma.hist.update({
       where: {
         ref,
@@ -18,7 +18,15 @@ export class HistRepository extends Repository {
         views: prevHist.views + 1
       },
     });
-    if (!HistUpdate) return new this.ServerError("Não foi possível dar update na história!");
     return HistUpdate;
+  }
+  async get({ ref }: { ref: string }) {
+      const exists = await this.prisma.hist.findFirst({ where: { ref } })
+      if (exists) {
+          const response = await this.acess({ ref, prevHist: exists })
+          return response
+      } 
+      const response = await this.create({ ref })
+      return response
   }
 }

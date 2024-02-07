@@ -13,11 +13,12 @@ export class CommentRepository extends Repository {
         return comment;
     }
     async delete({ id }: { id: string }) {
-        const comment = await this.prisma.comment.findUnique({ where: { id } })
+        const comment = await this.prisma.comment.delete({ where: { id } })
         if (!comment) return new this.ServerError("Algo deu errado")
         return 100
     }
     async edit({ id, newContent }: EditCommentDTO) {
+        console.log({ newContent })
         const editedComment = await this.prisma.comment.update({
             where: { id },
             data: { content: newContent },

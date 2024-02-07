@@ -14,7 +14,6 @@ export async function GET(req: NextRequest) {
 }
 export async function PUT(req: NextRequest) {
     const id = parseInt(req.url.split("/").pop() || "")
-    console.log(id)
     const data = await req.json()
     const res = await repo.edit({ id, newProps: data })
     return NextResponse.json(res)

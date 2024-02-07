@@ -1,19 +1,10 @@
+import { NewsRepository } from "@/server/News/NewsRepository";
 import { URL } from "@/utilities/envariables"
 import axios from "axios"
 import Link from "next/link";
-type News = {
-    id: number;
-    title: string;
-    body?: string | null;
-    external_link?: string | null;
-    image: string;
-    created_at: Date | string;
-    views: number;
-  }
-
+const newsRepository = new NewsRepository()
 export default async function Page() {
-    const res: News[] = await (await axios(URL+'api/news')).data
-    console.log(res.length)
+    const res = await newsRepository.get()
     return (
         <div className=" flex flex-col items-center w-screen">
         <h3 className=" mt-8 mb-4">NOVIDADES</h3>

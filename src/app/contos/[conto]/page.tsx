@@ -7,6 +7,8 @@ import { api, get } from "@/lib/fetch"
 import { hists } from "@/server/mongo/models"
 import fetchData from "@/utilities/functions/FetchData"
 import { connectedPromise } from "@/server/mongo/actions"
+import { HistRepository } from "@/server/hists/HistRepository"
+import { CommentRepository } from "@/server/comment/CommentRepository"
 type Comment = {
     content: string;
     comment_by: string;
@@ -16,11 +18,13 @@ type Comment = {
     id: string,
     author_img: string
 }
+const histRepo = new HistRepository()
+const commentRepo = new CommentRepository()
 export default async function Conto({params}: {params: {conto: string}}) {
     await connectedPromise
-    const comments = (await fetchData(`http://localhost:3000/api/comment/${params.conto}`)).data as unknown as Comment[]
+    const comments = await commentRepo.get({ ref: params.conto }) as Comment[]
     const res = await hists.findOne({ Ref: params.conto }) as unknown as Serie_Type | Solo_Type
-    const like = (await fetchData(`http://localhost:3000/api/hist/${params.conto}`)).data
+    const like = await histRepo.get({ ref: params.conto })
     // return <>{}</>
     return <ContainerForConto histID={like.id} Ref={params.conto} data={res} datacomments={comments}/>
 }
