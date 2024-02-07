@@ -9,8 +9,8 @@
 
 ### Architecture and Structure
 
-- [ ] Fix date in comments
-- [ ] FIX COMMENTS PLEASE!!
+- [|] Fix date in comments || In progress...
+- [|] FIX COMMENTS PLEASE!! || In progress 
 - [ ] Make authentication and authorization
 - [ ] Make the components and their architecture more clean
 - [ ] Use some SHADCN utilities UI
