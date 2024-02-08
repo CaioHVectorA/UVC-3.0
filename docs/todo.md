@@ -4,13 +4,13 @@
 
 - [x] Think in a structural reform, including architecture and some useless use cases
 - [-] Create a lib folder with a fetch function handler (with autoconfigured fetch...) || unnecessary
+- [X] FIX COMMENTS PLEASE!! || In progress 
+- [X] Fix date in comments || In progress...
 
 ## Pending
 
 ### Architecture and Structure
 
-- [|] Fix date in comments || In progress...
-- [|] FIX COMMENTS PLEASE!! || In progress 
 - [ ] Make authentication and authorization
 - [ ] Make the components and their architecture more clean
 - [ ] Use some SHADCN utilities UI

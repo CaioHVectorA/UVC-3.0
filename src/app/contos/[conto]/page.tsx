@@ -1,5 +1,5 @@
-import ContainerForConto from "@/components/ContoPage/ContainerContoPage"
-import Universe from "@/components/ContoPage/InitialUniverse"
+import ContainerForConto from "@/components/conto-page/ContainerContoPage"
+import Universe from "@/components/conto-page/InitialUniverse"
 import { Serie_Type, Solo_Type } from "@/utilities/types"
 import { URL, URL_READONLY } from "@/utilities/envariables"
 import axios from "axios"

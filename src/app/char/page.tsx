@@ -1,4 +1,4 @@
-import Characters from "@/components/Characters/Char";
+import Characters from "@/components/characters/Char";
 import '../../styles/components/characters.css'
 import { Metadata } from "next";
 export default function CharacterPage() {
