@@ -37,7 +37,7 @@ export type Citacao = {
   Frase: string;
   Autor?: string;
 };
-type Atributos = {
+export type Atributos = {
   Forca: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   Agilidade: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   Resistencia: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
@@ -82,4 +82,26 @@ export type User_Type = {
   created_at: Date;
   updated_at: Date;
   image_path: string;
+}
+
+// -----------------  NEW TYPES  -----------------------
+
+export type Instance = {
+  Aparicoes: string[],
+  Biografia: string,
+  Atributos: Atributos
+  Forma: string,
+}
+
+export type Character = {
+  Imgs: string[],
+  Apelidos: string,
+  NomeVerdadeiro: string,
+  Citacoes: Citacao[],
+  Instances: Instance[],
+  Color: string,
+  isHero: boolean,
+  Equipe: string,
+  Local: string,
+  Keywords: string[]
 }

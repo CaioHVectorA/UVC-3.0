@@ -25,6 +25,7 @@ export function CharCaracter({ data }: { data: Character }) {
 }
 export default async function Characters() {
   const Characters = await getChars();
+  console.log({ Characters })
   return (
     <div className="px-8">
       {alphabet.map((letter) => (

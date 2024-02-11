@@ -6,9 +6,9 @@ import axios from "axios"
 import { api, get } from "@/lib/fetch"
 import { hists } from "@/server/mongo/models"
 import fetchData from "@/utilities/functions/FetchData"
-import { connectedPromise } from "@/server/mongo/actions"
 import { HistRepository } from "@/server/hists/HistRepository"
 import { CommentRepository } from "@/server/comment/CommentRepository"
+import { getHist } from "@/server/mongo/actions"
 type Comment = {
     content: string;
     comment_by: string;
@@ -21,9 +21,8 @@ type Comment = {
 const histRepo = new HistRepository()
 const commentRepo = new CommentRepository()
 export default async function Conto({params}: {params: {conto: string}}) {
-    await connectedPromise
     const comments = await commentRepo.get({ ref: params.conto }) as Comment[]
-    const res = await hists.findOne({ Ref: params.conto }) as unknown as Serie_Type | Solo_Type
+    const res = await getHist({ Ref: params.conto })
     const like = await histRepo.get({ ref: params.conto })
     // return <>{}</>
     return <ContainerForConto histID={like.id} Ref={params.conto} data={res} datacomments={comments}/>

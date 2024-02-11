@@ -11,6 +11,7 @@ export default function Citacoes({citacoes}: {citacoes: Citacao[]}) {
             setIndex(0)
         }
     }, [indexS])
+    if (!citacoes) return <>t</>
     return (
         <>
             <div className='notmobile overflow-hidden flex flex-nowrap w-screen items-center'>

@@ -1,20 +1,22 @@
-# Todo List
 
-## Completed or surrendered
+# Completed or surrendered
 
 - [x] Think in a structural reform, including architecture and some useless use cases
 - [-] Create a lib folder with a fetch function handler (with autoconfigured fetch...) || unnecessary
 - [X] FIX COMMENTS PLEASE!! || In progress 
 - [X] Fix date in comments || In progress...
+- [-] Think about relations (like in hist...) (and after use select counter instead (SELECT *).length) // unnecessary
 
-## Pending
+# Pending
+
+## Problems
+[ ] - Change user image to characters avatar(Hades...)
 
 ### Architecture and Structure
 
 - [ ] Make authentication and authorization
 - [ ] Make the components and their architecture more clean
 - [ ] Use some SHADCN utilities UI
-- [ ] Think about relations (like in hist...) (and after use select counter instead (SELECT *).length)
 - [ ] Think about TXT storing
 - [ ] Better security
 
