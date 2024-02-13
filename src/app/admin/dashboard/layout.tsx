@@ -11,13 +11,13 @@ export default function Layout({ children, params }: { children: React.ReactNode
     return (
         <>
             <Style />
-            <nav className=" flex justify-around bg-[var(--color-main)] shadow-2xl fixed z-40 top-0 mb-6">
-                {["chars", "hists", "subhists"].map((str) => (
+            <div className=" flex w-full py-4 justify-around bg-[var(--color-main)] shadow-2xl fixed z-40 top-0 mb-6">
+                {["hists", "chars", "subhists","hists/create", "chars/create", "subhists/create"].map((str) => (
                     <>
-                        <Link href={`/admin/dashboard/${str}`} className=" uppercase text-2xl">{str}</Link>
+                        <Link href={`/admin/dashboard/${str}`} className=" uppercase text-xl">{str}</Link>
                     </>
                 ))}
-            </nav>
+            </div>
             <main className=" mt-20">
                 {children}
             </main>

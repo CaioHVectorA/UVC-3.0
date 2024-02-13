@@ -14,10 +14,10 @@ export async function getChars() {
 export async function getHists() {
     await connectedPromise
     const data = await hists.find()
-    return data as unknown as (Serie_Type | Solo_Type)[]
+    return data
 }
 
-export async function getHist(filter: FilterQuery<any>): Promise<Solo_Type | Serie_Type> {
+export async function getHist(filter: FilterQuery<any>) {
     await connectedPromise
     const data = await hists.findOne(filter)
     return data
@@ -42,4 +42,14 @@ export async function createHist(data: any) {
 export async function createChar(data: any) {
     await connectedPromise
     await chars.create(data)
+}
+
+export async function editHist(_id: string, data: any) {
+    try {
+        await connectedPromise; // Ensure connection to the database
+        const result = await hists.updateOne({ _id }, data);
+        console.log(result); // Log the result to check for any errors
+    } catch (error) {
+        console.error("Error updating document:", error);
+    }
 }

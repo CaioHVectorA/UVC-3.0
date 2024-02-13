@@ -12,7 +12,7 @@ export default function AdminForm() {
     const onSubmit = (data: formInputs) => {
         api.post('/admin/', data).then((res) => {
             alert(res.data)
-            push('/')
+            push('/admin/dashboard')
         }).catch(err => {
             if (err.response.data) alert(err.response.data)
             console.log(err)

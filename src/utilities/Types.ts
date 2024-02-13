@@ -105,3 +105,17 @@ export type Character = {
   Local: string,
   Keywords: string[]
 }
+
+export type Relacionado = {
+  Ref: string;
+  Nome: string;
+  Img: string;
+}
+
+export type Hist = {
+  Nome: string;
+  Sinopse: string;
+  Img: string;
+  Ref: string;
+  Relacionados: Relacionado[];
+}

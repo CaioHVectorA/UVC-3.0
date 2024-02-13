@@ -27,7 +27,7 @@
 - [ ] Think better about filters
 - [ ] Make comments repliable and likeable
 
-### Frontendnp
+### Frontend
 - [ ] Better Seo, titles, description
 - [ ] Transfer to fully Tailwind based
 - [ ] Populate more characters and hists (with uncomplete or unstarted hists too!)
