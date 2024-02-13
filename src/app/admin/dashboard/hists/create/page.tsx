@@ -38,12 +38,19 @@ export default function CreateHistPage() {
     return (
         <main className=' flex flex-col items-center w-screen px-8 gap-4'>
             <input value={formState.Nome} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Nome' onChange={({ target }) => changeField('Nome', target.value)}/>
-            <input value={formState.Img} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Img' onChange={({ target }) => changeField('Img', target.value)}/>
+            <Select className=" text-black w-full" options={Object.values(RELACIONADOS).map(item => { return { value: item.Img, label: item.Nome } })} onChange={(newValue) => {
+                changeField('Img', newValue?.value || '')                            
+            }} />
             <input value={formState.Ref} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Ref' onChange={({ target }) => changeField('Ref', target.value)}/>
-            <Select />
+            <textarea rows={4} value={formState.Sinopse} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Sinopse da história - De forma objetiva do que a hstória proporciona a partir das subhists' onChange={({ target }) => changeField('Sinopse', target.value)} />
+            <Select isMulti className=" text-black w-full" options={Object.values(RELACIONADOS).map(item => { return { value: item, label: item.Nome } })} onChange={(newValue) => {
+                //@ts-ignore
+                changeField('Relacionados', newValue.map(i => { return i.value }))
+            }} />
             <button className=" w-full" onClick={() => {
                 console.log(formState)
                 createHist(formState).then(() => alert("Criado com sucesso!"))
+                setFormState(initialState)
             }}>Criar</button>
         </main>        
     )

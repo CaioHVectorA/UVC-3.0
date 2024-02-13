@@ -15,7 +15,6 @@ function Profile({n,setUI}: {n: unknown, setUI: any}) {
     const { img } = useContext(AppContext)
     //@ts-ignore
     const path = img ? img : URL + user.image_path
-    console.log({user})
     if (!user) return
     return (
         <div className=" relative flex justify-center">

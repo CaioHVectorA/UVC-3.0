@@ -1,14 +1,14 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-// @ts-ignore
-const secretKey: string = process.env.SECRET_KEY;
-export function generateToken(data: JSON) {
-  return jwt.sign(data, secretKey, { expiresIn: "1h" });
+const secretKey = process.env.SECRET_KEY || "w";
+export function generateToken(data: JSON | string) {
+  return jwt.sign(data, secretKey);
 }
 export function verifyToken(token: string) {
   try {
     return jwt.verify(token, secretKey);
   } catch (error) {
+    console.log({token, error})
     return null;
   }
 }

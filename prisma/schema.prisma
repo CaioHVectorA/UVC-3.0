@@ -19,6 +19,7 @@ model User {
   updated_at DateTime  @updatedAt
   comments   Comment[] @relation("userComments")
   image_path String    @default("assets/user_images/sample.png")
+  Admin      Admin?
 
   @@map("users")
 }
@@ -66,4 +67,10 @@ model News {
   views         Int      @default(0)
 }
 
-// Internal Data -------------------------------------------
+model Admin {
+  user       User?    @relation(fields: [userId], references: [id])
+  created_at DateTime @default(now())
+
+  userId String? @unique
+  id     String  @id @default(uuid())
+}

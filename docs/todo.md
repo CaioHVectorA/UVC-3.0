@@ -6,6 +6,7 @@
 - [X] FIX COMMENTS PLEASE!! || In progress 
 - [X] Fix date in comments || In progress...
 - [-] Think about relations (like in hist...) (and after use select counter instead (SELECT *).length) // unnecessary
+- [X] Make authentication and authorization
 
 # Pending
 
@@ -14,7 +15,6 @@
 
 ### Architecture and Structure
 
-- [ ] Make authentication and authorization
 - [ ] Make the components and their architecture more clean
 - [ ] Use some SHADCN utilities UI
 - [ ] Think about TXT storing
@@ -27,7 +27,7 @@
 - [ ] Think better about filters
 - [ ] Make comments repliable and likeable
 
-### Frontend
+### Frontendnp
 - [ ] Better Seo, titles, description
 - [ ] Transfer to fully Tailwind based
 - [ ] Populate more characters and hists (with uncomplete or unstarted hists too!)

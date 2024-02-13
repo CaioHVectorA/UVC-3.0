@@ -25,6 +25,7 @@ export function CharCaracter({ data }: { data: Character }) {
 }
 export default async function Characters() {
   const Characters = await getChars();
+  return <>{JSON.stringify(Characters)}</>
   console.log({ Characters })
   return (
     <div className="px-8">

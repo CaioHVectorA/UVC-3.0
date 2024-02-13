@@ -38,3 +38,8 @@ export async function createHist(data: any) {
     await connectedPromise
     await hists.create(data)
 }
+
+export async function createChar(data: any) {
+    await connectedPromise
+    await chars.create(data)
+}
