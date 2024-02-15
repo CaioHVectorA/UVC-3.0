@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         value: generateToken(adm.id),
         httpOnly: true,
         sameSite: 'strict',
-        maxAge: 3600,
+        maxAge: 3600 * 10,
     })
     return response
 }

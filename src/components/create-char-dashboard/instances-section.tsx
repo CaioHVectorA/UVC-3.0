@@ -18,7 +18,7 @@ export function InstanceSection({ formState, setFormState }: { formState: Charac
                 tempState.Instances[index].Forma = target.value
                 setFormState(tempState)
             }}/>
-            <Select isMulti className=" text-black" options={Object.values(RELACIONADOS).map(item => { return { value: item, label: item.Nome } })} onChange={(newValue) => {
+            <Select isMulti defaultValue={instance.Aparicoes.map(i => { return { value: i, label: i } } )} className=" text-black" options={Object.values(RELACIONADOS).map(item => { return { value: item, label: item.Nome } })} onChange={(newValue) => {
                 const tempState = { ...formState }
                 //@ts-ignore
                 tempState.Instances[index].Aparicoes = newValue

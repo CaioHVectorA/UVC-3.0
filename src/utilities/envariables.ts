@@ -12,7 +12,7 @@ export const IMGS = {
   CONGREGADORES:
     "https://live.staticflickr.com/65535/52738545646_566b24c59d_w.jpg",
   ARNER: "https://live.staticflickr.com/65535/52848841926_faac7572f2_w.jpg",
-};
+} as const;
 
 // export const URL = "http://localhost:3333/";
 //INTELIGENT BENZ

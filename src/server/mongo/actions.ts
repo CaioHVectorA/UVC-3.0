@@ -1,14 +1,13 @@
 "use server"
 import mongoose, { FilterQuery } from "mongoose"
 import { chars, hists, subHists } from "./models"
-import { Character } from "@/utilities/functions/MockupCharacter"
-import { Serie_Type, Solo_Type } from "@/utilities/types"
+import { Character, Serie_Type, Solo_Type } from "@/utilities/types"
 
 const connectedPromise = mongoose.connect(process.env.MONGO_URI as string)
 export async function getChars() {
     await connectedPromise
     const data = await chars.find()
-    return data as unknown as Character[]
+    return data as unknown as (Character & { id: string })[]
 }
 
 export async function getHists() {
@@ -46,10 +45,18 @@ export async function createChar(data: any) {
 
 export async function editHist(_id: string, data: any) {
     try {
-        await connectedPromise; // Ensure connection to the database
+        await connectedPromise;
         const result = await hists.updateOne({ _id }, data);
-        console.log(result); // Log the result to check for any errors
+        console.log(result);
     } catch (error) {
         console.error("Error updating document:", error);
     }
+}
+export async function editChar(_id: string, data: any) {
+    await connectedPromise
+    const result = await chars.updateOne({ _id }, data)
+}
+export async function editSubHist(_id: string, data: any) {
+    await connectedPromise
+    const result = await subHists.updateOne({ _id }, data)
 }

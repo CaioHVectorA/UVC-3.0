@@ -1,13 +1,13 @@
 "use client"
-
 import { InputList } from "@/components/Global/InputList"
 import Citacoes from "@/components/character-page-components/Citacao"
 import { CitacoesSection, InstanceSection } from "@/components/create-char-dashboard"
-import { createChar } from "@/server/mongo/actions"
+import { createChar, editChar } from "@/server/mongo/actions"
 import { IMGS } from "@/utilities/envariables"
 import { RELACIONADOS } from "@/utilities/hists-consts"
 import { Atributos, Character, Citacao, Instance } from "@/utilities/types"
 import { ValueOf } from "next/dist/shared/lib/constants"
+import { useSearchParams } from "next/navigation"
 import { ChangeEvent, SyntheticEvent, useCallback, useState } from "react"
 import { GrClose } from "react-icons/gr"
 import Select from 'react-select'
@@ -25,8 +25,23 @@ const initialState = {
     Keywords: [],
     Local: "",
 } satisfies Character
-export default function Page() {
-    const [formState, setFormState] = useState<Character>(initialState)
+export default function Page({ params }: { params: { id: string } }) {
+    const searchParams = useSearchParams()
+    const importedState = {
+        Apelidos: searchParams.get('Apelidos'),
+        Citacoes: (JSON.parse(searchParams.get('Citacoes') || '[]')),
+        Color: searchParams.get('Color'),
+        Equipe: searchParams.get('Equipe'),
+        id: searchParams.get('id'),
+        Imgs: JSON.parse(searchParams.get('Imgs') || '[]'),
+        Instances: JSON.parse(searchParams.get('Instances') || '[]'),
+        isHero: (JSON.parse(searchParams.get('isHero') || 'false')) as boolean,
+        Keywords: searchParams.getAll('Keywords'),
+        NomeVerdadeiro: searchParams.get('NomeVerdadeiro'),
+        Local: searchParams.get('Local')
+    } as Character
+    console.log(importedState)
+    const [formState, setFormState] = useState<Character>(importedState)
     const handleChangeForm = useCallback((key: keyof Character, value: Instance | string | string[] | Citacao | boolean) => {
         const tempState = {...formState}
         //@ts-ignore
@@ -45,7 +60,7 @@ export default function Page() {
                     ))}
                 <div className=" flex gap-6">
                     <label htmlFor="isHero">É herói?</label>
-                    <input type="checkbox" name="isHero" onChange={(e) => handleChangeForm('isHero', e.target.checked)}/>
+                    <input defaultChecked={formState.isHero} type="checkbox" name="isHero" onChange={(e) => handleChangeForm('isHero', e.target.checked)}/>
                 </div>
             </div>
             <div className=" mt-6 w-full">
@@ -58,13 +73,13 @@ export default function Page() {
             <InstanceSection formState={formState} setFormState={setFormState }/>
             <div className=" mt-6 w-full">
                 <label>Imagens (LINKS)</label>
-                <Select isMulti onChange={(str) => {
+                <Select defaultValue={formState.Imgs.map(i => { return { label: Object.keys(IMGS).find((key) => IMGS[key as keyof typeof IMGS] === i), value: i } })} isMulti onChange={(str) => {
                     const imgArr = str.map(i => { return i.value })
                     handleChangeForm('Imgs', imgArr)
                 }} className=" text-black" options={Object.values(IMGS).map((img, index) => { return { label: Object.keys(IMGS)[index], value: img } })}/>
             </div>
             <CitacoesSection formState={formState} setFormState={setFormState} />
-            <button onClick={() => createChar(formState).then(() => alert("Inserido no sistema!"))}>Enviar</button>
+            <button onClick={() => editChar(params.id, formState).then(() => alert("Inserido no sistema!"))} className=" my-4">Editar</button>
         </main>
     )
 }

@@ -30,8 +30,8 @@ export function CitacoesSection({ formState, setFormState }: { formState: Charac
                 </>
         ))}
         <button onClick={() => {
-            //@ts-ignore
-            handleChangeForm('Citacoes', [...formState.Citacoes, { Frase: '', Autor: '' }])
+
+            setFormState({...formState, Citacoes: [...formState.Citacoes, { Frase: '', Autor: '' }]})
         }}>Criar citação</button>
     </div>
     )

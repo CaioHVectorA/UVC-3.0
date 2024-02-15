@@ -118,4 +118,16 @@ export type Hist = {
   Img: string;
   Ref: string;
   Relacionados: Relacionado[];
+  // id: string
+}
+
+
+export type SubHist =  {
+  Nome: string;
+  Img: string;
+  Ref: string;
+  Source: string;
+  Sinopse: string;
+  Categorias: string[];
+  id: string
 }
