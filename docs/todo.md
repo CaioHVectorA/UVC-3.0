@@ -3,26 +3,22 @@
 
 - [x] Think in a structural reform, including architecture and some useless use cases
 - [-] Create a lib folder with a fetch function handler (with autoconfigured fetch...) || unnecessary
-- [X] FIX COMMENTS PLEASE!! || In progress 
-- [X] Fix date in comments || In progress...
+- [X] FIX COMMENTS PLEASE!!
+- [X] Fix date in comments 
 - [-] Think about relations (like in hist...) (and after use select counter instead (SELECT *).length) // unnecessary
 - [X] Make authentication and authorization
-
-# Pending
-
-## Problems
-[ ] - Change user image to characters avatar(Hades...)
+- [X] Story/character client for creating
+- [X] - Change user image to characters avatar(Hades...)
+- [X] Think about Texts storing [In database as HTML]
 
 ### Architecture and Structure
 
 - [ ] Make the components and their architecture more clean
 - [ ] Use some SHADCN utilities UI
-- [ ] Think about TXT storing
 - [ ] Better security
 
 ### User Experience
 - [ ] Switch some useStates do URL state
-- [ ] Story/character client for creating
 - [ ] Make search better (enter press support, other UX things...)
 - [ ] Think better about filters
 - [ ] Make comments repliable and likeable

@@ -41,16 +41,16 @@ export class UserRepository extends Repository {
     async updateUser({ id, imagePath, password, username }: UserUpType): Promise<ProtectedUserApiResponse> {
         const user = await this.prisma.user.findUnique({ where: { id } })
         if (!user) return new this.ServerError('Usuário não encontrado.')
-        let image_path;
-        if (imagePath) {
-            const path = `assets/user_images/${id}.png`
-            image_path = path
-            await saveImage(imagePath, process.cwd()+'/public/'+path)
-        }
+        // let image_path;
+        // if (imagePath) {
+        //     const path = `assets/user_images/${id}.png`
+        //     image_path = path
+        //     await saveImage(imagePath, process.cwd()+'/public/'+path)
+        // }
         const newUser = {
             username: username || user.username,
             password: password || user.password,
-            image_path: image_path || user.image_path
+            image_path: imagePath || user.image_path
         }
         const updatedUser = await this.prisma.user.update({ where: { id }, data: newUser })
         return {

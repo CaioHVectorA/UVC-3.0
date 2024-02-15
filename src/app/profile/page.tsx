@@ -2,7 +2,7 @@
 import { LOGIN_LOCAL_STORAGE, URL } from "@/utilities/envariables"
 import getUserData from "@/utilities/functions/getUserData"
 import axios from "axios"
-import UserDataView from "./userDataView"
+import { UserDataView } from "../../components/profile/user-dashboard"
 import { useEffect, useState } from "react"
 import { User_Type } from "@/utilities/types"
 import LoginModal from "@/components/Login"
