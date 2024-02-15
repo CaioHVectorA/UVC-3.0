@@ -87,7 +87,7 @@ export type User_Type = {
 // -----------------  NEW TYPES  -----------------------
 
 export type Instance = {
-  Aparicoes: string[],
+  Aparicoes: Relacionado[],
   Biografia: string,
   Atributos: Atributos
   Forma: string,

@@ -1,5 +1,5 @@
 import { RELACIONADOS } from "@/utilities/hists-consts"
-import { Atributos, Character } from "@/utilities/types"
+import { Atributos, Character, Relacionado } from "@/utilities/types"
 import { GrClose } from "react-icons/gr"
 import Select from 'react-select'
 export function InstanceSection({ formState, setFormState }: { formState: Character, setFormState: (newValue: Character) => void }) {
@@ -18,10 +18,11 @@ export function InstanceSection({ formState, setFormState }: { formState: Charac
                 tempState.Instances[index].Forma = target.value
                 setFormState(tempState)
             }}/>
-            <Select isMulti defaultValue={instance.Aparicoes.map(i => { return { value: i, label: i } } )} className=" text-black" options={Object.values(RELACIONADOS).map(item => { return { value: item, label: item.Nome } })} onChange={(newValue) => {
+            <Select isMulti defaultValue={formState.Instances[index].Aparicoes.map((i) => { return { value: i, label: i.Nome } } )} className=" text-black" options={Object.values(RELACIONADOS).map(item => { return { value: item, label: item.Nome } })} onChange={(newValue) => {
                 const tempState = { ...formState }
                 //@ts-ignore
-                tempState.Instances[index].Aparicoes = newValue
+                tempState.Instances[index].Aparicoes = newValue.map(i => { return i.value })
+                console.log(tempState)
                 setFormState(tempState)                            
             }} />
             <textarea className=" mt-2 w-full rounded-md py-1 px-1 text-black" value={formState.Instances[index].Biografia} onChange={({ target }) => {

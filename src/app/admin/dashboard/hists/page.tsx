@@ -26,7 +26,7 @@ export default async function HistsDashboard() {
                     <div className=" flex flex-col mt-2">
                         <h3 className=" text-start">{Nome}</h3>
                         <p className=" w-8/12">{Sinopse}</p>
-                        <Link className=" bg-[var(--color-main)] w-8/12 py-2 rounded-sm uppercase text-center" target="_blank" href={`/admin/dashboards/hists/edit/${id}?${querystring.stringify({ Nome, Sinopse, Img, Relacionados: JSON.stringify(Relacionados), Ref })}`}>Editar</Link>
+                        <Link className=" bg-[var(--color-main)] w-8/12 py-2 rounded-sm uppercase text-center" target="_blank" href={`/admin/dashboard/hists/edit/${id}?${querystring.stringify({ Nome, Sinopse, Img, Relacionados: JSON.stringify(Relacionados), Ref })}`}>Editar</Link>
                     </div>
                 </div>
             ))}
