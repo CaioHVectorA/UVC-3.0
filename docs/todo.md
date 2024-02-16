@@ -21,20 +21,31 @@
 - [ ] Switch some useStates do URL state
 - [ ] Make search better (enter press support, other UX things...)
 - [ ] Think better about filters
-- [ ] Make comments repliable and likeable
+- [⏲️] Make comments repliable and likeable || unnecessary, but thinkable with the platform get bigger 
 
 ### Frontend
 - [ ] Better Seo, titles, description
+    [ ] SEO - do checklist
+    [ ] Think about dynamic title, study the next metadata API
+    [ ] Promocional images
 - [ ] Transfer to fully Tailwind based
 - [ ] Populate more characters and hists (with uncomplete or unstarted hists too!)
 - [ ] Use Performance Hooks
 - [ ] Make the home page better and with more content
-
+- [ ] Remake the chars and hists page.
+- [ ] Make subhists page.
 ### Testing
 
 - [ ] Frontend unit tests (try)
 - [ ] Backend Routes test
+    [X] Starting setup
+    [X] User test suits
+    [ ] News test suits
+    [ ] Admin test suits
+    [ ] Comment test suits
+    [ ] Like test suits 
 - [ ] Frontend E2E
+    [ ] Starting setup
 
 ### Miscellaneous
 

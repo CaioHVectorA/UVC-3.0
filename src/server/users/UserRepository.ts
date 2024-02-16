@@ -59,4 +59,9 @@ export class UserRepository extends Repository {
             image_path: newUser.image_path
         }
     }
+    async deleteUser(id: string): Promise<boolean> {
+        const user = await this.prisma.user.delete({ where: { id } })
+        if (!user) return false
+        return true
+    }
 }

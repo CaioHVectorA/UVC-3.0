@@ -16,7 +16,7 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json(response, { status: response.status || 200 })
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     const response = await userRepository.getUsers()
     //@ts-ignore
     return NextResponse.json(response, { status: response.status || 200 }) 
