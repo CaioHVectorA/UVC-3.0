@@ -1,7 +1,7 @@
 import { IMGS } from "@/utilities/envariables"
 import Link from "next/link"
 import '../../styles/components/contosPreview.css'
-export default function ContosPreview() {
+export function ContosPreview() {
     const data: {imageSrc: string, link: string}[] = [
         { imageSrc: IMGS.RRH, link: '/contos/SE_RRH' },
         { imageSrc: IMGS.GUARDIOES, link: '/contos/SE_GUA' },

@@ -1,6 +1,6 @@
 "use client"
 import '../../styles/components/nltSection.css'
-export default function NewsletterSection() {
+export function NewsletterSection() {
     return (
         <section className='BGcolorMain'>
             <h1>SE INSCREVA</h1>

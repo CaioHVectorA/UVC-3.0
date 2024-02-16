@@ -14,7 +14,7 @@
 ### Architecture and Structure
 
 - [ ] Make the components and their architecture more clean
-- [ ] Use some SHADCN utilities UI
+- [/] Use some SHADCN utilities UI || Installed
 - [ ] Better security
 
 ### User Experience
@@ -40,4 +40,4 @@
 
 - [ ] Books page
 - [ ] Make a better logo, make better hist logos
-- [ ] Think about favicon
+- [ ] Think about faviconu

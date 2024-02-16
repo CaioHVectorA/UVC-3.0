@@ -2,7 +2,7 @@ import {useEffect} from 'react'
 import "../../styles/components/gradient.css";
 import { ChangeTheme } from "../../utilities/functions/ChangeTheme";
 import Link from 'next/link';
-export default function GradientAndTexts() {
+export function GradientSectionWithTests() {
 
   return (
     <div className="container">

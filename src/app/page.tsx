@@ -1,7 +1,4 @@
-import GradientAndTexts from "@/components/initial-page/Gradient"
-import ImageInitialSection from "@/components/initial-page/ImageInitialSection"
-import ContosPreview from "@/components/initial-page/contosPreview"
-import NewsletterSection from "@/components/initial-page/newsLetterSection"
+import { ContosPreview, GradientSectionWithTests, ImageInitialSection, NewsletterSection } from "@/components/initial-page/"
 import { Metadata } from "next";
 // export async function generateMetadata(): Promise<Metadata> {
 //   return {
@@ -13,7 +10,7 @@ export default function Home() {
   return (
     <>
     <div className=" relative">
-      <GradientAndTexts />
+    <GradientSectionWithTests />
     <ImageInitialSection />
     </div>
     <ContosPreview />
