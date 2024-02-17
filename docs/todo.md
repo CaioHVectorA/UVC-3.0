@@ -36,13 +36,14 @@
 - [ ] Make subhists page.
 ### Testing
 
-- [ ] Frontend unit tests (try)
+- [ ] Frontend unit tests
+    [ ] Starting setup
 - [/] Backend Routes test
     [X] Starting setup
     [X] User test suits
     [X] News test suits
     [ ] Admin test suits
-    [ ] Comment test suits
+    [X] Comment test suits
     [ ] Like test suits 
 - [ ] Frontend E2E
     [ ] Starting setup
