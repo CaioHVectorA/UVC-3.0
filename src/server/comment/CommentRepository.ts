@@ -6,10 +6,10 @@ import { ServerError } from "../ServerError";
 import { ServerResponse } from "@/utilities/server-types";
 
 export class CommentRepository extends Repository {
-    async create({ img_author, comment_by, comment_in, content, username_author }: createCommentDTO): Promise<ServerResponse<Comment>> {
-        if (!content || !comment_by || !comment_in || !username_author) return new this.ServerError('Sem todas as credenciais')
+    async create({ comment_by, comment_in, content }: createCommentDTO): Promise<ServerResponse<Comment>> {
+        if (!content || !comment_by || !comment_in) return new this.ServerError('Sem todas as credenciais')
         const comment = await this.prisma.comment.create({
-          data: { content, comment_by, comment_in, username_author, author_img: img_author },
+          data: { content, comment_by, comment_in },
         });
         return comment;
     }
@@ -29,8 +29,7 @@ export class CommentRepository extends Repository {
     }
     async get({ ref }: { ref: string }): Promise<ServerResponse<Comment[]>> {
         if (!ref) return new this.ServerError("Sem referência!")
-        const comment_in = ref
-        const comments = await this.prisma.comment.findMany({ where: { comment_in } })
+        const comments = await this.prisma.$queryRaw`SELECT C.content, C.created_at, C.id, U.username as username_author, U.image_path as author_img FROM comments C INNER JOIN users U ON U.id = C.comment_by WHERE C.comment_in = ${ref}` as Comment[]
         return comments
     }
 

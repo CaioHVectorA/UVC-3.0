@@ -16,8 +16,6 @@ let user: User;
 describe('Comment endpoints', () => {
     beforeAll(async () => {
         user = await prisma.user.create({ data: { username: 'T', password: 'T' } })
-        comment.img_author = user.image_path
-        comment.username_author = user.username
         comment.comment_by = user.id
     })
     test('Deve criar um comentário com sucesso', async () => {
@@ -30,7 +28,7 @@ describe('Comment endpoints', () => {
         expect(response.ok).toBe(true)
         const data = await response.json() as Comment
         expect(data).toBeTruthy();
-        ['author_img', 'comment_by', 'comment_in', 'content', 'created_at', 'histId', 'id', 'username_author'].forEach(expect(data).toHaveProperty)
+        ['comment_by', 'comment_in', 'content', 'created_at', 'histId', 'id',].forEach(expect(data).toHaveProperty)
         commentId = data.id
     })
     test('Deve selecionar todos os comentários de uma página com sucesso', async () => {
@@ -44,14 +42,15 @@ describe('Comment endpoints', () => {
     test('Deve editar o comentário com sucesso', async () => {
         const request = new NextRequest(LOCAL_URL(`/api/comment/${commentId}`), {
             method: 'PUT',
-            body: JSON.stringify({ content: 'Meu comentário editado!' })
+            body: JSON.stringify({ newContent: 'Meu comentário editado!' })
         })
         const response = await PUT(request)
         expect(response.status).toBe(200)
         expect(response.ok).toBe(true)
         const data = await response.json()
         expect(data).toBeTruthy();
-        ['author_img', 'comment_by', 'comment_in', 'content', 'created_at', 'histId', 'id', 'username_author'].forEach(expect(data).toHaveProperty)
+        ['comment_by', 'comment_in', 'content', 'created_at', 'histId', 'id',].forEach(expect(data).toHaveProperty)
+        expect(data.content).toBe('Meu comentário editado!')
     })
     test('Deve deletar o comentário com sucesso', async () => {
         const request = new NextRequest(LOCAL_URL(`/api/comment/${commentId}`), {

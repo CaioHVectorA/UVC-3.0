@@ -24,16 +24,16 @@ model User {
 }
 
 model Comment {
-  id              String   @id @default(uuid())
-  content         String
-  comment_by      String
-  comment_in      String
-  username_author String
-  author_img      String
-  created_at      DateTime @default(now())
-  comments        User     @relation("userComments", fields: [comment_by], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  Hist            Hist?    @relation(fields: [histId], references: [id])
-  histId          String?
+  id         String   @id @default(uuid())
+  content    String
+  comment_by String
+  comment_in String
+  // username_author String
+  // author_img      String
+  created_at DateTime @default(now())
+  user       User     @relation("userComments", fields: [comment_by], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  Hist       Hist?    @relation(fields: [histId], references: [id])
+  histId     String?
 
   @@map("comments")
 }
@@ -47,6 +47,8 @@ model Hist {
   likesNum   Int       @default(0)
   comments   Comment[]
   likes      Like[]    @relation("userLikes")
+
+  @@map("hists")
 }
 
 model Like {
@@ -54,6 +56,8 @@ model Like {
   histId String
   hist   Hist   @relation("userLikes", fields: [histId], references: [id], onDelete: Cascade)
   userId String
+
+  @@map("likes")
 }
 
 model News {
@@ -64,6 +68,8 @@ model News {
   image         String
   create_at     DateTime @default(now())
   views         Int      @default(0)
+
+  @@map("news")
 }
 
 model Admin {
@@ -72,4 +78,6 @@ model Admin {
 
   userId String? @unique
   id     String  @id @default(uuid())
+
+  @@map("admins")
 }
