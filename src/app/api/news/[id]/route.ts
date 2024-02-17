@@ -9,8 +9,8 @@ export async function DELETE(req: NextRequest) {
 }
 export async function GET(req: NextRequest) {
     const id = parseInt(req.url.split("/").pop() || "")
-    const found = await repo.prisma.$queryRaw`SELECT * FROM News WHERE id = ${id}` as New[]
-    return NextResponse.json(found[0])
+    const found = await repo.prisma.news.findFirst({ where: { id } })
+    return NextResponse.json(found)
 }
 export async function PUT(req: NextRequest) {
     const id = parseInt(req.url.split("/").pop() || "")

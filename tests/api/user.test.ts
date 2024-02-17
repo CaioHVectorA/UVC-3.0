@@ -8,7 +8,7 @@ const user = { username: 'MeuNovoUsuário', password: 'minhasenhalegal' }
 
 let userId: string;
 
-describe('User routes APIs', () => {
+describe('User endpoints', () => {
     test('Deve enviar todos os usuários', async () => {
         const response = await GET() as Response
         const data = await response.json()

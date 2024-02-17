@@ -37,10 +37,10 @@
 ### Testing
 
 - [ ] Frontend unit tests (try)
-- [ ] Backend Routes test
+- [/] Backend Routes test
     [X] Starting setup
     [X] User test suits
-    [ ] News test suits
+    [X] News test suits
     [ ] Admin test suits
     [ ] Comment test suits
     [ ] Like test suits 
@@ -51,4 +51,4 @@
 
 - [ ] Books page
 - [ ] Make a better logo, make better hist logos
-- [ ] Think about faviconu
+- [ ] Think about favicon
