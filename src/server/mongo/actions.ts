@@ -2,35 +2,40 @@
 import mongoose, { FilterQuery } from "mongoose"
 import { chars, hists, subHists } from "./models"
 import { Character, Serie_Type, Solo_Type } from "@/utilities/types"
-
 const connectedPromise = mongoose.connect(process.env.MONGO_URI as string)
+
+
+const send = (data: any) => JSON.parse(JSON.stringify(data)) // debug for nextJS + mongoDB data
+
+
 export async function getChars() {
     await connectedPromise
     const data = await chars.find()
-    return data as unknown as (Character & { id: string })[]
+    return send(data) as unknown as (Character & { id: string })[]
 }
 
 export async function getHists() {
     await connectedPromise
     const data = await hists.find()
-    return data
+    return send(data)
 }
 
 export async function getHist(filter: FilterQuery<any>) {
     await connectedPromise
     const data = await hists.findOne(filter)
-    return data
+    return send(data)
 }
 
 export async function getSubHists() {
     await connectedPromise
     const data = await subHists.find()
-    return data // todo - add type
+    return send(data) // todo - add type
 }
 
 export async function createSubHist(data: any) {
     await connectedPromise
-    await subHists.create(data)
+    const response = await subHists.create(data)
+    return send(response)._id
 }
 
 export async function createHist(data: any) {
@@ -59,4 +64,12 @@ export async function editChar(_id: string, data: any) {
 export async function editSubHist(_id: string, data: any) {
     await connectedPromise
     const result = await subHists.updateOne({ _id }, data)
+}
+
+
+export async function addSubhistToHist(Ref: string, newSubHistId: string) {
+    await connectedPromise
+    console.log('Tentou atualizar')
+    await hists.updateOne({ Ref }, { $push: { Subhists: newSubHistId } })
+    console.log('Teoricamente Atualizou!')
 }

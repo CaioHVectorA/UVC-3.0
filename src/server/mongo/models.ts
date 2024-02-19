@@ -30,6 +30,7 @@ const getHistModel = () => {
         Ref: String,
         Relacionados: [{ Ref: String, Nome: String, Img: String }],
         Categorias: [String],
+        Subhists: [String],
     }, { timestamps: true }),"hists")
 }
 const getSubhitModel = () => {

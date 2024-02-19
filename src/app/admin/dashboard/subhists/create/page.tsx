@@ -3,7 +3,7 @@ import Select from 'react-select'
 import { useCallback, useState } from "react"
 import { RELACIONADOS } from '@/utilities/hists-consts'
 import { subHists } from '@/server/mongo/models'
-import { createSubHist } from '@/server/mongo/actions'
+import { addSubhistToHist, createSubHist } from '@/server/mongo/actions'
 import { saveFile } from '@/server/saveFile'
 type formProps = {
     Nome: string,
@@ -50,7 +50,7 @@ console.log(formState)
             }}/>
     <div className=' max-h-[16rem] overflow-hidden' dangerouslySetInnerHTML={{ __html: formState.Source }}></div>
         <button className=' w-full' onClick={async () => {
-            await createSubHist(formState)
+            await createSubHist(formState).then(id => addSubhistToHist(formState.Ref, id))
             alert("Inserido no sistema  !")
         }}>Enviar</button>
         </main>

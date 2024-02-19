@@ -121,6 +121,7 @@ export type Hist = {
   Categorias: string[]
   // id: string
   createdAt: string
+  Subhists: string[]
 }
 
 

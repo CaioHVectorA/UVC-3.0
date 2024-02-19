@@ -2,6 +2,8 @@
 import { Hist } from "@/utilities/types";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 // import { useSearchParams } from "next/navigation";
 
 function filterByCategory(filter: string | null) {
@@ -59,11 +61,25 @@ export function HistCards({ data }: { data: Hist[] }) {
     .sort(orderItems(order))
     return (
         <>
-        {filtered.map(({ Img, Nome, Ref }) => (
-            <Link href={`/contos/${Ref}`} className=" w-full hover:scale-105">
-                <img src={Img} className=" w-full"/>
+        {filtered.map(({ Img, Nome, Ref, Subhists, Categorias, Sinopse }) => (
+            <li className=" w-full group hover:scale-105">
+                <div className=" w-full relative">
+                    <div className=" absolute top-0 w-full h-full bg-black bg-opacity-80 hidden group-hover:flex flex-col px-6 items-center py-8 justify-between">
+                        <h3 className=" text-white">{Subhists.length} Histórias</h3>
+                        <div>
+                            <p className=" text-white text-sm">{Sinopse}</p>
+                            <div className=" flex gap-2 flex-wrap">
+                                {Categorias.map(i => <Badge className=" text-white">{i}</Badge>)}
+                            </div>
+                        </div>
+                        <Button asChild className=" mt-4">
+                            <Link href={`/contos/${Ref}`} className=" text-white uppercase w-full">Acessar</Link>
+                        </Button>
+                    </div>
+                    <img src={Img} className=" w-full"/>
+                </div>
                 <h3>{Nome}</h3>
-            </Link>
+            </li>
         ))}
         </>
     )
