@@ -24,7 +24,7 @@ export default function AdminForm() {
             <label>Nome de usuário</label>
             <input className='input' {...register("username")} /> 
             <label>Código de acesso</label>
-            <input className='input' {...register("acess_code")} />
+            <input type='password' className='input' {...register("acess_code")} />
             <input type='submit'/> 
         </form>
     )

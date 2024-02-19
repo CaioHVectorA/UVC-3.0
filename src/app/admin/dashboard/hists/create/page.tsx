@@ -14,7 +14,8 @@ type formProps = {
     Sinopse: string,
     Img: string,
     Ref: string,
-    Relacionados: { Ref: string, Img: string, Nome: string }[]
+    Relacionados: { Ref: string, Img: string, Nome: string }[],
+    Categorias: { value: string, label: string }[]
 }
 const initialState: formProps = {
     Nome: '',
@@ -22,10 +23,13 @@ const initialState: formProps = {
     Img: '',
     Ref: '',
     Relacionados: [],
+    Categorias: []
 }
 const relacionadosData = Object.values(RELACIONADOS).map(i => {
     return { label: `${i.Ref} - ${i.Nome}`, value: i }
 })
+const categoriesData = ["Drama", "Aventura", "Ação", "Violência", "Sci-Fi", "Gestão"].map((str) => {return { value: str, label: str } } )
+
 export default function CreateHistPage() {
     const [formState, setFormState] = useState<formProps>(initialState)
     const changeField = useCallback((key: keyof formProps, newValue: string | string[]) => {
@@ -47,9 +51,11 @@ export default function CreateHistPage() {
                 //@ts-ignore
                 changeField('Relacionados', newValue.map(i => { return i.value }))
             }} />
+            <Select placeholder="Categorias" className=' text-black w-full' isMulti name='Categories' options={categoriesData} onChange={(newValue: any) => {
+                changeField('Categorias', newValue)
+            }}/>
             <button className=" w-full" onClick={() => {
-                console.log(formState)
-                createHist(formState).then(() => alert("Criado com sucesso!"))
+                createHist({...formState, Categorias: formState.Categorias.map(i => { return i.value })}).then(() => alert("Criado com sucesso!"))
                 setFormState(initialState)
             }}>Criar</button>
         </main>        

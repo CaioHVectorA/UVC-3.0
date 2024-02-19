@@ -12,7 +12,8 @@ type formProps = {
     Sinopse: string,
     Img: string,
     Ref: string,
-    Relacionados: { Ref: string, Img: string, Nome: string }[]
+    Relacionados: { Ref: string, Img: string, Nome: string }[],
+    Categorias: { value: string, label: string }[]
 }
 const initialState: formProps = {
     Nome: '',
@@ -20,10 +21,13 @@ const initialState: formProps = {
     Img: '',
     Ref: '',
     Relacionados: [],
+    Categorias: []
 }
 const relacionadosData = Object.values(RELACIONADOS).map(i => {
     return { label: `${i.Ref} - ${i.Nome}`, value: i }
 })
+const categoriesData = ["Drama", "Aventura", "Ação", "Violência", "Sci-Fi", "Gestão"].map((str) => {return { value: str, label: str } } )
+
 export default function CreateHistPage({ params }: { params: { id: string } }) {
     const { get } = useSearchParams()
     console.log(get('Nome'))
@@ -33,6 +37,7 @@ export default function CreateHistPage({ params }: { params: { id: string } }) {
         Img: get("Img") || '',
         Ref: get('Ref') || '',
         Relacionados: JSON.parse(get('Relacionados') || "[]"),
+        Categorias: JSON.parse(get('Categorias') || "[]")
     }
     const [formState, setFormState] = useState<formProps>(importedState)
     const changeField = useCallback((key: keyof formProps, newValue: string | string[]) => {
@@ -41,7 +46,6 @@ export default function CreateHistPage({ params }: { params: { id: string } }) {
         tempState[key] = newValue
         setFormState(tempState)
     }, [formState])
-    console.log(formState)
     return (
         <main className=' flex flex-col items-center w-screen px-8 gap-4'>
             <input value={formState.Nome} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Nome' onChange={({ target }) => changeField('Nome', target.value)}/>
@@ -54,11 +58,14 @@ export default function CreateHistPage({ params }: { params: { id: string } }) {
                 //@ts-ignore
                 changeField('Relacionados', newValue.map(i => { return i.value }))
             }} />
+            <Select placeholder="Categorias" defaultValue={formState.Categorias.map(item => { return { label: item, value: item } })} className=' text-black w-full' isMulti name='Categorias' options={categoriesData} onChange={(newValue: any) => {
+                changeField('Categorias', newValue)
+                }}/>
             <button className=" w-full" onClick={() => {
                 console.log(formState)
                 editHist(params.id, formState).then(() => alert("Editado com sucesso!"))
                 setFormState(initialState)
             }}>Editar</button>
-        </main>        
+        </main>
     )
 }

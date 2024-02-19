@@ -118,7 +118,9 @@ export type Hist = {
   Img: string;
   Ref: string;
   Relacionados: Relacionado[];
+  Categorias: string[]
   // id: string
+  createdAt: string
 }
 
 

@@ -14,6 +14,9 @@
 ### Architecture and Structure
 
 - [ ] Make the components and their architecture more clean
+    [/] - Initial Page
+    [ ] - Hist page
+    [ ] -
 - [/] Use some SHADCN utilities UI || Installed
 - [ ] Better security
 

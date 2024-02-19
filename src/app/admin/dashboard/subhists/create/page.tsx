@@ -11,7 +11,6 @@ type formProps = {
     Sinopse: string,
     Ref: string,
     Source: string
-    Categories: { value: string, label: string }[],
 }
 const initialState = {
     Nome: '',
@@ -19,9 +18,7 @@ const initialState = {
     Ref: '',
     Sinopse: '',
     Source: 'N/A',
-    Categories: [],
 } as formProps
-const categoriesData = ["Drama", "Aventura", "Ação", "Violência", "Sci-Fi", "Gestão"].map((str) => {return { value: str, label: str } } )
 export default function CreateSubhistPage() {
     const [formState, setFormState] = useState<formProps>(initialState)
     const changeField = useCallback((key: keyof formProps, newValue: string | string[]) => {
@@ -30,7 +27,6 @@ export default function CreateSubhistPage() {
         tempState[key] = newValue
         setFormState(tempState)
     }, [formState])
-    //todo : add a categories data
     const submitFile = useCallback(async (file: File) => {
         const reader = new FileReader()
         reader.onload = (e) => {
@@ -53,17 +49,8 @@ console.log(formState)
                 submitFile(e.target.files[0])
             }}/>
     <div className=' max-h-[16rem] overflow-hidden' dangerouslySetInnerHTML={{ __html: formState.Source }}></div>
-        <Select placeholder="Categories" className=' text-black w-full' isMulti name='Categories' options={categoriesData} onChange={(newValue: any) => {
-            changeField('Categories', newValue)
-        }}/>
         <button className=' w-full' onClick={async () => {
-            // console.log(formState.Categories)
-            const data = {...formState, Categorias: formState.Categories.map(i => {return i.value})}
-            // const { Categories: cat, Img, Nome, Ref, Relacionados: rel } = formState
-            // const Categories = cat.map(i => i.value)
-            // const Relacionados = rel.map(i => i.value)
-            // console.log(Relacionados, rel)
-            await createSubHist(data)
+            await createSubHist(formState)
             alert("Inserido no sistema  !")
         }}>Enviar</button>
         </main>

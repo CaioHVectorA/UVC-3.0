@@ -19,7 +19,7 @@ const getCharacterModel = () => {
         // Equipe: String,
         // Local: String,
         // Keywords: [String]
-    }, { strict: false,  }),"chars")
+    }, { strict: false, timestamps: true  }),"chars")
 }
 const getHistModel = () => {
     if (mongoose.models?.hist) return mongoose.models.hist
@@ -29,7 +29,8 @@ const getHistModel = () => {
         Img: String,
         Ref: String,
         Relacionados: [{ Ref: String, Nome: String, Img: String }],
-    }),"hists")
+        Categorias: [String],
+    }, { timestamps: true }),"hists")
 }
 const getSubhitModel = () => {
     if (mongoose.models?.subhist) return mongoose.models.subhist
@@ -39,8 +40,7 @@ const getSubhitModel = () => {
         Ref: String,
         Source: String,
         Sinopse: String,
-        Categorias: [String],
-     }),"subhists")
+     }, { timestamps: true }),"subhists")
 }
 const chars = getCharacterModel() as Model<any, {}, {}, {}, any, any>
 const hists = getHistModel() as Model<any, {}, {}, {}, any, any>

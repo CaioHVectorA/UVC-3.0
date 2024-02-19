@@ -12,7 +12,6 @@ type formProps = {
     Sinopse: string,
     Ref: string,
     Source: string
-    Categories: string[],
 }
 const initialState = {
     Nome: '',
@@ -20,9 +19,7 @@ const initialState = {
     Ref: '',
     Sinopse: '',
     Source: 'N/A',
-    Categories: [],
 } as formProps
-const categoriesData = ["Drama", "Aventura", "Ação", "Violência", "Sci-Fi", "Gestão"].map((str) => {return { value: str, label: str } } )
 export default function CreateSubhistPage({ params }: { params: { code: string } }) {
     const urlParams = useSearchParams()
     const importedState = {
@@ -64,9 +61,6 @@ console.log(formState)
                 submitFile(e.target.files[0])
             }}/>
     <div className=' max-h-[16rem] overflow-hidden' dangerouslySetInnerHTML={{ __html: formState.Source }}></div>
-        <Select placeholder="Categories" defaultValue={formState.Categories.map(i => { return { label: i, value: i } })} className=' text-black w-full' isMulti name='Categories' options={categoriesData} onChange={(newValue: any) => {
-            changeField('Categories', newValue.value)
-        }}/>
         <button className=' w-full' onClick={async () => {
             // console.log(formState.Categories)
             const data = {...formState }
