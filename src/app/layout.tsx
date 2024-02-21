@@ -6,6 +6,7 @@ import { Inter, Montserrat } from "next/font/google";
 import GlobalStyle from "../components/Global/globalStyle";
 import Footer from "@/components/Global/Footer";
 import AppContextProvider from "@/components/Context/AppContext";
+import { Toaster } from "@/components/ui/toaster";
 const montserrat = Montserrat({ subsets: ["latin"] });
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
         <AppContextProvider>
         <Header />
           <div className="rootContainer">{children}</div>
+          <Toaster />
         <Footer />
         </AppContextProvider>
       </body>

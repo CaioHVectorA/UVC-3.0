@@ -31,6 +31,7 @@ const getHistModel = () => {
         Relacionados: [{ Ref: String, Nome: String, Img: String }],
         Categorias: [String],
         Subhists: [String],
+        BgImg: String,
     }, { timestamps: true }),"hists")
 }
 const getSubhitModel = () => {

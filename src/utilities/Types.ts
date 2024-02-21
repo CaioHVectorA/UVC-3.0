@@ -84,6 +84,16 @@ export type User_Type = {
   image_path: string;
 }
 
+export type IComment = {
+  content: string;
+  comment_by: string;
+  comment_in: string;
+  username_author: string;
+  created_at: string
+  id: string,
+  author_img: string
+}
+
 // -----------------  NEW TYPES  -----------------------
 
 export type Instance = {
@@ -121,6 +131,7 @@ export type Hist = {
   Categorias: string[]
   // id: string
   createdAt: string
+  BgImg: string,
   Subhists: string[]
 }
 

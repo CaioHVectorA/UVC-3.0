@@ -37,26 +37,12 @@ function Infos({ data }: { data: Hist }) {
     )
 }
 
-function Relacionados({ relacionados }: { relacionados: Relacionado[] }) {
-    <div className=' pl-4'>
-    <h1 className="!mb-2 mt-4">RELACIONADOS</h1>
-    <ul className=" flex gap-3">
-        {relacionados.map(i => (
-            <Link className=" w-2/12 aspect-square relative group" href={`/contos/${i.Ref}`}>
-                <img src={i.Img} className=" w-full h-full"/>
-                <div className=" absolute top-0 hidden bg-black group-hover:flex bg-opacity-70 w-full h-full justify-center items-center">
-                    <h2 style={{color: 'white',fontSize: `${265 / i.Nome.length}px`}} className=" text-center">{i.Nome}</h2>
-                </div>
-            </Link>
-        ))}
-    </ul>
-</div>
-}
+
 
 export function ContoHeader({ data, viewsNum }: { data: Hist, viewsNum: number }) {
     return (
         <main>
-            <div className="bg-cover bg-fixed bg-no-repeat w-screen min-h-[calc(100vh+56px)] relative flex justify-center" style={{ backgroundImage: `url(https://live.staticflickr.com/65535/53540762207_c7354a28cf_z.jpg)` }}>
+            <div className="bg-cover bg-fixed bg-no-repeat w-screen min-h-[calc(100vh+56px)] relative flex justify-center" style={{ backgroundImage: `url(${data.BgImg})` }}>
                 <div className=" absolute w-full h-full bg-black bg-opacity-70 backdrop-blur-sm text-white gap-6 pt-8">
                     <div className=' w-full flex justify-center gap-6 h-[calc(100vh-64px)]'>
                         <Infos data={data}/>
