@@ -11,7 +11,8 @@ type formProps = {
     Img: string,
     Sinopse: string,
     Ref: string,
-    Source: string
+    Source: string,
+    Status: string,
 }
 const initialState = {
     Nome: '',
@@ -19,6 +20,7 @@ const initialState = {
     Ref: '',
     Sinopse: '',
     Source: 'N/A',
+    Status: '',
 } as formProps
 export default function CreateSubhistPage({ params }: { params: { code: string } }) {
     const urlParams = useSearchParams()
@@ -28,7 +30,8 @@ export default function CreateSubhistPage({ params }: { params: { code: string }
         Nome: urlParams.get('Nome') || '',
         Ref: urlParams.get('Ref') || '',
         Sinopse: urlParams.get('Sinopse') || '',
-        Source: 'Não importado ou inexistente'
+        Source: 'Não importado ou inexistente',
+        Status: urlParams.get('Status') || ''
     } as formProps;
     const [formState, setFormState] = useState<formProps>(importedState)
     console.log(formState)
@@ -56,6 +59,7 @@ console.log(formState)
                 changeField('Img', newValue?.value || '')                            
             }} />
         <input value={formState.Ref} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Ref' onChange={({ target }) => changeField('Ref', target.value)}/>
+        <input value={formState.Status} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Status' onChange={({ target }) => changeField('Status', target.value)}/>
         <input type="file" accept=".html" onChange={(e) => {
                 if (!e.target.files || e.target.files.length == 0) return
                 submitFile(e.target.files[0])

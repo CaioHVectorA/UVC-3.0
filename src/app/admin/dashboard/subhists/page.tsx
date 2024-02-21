@@ -10,14 +10,14 @@ export default async function RenderAllSubhists({ params }: { params: { code: st
     return (
         <main className=" flex w-screen flex-col items-center gap-6">
         <Link href={`/admin/dashboard/subhists/create`} className=" justify-self-center px-3 py-1 bg-[var(--color-main)] w-4/12 text-center hover:rounded-full rounded-sm uppercase text-2xl">Criar subhist</Link>
-            {data.map(({ Categorias, Img, Nome, Ref, Sinopse, id }) => (
+            {data.map(({ Categorias, Img, Nome, Ref, Sinopse, _id }) => (
                 <div className=" flex">
                     <img src={Img}/>
                     <div className=" bg-black py-4 px-4 pr-[10%] flex flex-col gap-2 bg-opacity-60">
                         <h1>{Nome}</h1>
                         <p>{Sinopse}</p>
                         <Button asChild className=" w-full text-center">
-                            <Link href={`/admin/dashboard/subhists/edit/${id}?${querystring.stringify({ Categorias, Img, Nome, Ref, Sinopse, id })}`}>Editar</Link>
+                            <Link href={`/admin/dashboard/subhists/edit/${_id}?${querystring.stringify({ Categorias, Img, Nome, Ref, Sinopse, id: _id })}`}>Editar</Link>
                         </Button>
                     </div>
                 </div>

@@ -41,6 +41,7 @@ const getSubhitModel = () => {
         Ref: String,
         Source: String,
         Sinopse: String,
+        Status: String
      }, { timestamps: true }),"subhists")
 }
 const chars = getCharacterModel() as Model<any, {}, {}, {}, any, any>

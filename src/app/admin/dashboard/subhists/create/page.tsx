@@ -10,7 +10,8 @@ type formProps = {
     Img: string,
     Sinopse: string,
     Ref: string,
-    Source: string
+    Source: string,
+    Status: string
 }
 const initialState = {
     Nome: '',
@@ -18,6 +19,7 @@ const initialState = {
     Ref: '',
     Sinopse: '',
     Source: 'N/A',
+    Status: '',
 } as formProps
 export default function CreateSubhistPage() {
     const [formState, setFormState] = useState<formProps>(initialState)
@@ -40,15 +42,19 @@ console.log(formState)
         <main className=' flex flex-col items-center w-screen px-8 gap-4'>
         <input value={formState.Nome} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Nome' onChange={({ target }) => changeField('Nome', target.value)}/>
         <textarea placeholder='Sinopse' rows={4} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' value={formState.Sinopse} onChange={({ target }) => changeField('Sinopse', target.value)}/>
-        <Select className=" text-black w-full" options={Object.values(RELACIONADOS).map(item => { return { value: item.Img, label: item.Nome } })} onChange={(newValue) => {
+        <div className=' grid grid-cols-[1fr,1fr] w-full gap-2'>
+            <Select placeholder="Img" className=" text-black w-full" options={Object.values(RELACIONADOS).map(item => { return { value: item.Img, label: item.Nome } })} onChange={(newValue) => {
                 changeField('Img', newValue?.value || '')                            
             }} />
+            <input placeholder='Img' className=' w-full' value={formState.Img} onChange={({ target }) => changeField('Img', target.value)}/>
+        </div>
         <input value={formState.Ref} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Ref' onChange={({ target }) => changeField('Ref', target.value)}/>
+        <input value={formState.Status} className=' w-full py-1 px-2 rounded-sm border border-gray-300 text-black' placeholder='Status' onChange={({ target }) => changeField('Status', target.value)}/>
         <input type="file" accept=".html" onChange={(e) => {
                 if (!e.target.files || e.target.files.length == 0) return
                 submitFile(e.target.files[0])
             }}/>
-    <div className=' max-h-[16rem] overflow-hidden' dangerouslySetInnerHTML={{ __html: formState.Source }}></div>
+        <div className=' max-h-[16rem] overflow-hidden' dangerouslySetInnerHTML={{ __html: formState.Source }}></div>
         <button className=' w-full' onClick={async () => {
             await createSubHist(formState).then(id => addSubhistToHist(formState.Ref, id))
             alert("Inserido no sistema  !")

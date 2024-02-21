@@ -132,5 +132,5 @@ export type SubHist =  {
   Source: string;
   Sinopse: string;
   Categorias: string[];
-  id: string
+  _id: string
 }

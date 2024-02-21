@@ -11,6 +11,17 @@
 - [X] - Change user image to characters avatar(Hades...)
 - [X] Think about Texts storing [In database as HTML]
 
+
+## Features todo:
+- [ ] Favorite
+- [ ] Gamification
+
+## Priotities:
+- [ ] Chars page
+- [ ] Hist page
+- [ ] Subhist page
+
+
 ### Architecture and Structure
 
 - [ ] Make the components and their architecture more clean

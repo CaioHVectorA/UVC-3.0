@@ -1,14 +1,8 @@
-import ContainerForConto from "@/components/conto-page/ContainerContoPage"
-import Universe from "@/components/conto-page/InitialUniverse"
-import { Serie_Type, Solo_Type } from "@/utilities/types"
-import { URL, URL_READONLY } from "@/utilities/envariables"
-import axios from "axios"
-import { api, get } from "@/lib/fetch"
-import { hists } from "@/server/mongo/models"
-import fetchData from "@/utilities/functions/FetchData"
+import { Conto } from '@/components/conto-page/'
 import { HistRepository } from "@/server/hists/HistRepository"
 import { CommentRepository } from "@/server/comment/CommentRepository"
-import { getHist } from "@/server/mongo/actions"
+import { getHist, getSubHists, getSubhistsByRef } from "@/server/mongo/actions"
+import { Hist } from '@/utilities/types'
 type Comment = {
     content: string;
     comment_by: string;
@@ -20,10 +14,16 @@ type Comment = {
 }
 const histRepo = new HistRepository()
 const commentRepo = new CommentRepository()
-export default async function Conto({params}: {params: {conto: string}}) {
+export default async function ContoPage({params}: {params: {conto: string}}) {
     const comments = await commentRepo.get({ ref: params.conto }) as Comment[]
-    const res = await getHist({ Ref: params.conto })
+    const res = await getHist({ Ref: params.conto }) as Hist
     const like = await histRepo.get({ ref: params.conto })
-    // return <>{}</>
-    return <ContainerForConto histID={like.id} Ref={params.conto} data={res} datacomments={comments}/>
+    const subhists = await getSubhistsByRef(params.conto)
+    if (!res) return <>Nenhuma história foi encontrada!</>
+    return (
+        <>
+            <Conto.Header viewsNum={like.views} data={res}/>
+            <Conto.Content data={subhists}/>
+        </>
+    )
 }

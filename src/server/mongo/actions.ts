@@ -31,6 +31,11 @@ export async function getSubHists() {
     const data = await subHists.find()
     return send(data) // todo - add type
 }
+export async function getSubhistsByRef(ref: string) {
+    await connectedPromise
+    const data = await subHists.find()
+    return send(data.filter(i => i.Ref == ref)) // todo - add type
+}
 
 export async function createSubHist(data: any) {
     await connectedPromise
