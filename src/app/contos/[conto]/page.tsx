@@ -9,12 +9,12 @@ const commentRepo = new CommentRepository()
 export default async function ContoPage({params}: {params: {conto: string}}) {
     const comments = await commentRepo.get({ ref: params.conto }) as IComment[]
     const res = await getHist({ Ref: params.conto }) as Hist
-    const like = await histRepo.get({ ref: params.conto })
+    const hist = await histRepo.get({ ref: params.conto })
     const subhists = await getSubhistsByRef(params.conto)
     if (!res) return <>Nenhuma história foi encontrada!</>
     return (
         <>
-            <Conto.Header viewsNum={like.views} data={res}/>
+            <Conto.Header viewsNum={hist.views} data={res} histId={hist.id}/>
             <Conto.Content data={subhists} />
             <Conto.Relacionado relacionados={res.Relacionados}/>
             <CommentSession data={comments} Ref={params.conto} />

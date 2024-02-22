@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GlobalStyle />
-      <body className={inter.className}>
+      <body className={inter.className+ ' scroll-smooth'}>
         <AppContextProvider>
         <Header />
           <div className="rootContainer">{children}</div>

@@ -11,14 +11,16 @@ datasource db {
 }
 
 model User {
-  id         String    @id @default(uuid())
-  username   String    @unique
+  id         String     @id @default(uuid())
+  username   String     @unique
   password   String
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
-  comments   Comment[] @relation("userComments")
-  image_path String    @default("assets/user_images/sample.png")
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  comments   Comment[]  @relation("userComments")
+  image_path String     @default("assets/user_images/sample.png")
   Admin      Admin?
+  Favs       Fav[]
+  ReadLater  ReadLater?
 
   @@map("users")
 }
@@ -39,14 +41,16 @@ model Comment {
 }
 
 model Hist {
-  ref        String    @unique
-  id         String    @id @default(uuid())
-  created_at DateTime  @default(now())
+  ref        String     @unique
+  id         String     @id @default(uuid())
+  created_at DateTime   @default(now())
   last_view  DateTime
-  views      Int       @default(0)
-  likesNum   Int       @default(0)
+  views      Int        @default(0)
+  likesNum   Int        @default(0)
   comments   Comment[]
-  likes      Like[]    @relation("userLikes")
+  likes      Like[]     @relation("userLikes")
+  Fav        Fav?
+  ReadLater  ReadLater?
 
   @@map("hists")
 }
@@ -80,4 +84,20 @@ model Admin {
   id     String  @id @default(uuid())
 
   @@map("admins")
+}
+
+model Fav {
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+  histId String @unique
+  hist   Hist   @relation(fields: [histId], references: [id])
+  id     String @id @unique @default(uuid())
+}
+
+model ReadLater {
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+  histId String @unique
+  hist   Hist   @relation(fields: [histId], references: [id])
+  id     String @id @unique @default(uuid())
 }

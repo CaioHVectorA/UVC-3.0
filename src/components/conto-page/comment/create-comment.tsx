@@ -36,11 +36,11 @@ export function CreateComment({ setDataComments,Ref,comments }: {setDataComments
     }
     useEffect(() => setIsLoged(!!(hasWindow() && getUserData())), [])
  return (
-    <div className=" w-11/12 mx-auto mt-8">
+    <div className=" w-11/12 mx-auto pt-8" id="createComment">
     {isLoged ? (
         <div className="flex flex-col gap-4 w-4/6 max-lg:w-11/12">
         <h4>Crie o seu comentário!</h4>
-        <textarea value={text} onChange={({target}) => setText(target.value)} className="text-black w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>
+        <textarea placeholder="Eu gostei da história!" value={text} onChange={({target}) => setText(target.value)} className="text-black w-full p-2 rounded-lg resize-none overflow-hidden h-64"></textarea>
         <button disabled={fetching} onClick={HandleSubmit} className=" self-end mb-5">Comentar</button>
         </div>
     ) : (

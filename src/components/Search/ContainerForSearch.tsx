@@ -2,7 +2,6 @@
 import { Character_Type, Serie_Type, Solo_Type } from "@/utilities/types";
 import { Character } from "@/utilities/functions/MockupCharacter";
 import { CharCaracter } from "../characters/Char";
-import { Relacionado } from "../conto-page/ContainerContoPage";
 type arr = (Character_Type | Solo_Type | Serie_Type)[];
 
 function getKeywordsFilter(data: arr, search: string): arr {
@@ -40,7 +39,7 @@ export default function ContainerForSearch({data, search}: {data: arr,search: st
                             </>
                                     :
                                     <>
-                                <Relacionado rel={{Img: item.ImgRef, Ref: item.Ref, Nome: item.Nome}}/>
+                                {/* <Relacionado rel={{Img: item.ImgRef, Ref: item.Ref, Nome: item.Nome}}/> */}
                             </>
                     }</div>
                     ))}

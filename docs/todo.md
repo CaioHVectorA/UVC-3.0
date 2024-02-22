@@ -67,3 +67,4 @@
 - [ ] Books page
 - [ ] Make a better logo, make better hist logos
 - [ ] Think about favicon
+- [ ] Health check search page
