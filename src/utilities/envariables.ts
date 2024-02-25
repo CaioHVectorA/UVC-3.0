@@ -14,6 +14,15 @@ export const IMGS = {
   ARNER: "https://live.staticflickr.com/65535/52848841926_faac7572f2_w.jpg",
 } as const;
 
+export const SCENARIOS_IMGS = {
+  SPACE: 'https://live.staticflickr.com/65535/52992568323_bfa9108eb6_z.jpg',
+  CITY: 'https://live.staticflickr.com/65535/53547625407_36cbce9812_b.jpg',
+  CITY_GOTHIC: '',
+  SPACIAL_CITY: 'https://live.staticflickr.com/65535/53540762207_c7354a28cf_z.jpg',
+  SPACE_SHIP: '',
+} as const
+
+
 // export const URL = "http://localhost:3333/";
 //INTELIGENT BENZ
 export const URL = "http://localhost:3000/";

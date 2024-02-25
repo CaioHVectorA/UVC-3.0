@@ -4,7 +4,7 @@ import { InputList } from "@/components/Global/InputList"
 import Citacoes from "@/components/character-page-components/Citacao"
 import { CitacoesSection, InstanceSection } from "@/components/create-char-dashboard"
 import { createChar } from "@/server/mongo/actions"
-import { IMGS } from "@/utilities/envariables"
+import { IMGS, SCENARIOS_IMGS } from "@/utilities/envariables"
 import { RELACIONADOS } from "@/utilities/hists-consts"
 import { Atributos, Character, Citacao, Instance } from "@/utilities/types"
 import { ValueOf } from "next/dist/shared/lib/constants"
@@ -17,7 +17,7 @@ const initialState = {
     Citacoes: [{ Frase: '', Autor: '' }],
     Color: "",
     Equipe: "",
-    Imgs: [],
+    Imgs: "",
     Instances: [
         { Forma: '', Aparicoes: [], Biografia: '', Atributos: { Agilidade: 1, Forca: 1, Inteligencia: 1, Resistencia: 1 } }
     ],
@@ -58,10 +58,10 @@ export default function Page() {
             <InstanceSection formState={formState} setFormState={setFormState }/>
             <div className=" mt-6 w-full">
                 <label>Imagens (LINKS)</label>
-                <Select isMulti onChange={(str) => {
-                    const imgArr = str.map(i => { return i.value })
-                    handleChangeForm('Imgs', imgArr)
-                }} className=" text-black" options={Object.values(IMGS).map((img, index) => { return { label: Object.keys(IMGS)[index], value: img } })}/>
+                <Select onChange={(str) => {
+                    if (!str) return
+                    handleChangeForm('Imgs', str.value)
+                }} className=" text-black" options={Object.values(SCENARIOS_IMGS).map((img, index) => { return { label: Object.keys(SCENARIOS_IMGS)[index], value: img } })}/>
             </div>
             <CitacoesSection formState={formState} setFormState={setFormState} />
             <button onClick={() => createChar(formState).then(() => alert("Inserido no sistema!"))}>Enviar</button>

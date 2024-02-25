@@ -7,7 +7,7 @@
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100% ;
     --card-foreground: 240 10% 3.9%;
  
     --popover: 0 0% 100%;
@@ -134,6 +134,7 @@ input:focus-visible {
     --color-background: #e7e7e7;
   }
   @media (prefers-color-scheme: dark) {
+    body { @apply dark }
     --color-textmain: #e7e7e7;
     --color-textsecundary: rgba(255, 255, 255, 0.6);
     --color-textterciary: rgba(255, 255, 255, 0.35);

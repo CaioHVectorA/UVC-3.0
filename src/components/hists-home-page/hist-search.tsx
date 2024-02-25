@@ -18,6 +18,6 @@ export function HistSearch() {
       replace(`${pathname}?${params.toString()}`);
     };
     return (
-        <Input type="search" onChange={({ target }) => handleSearch(target.value)} className=" text-black"/>
+        <Input type="search" onChange={({ target }) => handleSearch(target.value)} className=" text-black bg-white"/>
     )
 }

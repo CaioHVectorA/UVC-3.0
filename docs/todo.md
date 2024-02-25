@@ -17,9 +17,11 @@
 - [ ] Gamification
 
 ## Priotities:
-- [ ] Chars page
+- [X] Char page
+- [ ] Profile page - With favorite and read later
 - [ ] Hist page
 - [ ] Subhist page
+- [ ] Read Later funcionality
 
 
 ### Architecture and Structure

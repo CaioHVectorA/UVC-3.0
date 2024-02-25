@@ -39,6 +39,7 @@ export function ChangeTheme() {
     setCSSVar(keys.background, colors.dark.background);
     window.localStorage.setItem("UVC_USER_THEME", "DARK");
   } else {
+    document.body.classList.add('dark')
     setCSSVar(keys.textMain, colors.light.textMain);
     setCSSVar(keys.textSecundary, colors.light.textSecundary);
     setCSSVar(keys.textTerciary, colors.light.textTerciary);

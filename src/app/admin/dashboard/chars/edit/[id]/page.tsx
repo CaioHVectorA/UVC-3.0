@@ -3,7 +3,7 @@ import { InputList } from "@/components/Global/InputList"
 import Citacoes from "@/components/character-page-components/Citacao"
 import { CitacoesSection, InstanceSection } from "@/components/create-char-dashboard"
 import { createChar, editChar } from "@/server/mongo/actions"
-import { IMGS } from "@/utilities/envariables"
+import { IMGS, SCENARIOS_IMGS } from "@/utilities/envariables"
 import { RELACIONADOS } from "@/utilities/hists-consts"
 import { Atributos, Character, Citacao, Instance } from "@/utilities/types"
 import { ValueOf } from "next/dist/shared/lib/constants"
@@ -17,7 +17,7 @@ const initialState = {
     Citacoes: [{ Frase: '', Autor: '' }],
     Color: "",
     Equipe: "",
-    Imgs: [],
+    Imgs: "",
     Instances: [
         { Forma: '', Aparicoes: [], Biografia: '', Atributos: { Agilidade: 1, Forca: 1, Inteligencia: 1, Resistencia: 1 } }
     ],
@@ -33,7 +33,7 @@ export default function Page({ params }: { params: { id: string } }) {
         Color: searchParams.get('Color'),
         Equipe: searchParams.get('Equipe'),
         id: searchParams.get('id'),
-        Imgs: JSON.parse(searchParams.get('Imgs') || '[]'),
+        Imgs: searchParams.get('Imgs'),
         Instances: JSON.parse(searchParams.get('Instances') || '[]'),
         isHero: (JSON.parse(searchParams.get('isHero') || 'false')) as boolean,
         Keywords: searchParams.getAll('Keywords'),
@@ -73,10 +73,10 @@ export default function Page({ params }: { params: { id: string } }) {
             <InstanceSection formState={formState} setFormState={setFormState }/>
             <div className=" mt-6 w-full">
                 <label>Imagens (LINKS)</label>
-                <Select defaultValue={formState.Imgs.map(i => { return { label: Object.keys(IMGS).find((key) => IMGS[key as keyof typeof IMGS] === i), value: i } })} isMulti onChange={(str) => {
-                    const imgArr = str.map(i => { return i.value })
-                    handleChangeForm('Imgs', imgArr)
-                }} className=" text-black" options={Object.values(IMGS).map((img, index) => { return { label: Object.keys(IMGS)[index], value: img } })}/>
+                <Select onChange={(str) => {
+                    if (!str) return
+                    handleChangeForm('Imgs', str.value)
+                }} className=" text-black" options={Object.values(SCENARIOS_IMGS).map((img, index) => { return { label: Object.keys(SCENARIOS_IMGS)[index], value: img } })}/>
             </div>
             <CitacoesSection formState={formState} setFormState={setFormState} />
             <button onClick={() => editChar(params.id, formState).then(() => alert("Inserido no sistema!"))} className=" my-4">Editar</button>

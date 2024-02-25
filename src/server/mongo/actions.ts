@@ -53,6 +53,11 @@ export async function createChar(data: any) {
     await chars.create(data)
 }
 
+export async function getCharByName(NomeVerdadeiro: string) {
+    await connectedPromise
+    return await chars.findOne({ NomeVerdadeiro })
+}
+
 export async function editHist(_id: string, data: any) {
     try {
         await connectedPromise;

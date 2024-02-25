@@ -104,7 +104,7 @@ export type Instance = {
 }
 
 export type Character = {
-  Imgs: string[],
+  Imgs: string,
   Apelidos: string,
   NomeVerdadeiro: string,
   Citacoes: Citacao[],
