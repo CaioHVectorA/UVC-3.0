@@ -1,4 +1,5 @@
 import { ServerError } from '@/server/ServerError' 
+import { Fav, ReadLater, User } from '@prisma/client';
 type Episodios = {
   Nome: string;
   Ref: string;
@@ -145,3 +146,5 @@ export type SubHist =  {
   Categorias: string[];
   _id: string
 }
+
+export type UserWithAllData = Omit<User, 'password'> & { Favs: Fav[], ReadLater: ReadLater[] }

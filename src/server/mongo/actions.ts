@@ -1,7 +1,7 @@
 "use server"
 import mongoose, { FilterQuery } from "mongoose"
 import { chars, hists, subHists } from "./models"
-import { Character, Serie_Type, Solo_Type } from "@/utilities/types"
+import { Character, Hist, Serie_Type, Solo_Type, SubHist } from "@/utilities/types"
 const connectedPromise = mongoose.connect(process.env.MONGO_URI as string)
 
 
@@ -35,6 +35,17 @@ export async function getSubhistsByRef(ref: string) {
     await connectedPromise
     const data = await subHists.find()
     return send(data.filter(i => i.Ref == ref)) // todo - add type
+}
+
+export async function getSubhistById(id: string) {
+    await connectedPromise
+    const data = await subHists.findById(id)
+    return send(data) as SubHist & { id: string }
+}
+export async function getHistById(id: string) {
+    await connectedPromise
+    const data = await hists.findById(id)
+    return send(data) as Hist & { id: string }
 }
 
 export async function createSubHist(data: any) {

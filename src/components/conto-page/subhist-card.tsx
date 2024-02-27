@@ -1,9 +1,15 @@
+"use client"
 import Link from 'next/link'
 import { Clock, ExternalLink } from "lucide-react";
 import { Button } from "../ui/button";
 import { SubHist } from "@/utilities/types";
+import { useToast } from '../ui/use-toast';
+import { handleReadLater } from '@/server/handleReadLater';
+import getUserData from '@/utilities/functions/getUserData';
 
 export function SubhistCard({ subhist }: { subhist: SubHist }) {
+    const { toast } = useToast()
+    const userData = getUserData()
     return (
         <div className=" w-2/4 flex flex-col h-fit">
         <div className=" flex w-full">
@@ -14,7 +20,10 @@ export function SubhistCard({ subhist }: { subhist: SubHist }) {
             </div>
         </div>
         <div className=" flex">
-            <Button className=" w-full bg-[var(--color-mainclaro)] flex gap-2 rounded-none rounded-bl-xl">
+            <Button onClick={() => {
+                if (!userData) return
+                handleReadLater({ userId: userData.id, subHistId: subhist._id }).then((res) => toast({ description: res }))
+            }} className=" w-full bg-[var(--color-mainclaro)] flex gap-2 rounded-none rounded-bl-xl">
                 <p>Ler mais tarde</p>
                 <Clock className="text-black"/>
             </Button>

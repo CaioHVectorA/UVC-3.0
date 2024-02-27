@@ -9,6 +9,7 @@ import UVC from '../../../../public/UVC.png'
 import getUserData from "@/utilities/functions/getUserData"
 import { AppContext } from "@/components/Context/AppContext"
 import ProfileImage from "@/components/ProfileImage"
+import axios from "axios"
 const border = 'mb-1 mt-1 border-b w-10/12 text-center border-black border-opacity-70'
 function Profile({n,setUI}: {n: unknown, setUI: any}) {
     const user = getUserData()
@@ -55,7 +56,11 @@ export default function OpenHeaderTop() {
             }));
         }
         useEffect(() => {
-        if (hasWindow() && window.localStorage.getItem(LOGIN_LOCAL_STORAGE)) {
+            if (hasWindow() && !!getUserData()) {
+            const data = getUserData()
+            if (!data) return
+            const { id } = data
+            axios.post('/api/lastseen', { id })
             setUI(LogedUi)
         }
       }, [])

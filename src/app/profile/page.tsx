@@ -4,25 +4,34 @@ import getUserData from "@/utilities/functions/getUserData"
 import axios from "axios"
 import { UserDataView } from "../../components/profile/user-dashboard"
 import { useEffect, useState } from "react"
-import { User_Type } from "@/utilities/types"
+import { UserWithAllData, User_Type } from "@/utilities/types"
 import LoginModal from "@/components/Login"
+import { Fav, ReadLater, User } from "@prisma/client"
+import { getAllUserData } from "@/server/getAllUserData"
+import { DashboardContainer } from "@/components/profile/dashboard-container"
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default () => {
     const [loginModal, setModal] = useState(false)
-    const [userData, setUserData] = useState<User_Type | false>(false)
+    const [userData, setUserData] = useState<UserWithAllData | null | false>(false)
     const [isUser, setUser] = useState(false)
+    const data = getUserData()
     useEffect(() => {
-        const data = getUserData()
-        console.log({ data })
-        if (data && data.id) {
+        if (data) {
             setUser(true)
             console.log(data)
-            axios.get(URL+`api/user/${data.id}`).then(res => {
-                setUserData(res.data)
-            })
+            getAllUserData(data.id).then(setUserData)
         }
     }, [])
-    if (!userData) return <>Carregando!</>
+    if (!userData) return (
+    <DashboardContainer>
+        <div className=" flex flex-col items-center">
+            <Skeleton className=" w-32 aspect-square rounded-full"/>
+            <Skeleton className={` w-32 h-6 mt-4`}/>
+            <Skeleton className={` w-48 h-4 mt-2`}/>
+        </div>
+    </DashboardContainer>
+    )
     return (
         <>
         {loginModal && <LoginModal isLogin={false} onClickKillThis={() => {

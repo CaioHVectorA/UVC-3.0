@@ -19,8 +19,8 @@
 ## Priotities:
 - [X] Char page
 - [ ] Profile page - With favorite and read later
-- [ ] Hist page
-- [ ] Subhist page
+- [X] Hist page
+- [ ] Subhist/Read page
 - [ ] Read Later funcionality
 
 
@@ -34,9 +34,9 @@
 - [ ] Better security
 
 ### User Experience
-- [ ] Switch some useStates do URL state
+- [X] Switch some useStates do URL state
 - [ ] Make search better (enter press support, other UX things...)
-- [ ] Think better about filters
+- [X] Think better about filters
 - [⏲️] Make comments repliable and likeable || unnecessary, but thinkable with the platform get bigger 
 
 ### Frontend
@@ -48,8 +48,7 @@
 - [ ] Populate more characters and hists (with uncomplete or unstarted hists too!)
 - [ ] Use Performance Hooks
 - [ ] Make the home page better and with more content
-- [ ] Remake the chars and hists page.
-- [ ] Make subhists page.
+- [X] Remake the chars and hists page.
 ### Testing
 
 - [ ] Frontend unit tests

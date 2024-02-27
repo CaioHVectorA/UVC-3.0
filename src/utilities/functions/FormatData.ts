@@ -10,6 +10,7 @@ export default function formatarData(dataString: string) {
   if (dataatual.getHours() === data.getHours() && dataatual.getDate() === day) {
     const min = dataatual.getMinutes() - data.getMinutes();
     if (min === 0) {
+      if (dataatual.getSeconds() - data.getSeconds() < 40) return 'Agora'
       return `${dataatual.getSeconds() - data.getSeconds()} Segundos`;
     }
     return `Há ${min} minuto${min > 1 ? "s" : ""}`;

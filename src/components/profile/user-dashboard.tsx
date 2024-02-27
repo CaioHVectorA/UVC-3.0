@@ -1,16 +1,17 @@
 "use client"
 import { AppContext } from "@/components/Context/AppContext";
-import { User_Type } from "@/utilities/types";
+import { UserWithAllData, User_Type } from "@/utilities/types";
 import { LOGIN_LOCAL_STORAGE, URL } from "@/utilities/envariables";
-import { encryptData } from "@/utilities/functions/CryptoFunctions";
-import { getBase64 } from "@/utilities/functions/getBase64";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { AiFillEdit } from 'react-icons/ai'
 import { BsFillCloudUploadFill } from "react-icons/bs";
 import { saveImage } from "@/server/saveImage";
 import { BiCamera } from "react-icons/bi";
 import { SwitchImageDialog } from "./dialog";
+import { DashboardContainer } from "./dashboard-container";
+import { DataRender } from "./data-render";
+import { formatDataForUi } from "@/utilities/functions/formatDataForUi";
 async function updateUser({ id,imagePath,password,username }: { id:string, username?: string, imagePath?: string, password?: string }) {
     console.log(id)
     const data = await axios.put(URL+'api/user/',{
@@ -23,11 +24,11 @@ async function updateUser({ id,imagePath,password,username }: { id:string, usern
     return data.data
 }
 
-export function UserDataView({ userData }: {userData: User_Type}) {
+export function UserDataView({ userData }: {userData: UserWithAllData}) {
     const [initialURL, setURL] = useState(`${URL}${userData.image_path}`)
     const [isModalOpen, setModalOpen] = useState(false)
     const { img,setImg } = useContext(AppContext)
-    const action = async (img: string) => {
+    const action = useCallback(async (img: string) => {
         updateUser({ id: userData.id, imagePath: `/assets/user_images/${img}` }).then(res => {
             console.log(res)
             //@ts-ignore
@@ -35,12 +36,12 @@ export function UserDataView({ userData }: {userData: User_Type}) {
             setImg(res.image_path)
             setModalOpen(false)
         }).catch(err => {alert('Ocorreu um erro ao mudar sua imagem.') ; console.log(err)})
-    }
+    }, [])
     return (
         <>
             <SwitchImageDialog setValue={setModalOpen} open={isModalOpen} action={action} />
-            <main className=" flex max-md:flex-col max-md:items-center mt-8 px-4 w-10/12 mx-auto rounded-2xl py-2 bg-white text-black">
-                <div className=" flex flex-col items-center w-2/12">
+            <DashboardContainer>
+                <div className=" flex flex-col items-center">
                     <div className=" relative">
                         <div className=" absolute bottom-0 right-0 bg-blue-600 rounded-full p-2">
                         <button onClick={() => setModalOpen(true)} className="bg-transparent p-1 border-0 shadow-none hover:bg-transparent hover:border-0">
@@ -51,17 +52,14 @@ export function UserDataView({ userData }: {userData: User_Type}) {
                             <img className=" w-full aspect-square object-cover" src={initialURL}/>
                         </div>
                     </div>
-                    <p className=" text-black text-2xl">{userData.username}</p>
+                    <h3 className=" text-black text-2xl mt-3 !mb-0">{userData.username}</h3>
+                    {/* its just a code that returns a day/month/format, and i dont wanna write a bunch of lines above */}
+                    <p className=" text-black opacity-80">Desde {formatDataForUi(userData.created_at)}</ p>
                 </div>
-                <div className=" py-2 w-10/12 max-md:w-full h-[340px] flex flex-col items-center justify-center">
-                    <div className="_animation">
-                        <div className="one spin-one"></div>
-                        <div className="two spin-two"></div>
-                        <div className="three spin-one"></div>
-                    </div>
-                    <h3 className=" text-black">Aba de Perfil em construção</h3>
+                <div className=" py-2 max-md:w-full px-8 flex flex-col text-black">
+                    <DataRender userData={userData}/>
                 </div>
-            </main>
+            </DashboardContainer>
         </>
     )
 }

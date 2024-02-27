@@ -11,16 +11,18 @@ datasource db {
 }
 
 model User {
-  id         String     @id @default(uuid())
-  username   String     @unique
+  id         String      @id @default(uuid())
+  username   String      @unique
   password   String
-  created_at DateTime   @default(now())
-  updated_at DateTime   @updatedAt
-  comments   Comment[]  @relation("userComments")
-  image_path String     @default("assets/user_images/sample.png")
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+  comments   Comment[]   @relation("userComments")
+  image_path String      @default("assets/user_images/sample.png")
   Admin      Admin?
   Favs       Fav[]
-  ReadLater  ReadLater?
+  ReadLater  ReadLater[]
+  HistRead   HistRead[]
+  last_seen  DateTime    @default(now())
 
   @@map("users")
 }
@@ -41,16 +43,16 @@ model Comment {
 }
 
 model Hist {
-  ref        String     @unique
-  id         String     @id @default(uuid())
-  created_at DateTime   @default(now())
-  last_view  DateTime
-  views      Int        @default(0)
-  likesNum   Int        @default(0)
-  comments   Comment[]
-  likes      Like[]     @relation("userLikes")
-  Fav        Fav?
-  ReadLater  ReadLater?
+  ref         String    @unique
+  id          String    @id @default(uuid())
+  created_at  DateTime  @default(now())
+  last_view   DateTime
+  views       Int       @default(0)
+  likesNum    Int       @default(0)
+  comments    Comment[]
+  likes       Like[]    @relation("userLikes")
+  Fav         Fav?
+  readLaterId String?
 
   @@map("hists")
 }
@@ -87,17 +89,30 @@ model Admin {
 }
 
 model Fav {
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
-  histId String @unique
-  hist   Hist   @relation(fields: [histId], references: [id])
-  id     String @id @unique @default(uuid())
+  userId      String @unique
+  user        User   @relation(fields: [userId], references: [id])
+  histId      String @unique
+  hist        Hist   @relation(fields: [histId], references: [id])
+  id          String @id @unique @default(uuid())
+  histMongoId String
+
+  @@map("favs")
+}
+
+model HistRead {
+  userId         String @unique
+  user           User   @relation(fields: [userId], references: [id])
+  id             String @id @unique @default(uuid())
+  subhistMongoId String
+
+  @@map("hist_reads")
 }
 
 model ReadLater {
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id])
-  histId String @unique
-  hist   Hist   @relation(fields: [histId], references: [id])
-  id     String @id @unique @default(uuid())
+  userId         String @unique
+  user           User   @relation(fields: [userId], references: [id])
+  id             String @id @unique @default(uuid())
+  subhistMongoId String @unique
+
+  @@map("read_laters")
 }
