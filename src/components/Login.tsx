@@ -4,7 +4,6 @@ import "../styles/components/loginModal.css";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { GrClose } from "react-icons/gr";
 import { URL } from "@/utilities/envariables";
-import crypto from 'crypto-js'
 import { encryptData } from "@/utilities/functions/CryptoFunctions";
 export default function LoginModal({
   isLogin,
