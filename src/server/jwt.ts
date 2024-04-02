@@ -1,4 +1,3 @@
-//@ts-nocheck - fix for deploying in fcking vercel
 import { verify, sign } from "jsonwebtoken";
 import { hash, compare } from "bcrypt";
 const secretKey = process.env.SECRET_KEY || "w";

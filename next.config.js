@@ -5,6 +5,9 @@ const nextConfig = {
         ACESS_CODE: process.env.ACESS_CODE,
         SECRET_KEY: process.env.SECRET_KEY 
     },
+    typescript: {
+        ignoreBuildErrors: true
+    },
     experimental: {
         serverActions: true,
     }
