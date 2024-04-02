@@ -1,4 +1,4 @@
-import { CharCaracter } from "@/components/characters/Char"
+import { CharCaracter } from "@/components/characters/char"
 import { getChars } from "@/server/mongo/actions"
 import { Character } from "@/utilities/types"
 import querystring from 'querystring'

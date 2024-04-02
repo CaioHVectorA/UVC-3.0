@@ -10,18 +10,18 @@
 - [X] Story/character client for creating
 - [X] - Change user image to characters avatar(Hades...)
 - [X] Think about Texts storing [In database as HTML]
+- [X] Char page
+- [X] Hist page
+- [X] Favorite
+- [X] Read Later funcionality
+- [X] Profile page - With favorite and read later
 
 
 ## Features todo:
-- [ ] Favorite
 - [ ] Gamification
 
 ## Priotities:
-- [X] Char page
-- [ ] Profile page - With favorite and read later
-- [X] Hist page
 - [ ] Subhist/Read page
-- [ ] Read Later funcionality
 
 
 ### Architecture and Structure
@@ -34,6 +34,7 @@
 - [ ] Better security
 
 ### User Experience
+- [ ] Health Check in mobile experience
 - [X] Switch some useStates do URL state
 - [ ] Make search better (enter press support, other UX things...)
 - [X] Think better about filters
@@ -44,6 +45,7 @@
     [ ] SEO - do checklist
     [ ] Think about dynamic title, study the next metadata API
     [ ] Promocional images
+- [ ] Check image rendering, prerendering... etc
 - [ ] Transfer to fully Tailwind based
 - [ ] Populate more characters and hists (with uncomplete or unstarted hists too!)
 - [ ] Use Performance Hooks

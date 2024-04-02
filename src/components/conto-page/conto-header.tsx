@@ -10,7 +10,7 @@ import { prisma } from '@/server/prisma.client';
 import getUserData, { User_Session } from '@/utilities/functions/getUserData';
 import { getFavAndLike } from '@/server/getFavAndLike';
 import axios from 'axios';
-function ImageAndButtons({ img, viewsNum, histId }: { img: string, viewsNum: number, histId: string }) {
+function ImageAndButtons({ img, viewsNum, histId, mongoHistId }: { img: string, viewsNum: number, histId: string, mongoHistId: string }) {
     const [isFav, setIsFav] = useState<null | boolean>(null)
     const [isLiked, setIsLiked] = useState<null | boolean>(null)
     const [isFetching, setIsFetching] = useState({ like: false, fav: false })
@@ -36,6 +36,7 @@ function ImageAndButtons({ img, viewsNum, histId }: { img: string, viewsNum: num
             histId,
             isLiked,
             userId: user.id,
+            histMongoId: mongoHistId
         }, { signal: abortControllerLike.signal }).then(() => setIsFetching({...isFetching, like: false}))
     }, [isLiked])
     const handleFav = useCallback(() => {
@@ -47,7 +48,8 @@ function ImageAndButtons({ img, viewsNum, histId }: { img: string, viewsNum: num
         axios.post(`/api/fav`, {
             histId,
             userId: user.id,
-            isFav
+            isFav,
+            histMongoId: mongoHistId
         }, { signal: abortControllerFav.signal }).then(() => setIsFetching({...isFetching, fav: false}))
     }, [isFav])
     return (
@@ -87,14 +89,14 @@ function Infos({ data }: { data: Hist }) {
 
 
 
-export function ContoHeader({ data, viewsNum, histId }: { data: Hist, viewsNum: number, histId: string }) {
+export function ContoHeader({ data, viewsNum, histId, histMongoId }: { data: Hist, viewsNum: number, histId: string, histMongoId: string }) {
     return (
         <main>
             <div className="bg-cover bg-fixed bg-no-repeat w-screen min-h-[calc(100vh+56px)] relative flex justify-center" style={{ backgroundImage: `url(${data.BgImg})` }}>
                 <div className=" absolute w-full h-full bg-black bg-opacity-70 backdrop-blur-sm text-white gap-6 pt-8">
                     <div className=' w-full flex justify-center gap-6 h-[calc(100vh-64px)]'>
                         <Infos data={data}/>
-                        <ImageAndButtons img={data.Img} viewsNum={viewsNum} histId={histId} />
+                        <ImageAndButtons mongoHistId={histMongoId} img={data.Img} viewsNum={viewsNum} histId={histId} />
                     </div>
                 </div>
             </div>

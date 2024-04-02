@@ -1,7 +1,6 @@
 "use client"
 
 import { InputList } from "@/components/Global/InputList"
-import Citacoes from "@/components/character-page-components/Citacao"
 import { CitacoesSection, InstanceSection } from "@/components/create-char-dashboard"
 import { createChar } from "@/server/mongo/actions"
 import { IMGS, SCENARIOS_IMGS } from "@/utilities/envariables"

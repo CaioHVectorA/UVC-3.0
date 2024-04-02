@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Character, Character_Type, Hist, Serie_Type, Solo_Type, SubHist } from "@/utilities/types";
-import { CharCaracter } from "../characters/Char";
+import { CharCaracter } from "../characters/char";
 import { SubhistCard } from "../conto-page/subhist-card";
 type AllDataList = (Character & { id: string } | Hist | SubHist)[];
 function getFilterData(data: AllDataList,search: string): AllDataList {
